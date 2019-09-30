@@ -1,0 +1,286 @@
+body {
+    margin: 0px;
+}
+
+code {
+    display: block;
+    background-color: #e0e0e0;
+    font-family: monospace;
+    white-space: pre;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#navigation
+{
+    display: grid;
+    width: 100%;
+    height: 60px;
+    background-color: #133163;
+    color: #ffffff;
+    border-bottom: 8px solid #fdbc19;
+    grid-template-columns: 1fr 1fr 1fr 150px 150px 150px 2fr 150px 1fr;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 60px;
+}
+
+#logo
+{
+    grid-column: 2;
+}
+
+#home
+{
+    grid-column: 4;
+}
+
+#courses
+{
+    grid-column: 5;
+}
+
+#aboutUs
+{
+    grid-column: 6;
+}
+
+#login
+{
+    grid-column: 8;
+}
+
+.navButton:hover
+{
+    text-decoration: underline;
+    background-color: #0f264c;
+    cursor: pointer;
+}
+
+#slider
+{
+    background-image: url(./slider.jpg);
+    width: 100%;
+    background-size: 100% auto;
+    padding-top: 25%;
+    background-position-y: -90px;
+    border-bottom: 8px solid #fdbc19;
+}
+
+#main
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 200px 100px;
+    text-align: center;
+    color: white;
+    border-bottom: 8px solid #fdbc19;
+}
+
+#firstLang
+{
+    grid-column: 2;
+    grid-row: 2;
+    background-image: url(https://i.redd.it/b3esnz5ra34y.jpg);
+    font-size: 60px;
+}
+
+#secondLang
+{
+    grid-column: 4;
+    grid-row: 2;
+    background-image: url(https://i.redd.it/b3esnz5ra34y.jpg);
+    font-size: 50px;
+}
+
+#thirdLang
+{
+    grid-column: 6;
+    grid-row: 2;
+    background-image: url(https://i.redd.it/b3esnz5ra34y.jpg);
+    font-size: 60px;
+}
+
+#whiteSpace
+{
+    width: 100%;
+    height: 90px;
+}
+
+.language
+{  
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 200px;
+    background-size: cover;
+    border-radius: 40px;
+    box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+    cursor: pointer;
+    transition: 0.4s;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+}
+
+.language:hover 
+{
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+      -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+
+.article_grid
+{
+    display: grid;
+    grid-template-columns: 20px 60% 20px;
+    grid-template-rows: 1fr 1fr;
+    height: 300px;
+    width: 60%;
+    margin: auto;
+    justify-content: center;
+}
+
+#articleOne
+{
+    grid-column: 2;
+    grid-row: 1/3;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: #e6f0ff;
+    box-shadow: 30px 30px 30px;
+}
+
+#articleTwo
+{
+    grid-column: 2;
+    grid-row: 1/3;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: #e6f0ff;
+    box-shadow: 30px 30px 30px;
+}
+
+#articleThree
+{
+    grid-column: 2;
+    grid-row: 1/3;
+    text-transform: uppercase;
+    padding: 10px;
+    background-color: #e6f0ff;
+    box-shadow: 30px 30px 30px;
+}
+
+#firstColorLeft
+{
+    grid-column: 1;
+    grid-row: 1;
+    background-color: #0f264c;
+}
+
+#secondColorLeft
+{
+    grid-column: 1;
+    grid-row: 2;
+    background-color: #fdbc19;
+}
+
+#firstColorRight
+{
+    grid-column: 3;
+    grid-row: 1;
+    background-color: #fdbc19;
+}
+
+#secondColorRight
+{
+    grid-column: 3;
+    grid-row: 2;
+    background-color: #0f264c;
+}
+
+
+
+
+
+
+
+#cpp_grid {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    height: 100%;
+    font-family: Verdana,sans-serif;
+}
+
+#cpp_sidebar {
+    grid-column: 1;
+    background-color: #e6f0ff;
+    padding: 10px;
+}
+    .cpp_sidebar_h1 {
+        font-weight: bold;
+        font-size: 24px;
+    }
+    .cpp_sidebar_h2 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+#cpp_main {
+    grid-column: 2;
+    padding: 10px 20px;
+}
+
+.code_table {
+    border-collapse: collapse;
+    border: 1px solid #000000;
+    width: 25%
+  }
+    .code_table th {
+        background-color: #e0e0e0;
+        border: 1px solid#000000;
+        padding: 4px;
+    }
+    .code_table td {
+        border-right: 1px solid#000000;
+        border-right: 1px solid#000000;
+        padding: 4px;
+        width: 50% ;
+    }
+
+#cplusplus_img {
+    background-image: url("resources/cplusplus/titleShadow-768x256.png");
+    padding-bottom: 16%;
+    width: 50%;
+}
+.img {
+    background-size: 102% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+    height: auto;
+    margin: auto;
+    border: 1px solid #000000;
+}
+
+
+.sidebarButton {
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+
+.btn3:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+
+
+
+#footer
+{
+    width: 100%;
+    height: 50px;
+    background-color: #133163;
+    color: #ffffff;
+}
