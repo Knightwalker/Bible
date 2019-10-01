@@ -10,7 +10,7 @@
     <div>Quadratic Equation</div>
     <div>Greatest Common Divisor</div>
   </div>
-  <div id="cpp_main">
+  <div class="cpp_main">
 
     <div id="cpp_vector">
       <h1>Vectors</h1> 
@@ -38,6 +38,24 @@
       <br>
       <code code-include="/code/cpp/vector/readIntVector.cpp"></code>
 
+      <h2>Read String Vector</h2>
+      <table class="code_table">
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>a b c d e</td>
+        </tr>
+        <tr>
+            <td>a b c d e</td>
+            <td></td>
+        </tr>
+      </table>
+      <br>
+      <code code-include="/code/cpp/vector/readStringVector.cpp"></code>
+
       <h2>Split String To Int Vector</h2>
       <table class="code_table">
         <tr>
@@ -48,13 +66,24 @@
             <td>1 2 3 4 5</td>
             <td>1 2 3 4 5</td>
         </tr>
-        <tr>
-            <td>1,2,3,4,5</td>
-            <td>1 2 3 4 5</td>
-        </tr>
       </table>
       <br>
       <code code-include="/code/cpp/vector/splitStringToIntVector.cpp"></code>
+    </div>
+
+    <h2>Split String To String Vector</h2>
+      <table class="code_table">
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td>a b c d e</td>
+            <td>a b c d e</td>
+        </tr>
+      </table>
+      <br>
+      <code code-include="/code/cpp/vector/splitStringToStringVector.cpp"></code>
     </div>
 
   </div>

@@ -10,7 +10,7 @@
     <div>Quadratic Equation</div>
     <div>Greatest Common Divisor</div>
   </div>
-  <div id="cpp_main">
+  <div class="cpp_main">
 
     <div id="cpp_quadratic_equation">
       <h1>Algebra</h1>
