@@ -31,6 +31,11 @@
                <li>Split String To String Vector</li>
             </ul>
             <br>
+            <div>9. <span onclick="openPage('cplusplus_strings_and_streams')" class="btn3">Strings and Streams</span></div>
+            <ul class="ul_custom">
+               <li>findAndReplaceAllOccurrences</li>
+            </ul>
+            <br>
             <div>II. Functions</div>
             <div>1. <span onclick="openPage('cplusplus_functions')" class="btn3">Functions in C++</span></div>
          </div>

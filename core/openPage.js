@@ -12,6 +12,7 @@ function openPage(argument1)
   else if (argument1 == "cplusplus_vectors") { path = "/app/cplusplus/vectors.php"; }
   else if (argument1 == "cplusplus_functions") { path = "/app/cplusplus/functions.php"; }
   else if (argument1 == "cplusplus_algebra") { path = "/app/cplusplus/algebra.php"; }
+  else if (argument1 == "cplusplus_strings_and_streams") { path = "/app/cplusplus/strings_and_streams.php"; }
 
   location.href = path;
 
