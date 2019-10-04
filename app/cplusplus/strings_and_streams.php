@@ -41,8 +41,34 @@
       </table>
       <br>
       <code code-include="/code/cpp/strings_and_streams/findAndReplaceAllOccurrences.cpp"></code>
+
+      <h2>isNumber</h2>
+      <table class="code_table">
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>one_hundred</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>-100</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>-on3_hundr3d</td>
+            <td>false</td>
+        </tr>
+      </table>
+      <br>
+      <code code-include="/code/cpp/strings_and_streams/isNumber.cpp"></code>
     
-    </div>
+    </div> <!-- END CPP_STRINGs_AND_STREAMS-->
      
   </div>
 </div>
