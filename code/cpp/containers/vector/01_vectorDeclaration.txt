@@ -1,0 +1,5 @@
+std::vector<data_type> name; // creates an empty vector
+
+std::vector<std::vector<data_type>> name; // creates an empty 2D vector
+
+std::vector<std::vector<std::vector<data_type>>> name; // creates an empty 3D vector

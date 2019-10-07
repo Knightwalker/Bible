@@ -295,3 +295,16 @@ code {
     background-color: #133163;
     color: #ffffff;
 }
+
+.cpp_header {
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: bold;
+}
+.cpp_container {
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: bold;
+}
+.cpp_header_color { color: #8B4513; } /* saddlebrown */
+.cpp_container_color { color: #48D1CC; } /* turquoise */

@@ -1,0 +1,26 @@
+// Slower
+vector<int> vect; size: 0 capacity: 0
+vect[0]=0 vect: size: 1 capacity: 1 // new array was created
+vect[1]=1 vect: size: 2 capacity: 2 // new array was created
+vect[2]=2 vect: size: 3 capacity: 4 // new array was created
+vect[3]=3 vect: size: 4 capacity: 4
+vect[4]=4 vect: size: 5 capacity: 8 // new array was created
+vect[5]=5 vect: size: 6 capacity: 8
+vect[6]=6 vect: size: 7 capacity: 8
+vect[7]=7 vect: size: 8 capacity: 8
+vect[8]=8 vect: size: 9 capacity: 16 // new array was created
+vect[9]=9 vect: size: 10 capacity: 16
+
+// Faster
+vector<int> vect;
+vect.reserve(10);
+vect[0]=0 vect: size: 1 capacity: 10 
+vect[1]=1 vect: size: 2 capacity: 10 
+vect[2]=2 vect: size: 3 capacity: 10 
+vect[3]=3 vect: size: 4 capacity: 10 
+vect[4]=4 vect: size: 5 capacity: 10 
+vect[5]=5 vect: size: 6 capacity: 10 
+vect[6]=6 vect: size: 7 capacity: 10 
+vect[7]=7 vect: size: 8 capacity: 10 
+vect[8]=8 vect: size: 9 capacity: 10 
+vect[9]=9 vect: size: 10 capacity: 10

@@ -5,35 +5,34 @@
 using std::cin;
 using std::cout;
 using std::endl;
+using std::stoi;
 using std::string;
 using std::vector;
 
-int splitStringToStringVector(vector<string>& originalVector, string inputString, char delimiter);
+void splitStringToIntVector(vector<int> & originalVector, string inputString, char delimiter);
 
 int main() {
 	string inputString = ""; getline(cin, inputString);
-	vector<string> stringVect; splitStringToStringVector(stringVect, inputString, ' ');
+	vector<int> intVect; splitStringToIntVector(intVect, inputString, ' ');
 
-	for (int i = 0; i < stringVect.size(); i++) {
-		cout << stringVect[i] << " ";
+	for (int i = 0; i < intVect.size(); i++) {
+		cout << intVect[i] << " ";
 	}
 
 	return 0;
 }
 
-int splitStringToStringVector(vector<string>& originalVector, string inputString, char delimiter) {
+void splitStringToIntVector(vector<int> & originalVector, string inputString, char delimiter) {
 	string element = "";
 	int inputStringLength = inputString.length();
 	for (int i = 0; i < inputStringLength; i++) {
 		if (inputString[i] == delimiter) {
-			originalVector.push_back(element);
+			originalVector.push_back(stoi(element));
 			element = "";
 		}
 		else {
 			element += inputString[i];
 		}
 	}
-	originalVector.push_back(element);
-
-	return 0;
+	originalVector.push_back(stoi(element));
 }
