@@ -22,7 +22,7 @@
             <div>4. For-loops</div>
             <div>5. While-loops</div>
             <div>6. Functions</div>
-            <div>7. Arrays</div>
+            <div>7. <span onclick="openPage('cplusplus_array1')" class="btn3">array</span></div>
             <div>8. <span onclick="openPage('cplusplus_strings_and_streams')" class="btn3">Strings and Streams</span></div>
             <ul class="ul_custom">
                <li>findAndReplaceAllOccurrences</li>
@@ -41,7 +41,6 @@
             <div>2. <span onclick="openPage('cplusplus_vector')" class="btn3">searching</span></div>
             <br>
             <div><b>Sequence Containers:</b></div>
-            <div>1. <span onclick="openPage('cplusplus_vector')" class="btn3">array</span></div>
             <div>2. <span onclick="openPage('cplusplus_vector')" class="btn3">vector</span></div>
             <ul class="ul_custom">
                <li>Read Int Vector</li>

@@ -10,6 +10,7 @@ function openPage(argument1)
   // C++
   else if (argument1 == "cplusplus") { path = "/app/cplusplus/cplusplus.php"; }
   else if (argument1 == "cplusplus_functions") { path = "/app/cplusplus/functions.php"; }
+  else if (argument1 == "cplusplus_array1") { path = "/app/cplusplus/array1.php"; }
   else if (argument1 == "cplusplus_vector") { path = "/app/cplusplus/vector.php"; }
   else if (argument1 == "cplusplus_stack") { path = "/app/cplusplus/stack.php"; }
   else if (argument1 == "cplusplus_queue") { path = "/app/cplusplus/queue.php"; }

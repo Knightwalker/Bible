@@ -6,7 +6,7 @@ code {
     display: block;
     background-color: #e0e0e0;
     font-family: monospace;
-    white-space: pre;
+    white-space: pre-wrap;
     padding: 10px;
     border-radius: 4px;
 }
@@ -206,7 +206,7 @@ code {
 
 #cpp_grid {
     display: grid;
-    grid-template-columns: 15% 70% 15%;
+    grid-template-columns: 14% 70% 16%;
     height: 100%;
     font-family: Verdana,sans-serif;
 }
