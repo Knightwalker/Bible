@@ -1,0 +1,7 @@
+std::map<string, int> phone_book; // creates an empty map
+
+std::map<string,int> phone_book {
+    {"David Hume",123456},
+    {"Karl Popper",234567},
+    {"Ber trand Ar thur William Russell",345678}
+};

@@ -60,58 +60,7 @@
       </table>
       <br>
       <code code-include="/code/cpp/containers/vector/readStringVector.cpp"></code>
-
-      <h2>Split String To Int Vector</h2>
-      <table class="code_table">
-        <tr>
-            <th>Input</th>
-            <th>Output</th>
-        </tr>
-        <tr>
-            <td>1 2 3 4 5</td>
-            <td>1 2 3 4 5</td>
-        </tr>
-      </table>
-      <br>
-      <code code-include="/code/cpp/containers/vector/splitStringToIntVector.cpp"></code>
-
-      <h2>Split String To String Vector</h2>
-      <table class="code_table">
-        <tr>
-            <th>Input</th>
-            <th>Output</th>
-        </tr>
-        <tr>
-            <td>a b c d e</td>
-            <td>a b c d e</td>
-        </tr>
-      </table>
-      <br>
-      <code code-include="/code/cpp/containers/vector/splitStringToStringVector.cpp"></code>
-
-      <h2>Read Int Vector V2</h2>
-      <p>Read a single line from the console, assign the input to a stringstream variable and start reading numbers one by one, cast them to integer and push them inside a vector, which is provided by reference.</p>
-      <table class="code_table">
-        <tr>
-            <th>Input</th>
-            <th>Output</th>
-        </tr>
-        <tr>
-            <td>1 2 3 4 5</td>
-            <td>1 2 3 4 5</td>
-        </tr>
-        <tr>
-            <td>1 &nbsp;2 &nbsp;3 &nbsp;4  &nbsp;&nbsp;&nbsp;5</td>
-            <td>1 2 3 4 5</td>
-        </tr>
-        <tr>
-            <td>1 2 3 nope 4 5</td>
-            <td>1 2 3</td>
-        </tr>
-      </table>
-      <br>
-      <code code-include="/code/cpp/containers/vector/readIntVectorV2.cpp"></code>
-      
+    
       <h2>Read 2D Int Vector</h2>
       <table class="code_table">
         <tr>
@@ -133,6 +82,92 @@
       </table>
       <br>
       <code code-include="/code/cpp/containers/vector/read2DIntVector.cpp"></code>
+
+      <h2>7. Read IntVector From StringStream</h2>
+      <p>Read a single line from the console, assign the input to a istringstream variable and start reading numbers one by one, converts them to int and push them inside a int vector, which is provided by reference.</p>
+      <p>The >> operator overload for a std::string always stops reading the string at the first encountered whitespace character.</p>
+      <table class="code_table">
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td>1 2 3 4 5</td>
+            <td>1 2 3 4 5</td>
+        </tr>
+        <tr>
+            <td>1 2 3 4 &nbsp;&nbsp;&nbsp;5</td>
+            <td>1 2 3 4 5</td>
+        </tr>
+        <tr>
+            <td>1 2 3 nope 4 5</td>
+            <td>1 2 3</td>
+        </tr>
+      </table>
+      <br>
+      <code code-include="/code/cpp/containers/vector/07_readIntVectorFromStringStream.cpp"></code>
+
+      <h2>8. Read StringVector From StringStream</h2>
+      <p>Read a single line from the console, assign the input to a istringstream variable and start reading numbers one by one, converts them to string and push them inside a string vector, which is provided by reference.</p>
+      <p>The >> operator overload for a std::string always stops reading the string at the first encountered whitespace character.</p>
+      <table class="code_table">
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td>abc abc abc</td>
+            <td>abc abc abc</td>
+        </tr>
+        <tr>
+            <td>abc abc &nbsp;&nbsp;&nbsp;abc</td>
+            <td>abc abc abc</td>
+        </tr>
+        <tr>
+            <td>abc 3 abc</td>
+            <td>abc 3 abc</td>
+        </tr>
+      </table>
+      <br>
+      <code code-include="/code/cpp/containers/vector/08_readStringVectorFromStringStream.cpp"></code>
+
+      <h2>9. Split String To IntVector By Delimiter</h2>
+      <p>Read a single input line from the console, pass the input to a function, together with a int vector and a delimiter. Next the function will split the input by the delimiter and convert the elements 1 by 1 to int, and push the elements inside a int vector, which is provided by reference.</p>
+      <table class="code_table">
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td>1 2 3 4 5</td>
+            <td>1 2 3 4 5</td>
+        </tr>
+        <tr>
+            <td>1,2,3,4,5</td>
+            <td>1 2 3 4 5</td>
+        </tr>
+      </table>
+      <br>
+      <code code-include="/code/cpp/containers/vector/09_splitStringToIntVector.cpp"></code>
+
+      <h2>10. Split String To StringVector By Delimiter</h2>
+      <p>Read a single input line from the console, pass the input to a function, together with a string vector and a delimiter. Next the function will split the input by the delimiter and push the elements inside a string vector, which is provided by reference.</p>
+      <table class="code_table">
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td>a b c d e</td>
+            <td>a b c d e</td>
+        </tr>
+        <tr>
+            <td>a,b,c,d,e</td>
+            <td>a b c d e</td>
+        </tr>
+      </table>
+      <br>
+      <code code-include="/code/cpp/containers/vector/10_splitStringToStringVector.cpp"></code>
 
     </div> <!-- END cpp_vector -->
 

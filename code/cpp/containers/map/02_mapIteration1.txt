@@ -1,0 +1,21 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+int main()
+{
+    std::map<std::string, int> gamesPriceMap {
+        {"The Witcher", 100},
+        {"Cyberpunk", 69},
+        {"Assasins Creed", 80}
+    };
+
+    for (auto i = gamesPriceMap.begin(); i != gamesPriceMap.end(); i++) {
+        std::cout << i->first << " " << i->second << std::endl;
+    }
+
+    // Assasins Creed 80
+    // Cyberpunk 69
+    // The Witcher 100
+
+}

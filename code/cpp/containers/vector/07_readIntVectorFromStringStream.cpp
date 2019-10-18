@@ -10,7 +10,7 @@ using std::istringstream;
 using std::vector;
 using std::string;
 
-void readIntVectorFromStringStream(vector<int>& intVect);
+void readIntVectorFromStringStream(vector<int>& vect);
 
 int main() {
 	vector<int> intVect; readIntVectorFromStringStream(intVect);
@@ -24,13 +24,13 @@ int main() {
 	return 0;
 }
 
-void readIntVectorFromStringStream(vector<int>& intVect) {
+void readIntVectorFromStringStream(vector<int>& vect) {
 	string inputLine = ""; getline(cin, inputLine);
 	istringstream input(inputLine);
 
 	int n;
 	while (input >> n) {
-		intVect.push_back(n);
+		vect.push_back(n);
 	}
 
 }
