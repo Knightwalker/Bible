@@ -52,7 +52,7 @@
       <br>
       <code code-include="/code/cpp/c_array/01_read2DIntVector.cpp"></code>
 
-      <h2>Multidimensional Arrays</h2>
+      <h2>Multidimensional Arrays (2D, 3D... ND)</h2>
       <ul class="ul_custom">
         <li>Multi-dimensional arrays are declared by providing more than one set of square [ ] brackets after the variable name in the declaration statement.</li>
         <li>One dimensional arrays do not require the dimension to be given if the array is to be completely initialized.  By analogy, multi-dimensional arrays do not require the first dimension to be given if the array is to be completely initialized.  All dimensions after the first must be given in any case.</li>
@@ -65,7 +65,7 @@
       <br>
       <code code-include="/code/cpp/containers/vector/02_vectorOptimization.txt"></code>
      
-      <h2>Matrix (2D Arrays)</h2>
+      <h2>2D Array (Matrix)</h2>
 
       <h3>2D Array | Diagonal, Upper Right Triangle and Bottom Left Triangle</h3>
       <h4>Method 1 - Iterate through the whole matrix with a for-loop</h4>
@@ -115,7 +115,7 @@
       <div class="matrix_grid">
         <div class="matrix_sub1">
           <table class="array5x5explanation">
-            <tr><th class="array5x5_td_green">Upper Left Triangle</th><th class="array5x5_td_orange">Anti-Diagonal</th><th class="array5x5_td_blue">Bottom Right Triangle</th></tr>
+            <tr><th class="array5x5_td_blue">Upper Left Triangle</th><th class="array5x5_td_orange">Anti-Diagonal</th><th class="array5x5_td_green">Bottom Right Triangle</th></tr>
             <tr><td>a10 (n - 1 - i > j)</td><td>a00 (n - 1 - i == j)</td><td>a01 (n - 1 - i < j)</td></tr>
             <tr><td>a20 (n - 1 - i > j)</td><td>a11 (n - 1 - i == j)</td><td>a02 (n - 1 - i < j)</td></tr>
             <tr><td>a21 (n - 1 - i > j)</td><td>a22 (n - 1 - i == j)</td><td>a03 (n - 1 - i < j)</td></tr>

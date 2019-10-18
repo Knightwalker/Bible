@@ -60,15 +60,22 @@
             <br>
             <div>3. <span onclick="openPage('cplusplus_iterators')" class="btn3">Iterators</span></div>
             <br>
+<<<<<<< HEAD
             <div><b>Ordered Associative Containers:</b></div>
             <div>1. <span onclick="openPage('cplusplus_map')" class="btn3">map</span></div>
             <br>
             <div>IV. Solutions</div>
+=======
+            <div><b>IV. Solutions</b></div>
+>>>>>>> a7ae9c72c2c173abf82fb66e8f501a7c57dfec5a
             <div>1. <span onclick="openPage('cplusplus_algebra')" class="btn3">Algebra</span></div>
             <ul class="ul_custom">
                <li>Quadratic Equation</li>
                <li>Greatest Common Divisor</li>
             </ul>
+            <br/>
+            <div><b>Graphics:</b></div>
+            <div>1. <span onclick="openPage('cplusplus_blur_algorithm')" class="btn3">Blur Algorithm</span></div>
          </div>
 
       </div>

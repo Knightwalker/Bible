@@ -20,6 +20,9 @@ function openPage(argument1)
   else if (argument1 == "cplusplus_algebra") { path = "/app/cplusplus/algebra.php"; }
   else if (argument1 == "cplusplus_strings_and_streams") { path = "/app/cplusplus/strings_and_streams.php"; }
 
+  // Graphics
+  else if (argument1 == "cplusplus_blur_algorithm") { path = "/app/cplusplus/solutions/graphics/blur_algorithm.php"; }
+
   location.href = path;
 
 }
