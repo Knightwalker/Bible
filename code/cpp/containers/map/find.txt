@@ -1,0 +1,46 @@
+#include <iostream>
+#include <map>
+#include <string>
+
+int main()
+{
+    std::map<std::string, int> gamesMap{
+        {"The Witcher", 100},
+        {"Cyberpunk", 69},
+        {"Assasins Creed", 80}
+    };
+
+    // check if "Dark Souls" is present.
+    if (gamesMap.find("Dark Souls") == gamesMap.end()) {
+        std::cout << "Dark Souls not found!" << std::endl;
+    }
+    else {
+        std::cout << "Dark Souls is found!" << std::endl;
+    }
+
+    // check if "Dark Souls" is present. Long version
+    map<string, int>::iterator foundGame = gamesMap.find("Dark Souls");
+    if (foundGame == gamesMap.end()) {
+        std::cout << "Dark Souls not found!" << std::endl;
+    }
+    else {
+        std::cout << "Dark Souls is found!" << std::endl;
+    }
+
+    // check if "Dark Souls" is present. If not, add it in.
+    if (gamesMap.find("Dark Souls") == gamesMap.end()) {
+        gamesMap["Dark Souls"] = 0;
+    }
+    gamesMap["Dark Souls"] = 69;
+
+    // print result
+    for (std::pair<std::string, int> element : gamesMap) {
+        std::cout << element.first << " " << element.second << std::endl;
+    }
+
+    // Assasins Creed 80
+    // Cyberpunk 69
+    // Dark Souls 69
+    // The Witcher 100
+
+}

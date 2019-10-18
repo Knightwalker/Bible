@@ -27,6 +27,12 @@
       <p>Method 2: Range-Based For-Loop (C++ 11)</p>
       <code code-include="/code/cpp/containers/map/03_mapIteration2.txt"></code>
 
+      <h2>Member Functions</h2>
+      <h3>Operations:</h3>
+      <h4>find</h4>
+      <p>Searches the container for an element with a key equivalent to k and returns an iterator to it if found, otherwise it returns an iterator to map::end.</p>
+      <code code-include="/code/cpp/containers/map/find.txt"></code>
+
       <h2>Read Int Vector</h2>
       <table class="code_table">
         <tr>
