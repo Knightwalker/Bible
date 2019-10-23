@@ -27,6 +27,12 @@
       </ul>
 
       <h2>1. Algorithms</h2>
+      There are about 80 standard algorithms defined in &lt;algorithm>&gt;. They operate on sequences defined by a pair of iterators (for inputs) or a single iterator (for outputs). 
+
+      <ul class="ul_custom">
+        <li>Nonmodifying Sequence Algorithms:</li>
+        <li>Modifying Sequence Algorithms:</li>
+      </ul>
 
       <h2>2. Containers</h2>
       <p>A container holds a sequence of objects.</p>

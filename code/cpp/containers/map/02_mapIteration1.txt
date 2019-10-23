@@ -10,8 +10,8 @@ int main()
         {"Assasins Creed", 80}
     };
 
-    for (auto i = gamesPriceMap.begin(); i != gamesPriceMap.end(); i++) {
-        std::cout << i->first << " " << i->second << std::endl;
+    for (auto it = gamesPriceMap.begin(); it != gamesPriceMap.end(); it++) {
+        std::cout << it->first << " " << it->second << std::endl;
     }
 
     // Assasins Creed 80
