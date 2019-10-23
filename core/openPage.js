@@ -15,6 +15,7 @@ function openPage(argument1)
   else if (argument1 == "cplusplus_stack") { path = "/app/cplusplus/stack.php"; }
   else if (argument1 == "cplusplus_queue") { path = "/app/cplusplus/queue.php"; }
   // Associative Containers
+  else if (argument1 == "cplusplus_stl") { path = "/app/cplusplus/04_STL/stl.php"; }
   else if (argument1 == "cplusplus_map") { path = "/app/cplusplus/containers/map.php"; }
   else if (argument1 == "cplusplus_iterators") { path = "/app/cplusplus/iterators.php"; }
   else if (argument1 == "cplusplus_algebra") { path = "/app/cplusplus/algebra.php"; }

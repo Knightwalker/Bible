@@ -34,7 +34,7 @@
 
          <div class="cpp_main_grid_2">
             <div><b>III. Standard Template Library (STL)</b></div>
-            <div>1. <span onclick="openPage('cplusplus_vector')" class="btn3">Introduction to STL</span></div>
+            <div>1. <span onclick="openPage('cplusplus_stl')" class="btn3">Introduction to STL</span></div>
             <br>
             <div><b>Algorithms:</b></div>
             <div>1. <span onclick="openPage('cplusplus_vector')" class="btn3">sorting</span></div>
