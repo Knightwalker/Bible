@@ -27,7 +27,7 @@
       </ul>
 
       <h2>1. Algorithms</h2>
-      There are about 80 standard algorithms defined in &lt;algorithm>&gt;. They operate on sequences defined by a pair of iterators (for inputs) or a single iterator (for outputs). 
+      There are about 80 standard algorithms defined in <span class="cpp_header cpp_header_color">&lt;algorithm&gt;</span> header. They operate on sequences defined by a pair of iterators (for inputs) or a single iterator (for outputs). 
 
       <ul class="ul_custom">
         <li>Nonmodifying Sequence Algorithms:</li>

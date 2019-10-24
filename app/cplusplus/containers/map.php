@@ -28,28 +28,9 @@
       <code code-include="/code/cpp/containers/map/03_mapIteration2.txt"></code>
 
       <h2>Member Functions</h2>
-      <h3>Operations:</h3>
-      <h4>find</h4>
+      <h3>map::find</h3>
       <p>Searches the container for an element with a key equivalent to k and returns an iterator to it if found, otherwise it returns an iterator to map::end.</p>
       <code code-include="/code/cpp/containers/map/find.txt"></code>
-
-      <h2>Read Int Vector</h2>
-      <table class="code_table">
-        <tr>
-            <th>Input</th>
-            <th>Output</th>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>1 2 3 4 5</td>
-        </tr>
-        <tr>
-            <td>1 2 3 4 5</td>
-            <td></td>
-        </tr>
-      </table>
-      <br>
-      <code code-include="/code/cpp/containers/vector/readIntVector.cpp"></code>
 
     </div> <!-- END cpp_map -->
 
