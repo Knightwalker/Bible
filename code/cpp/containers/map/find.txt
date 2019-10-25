@@ -18,14 +18,18 @@ int main()
         std::cout << "Dark Souls is found!" << std::endl;
     }
 
-    // check if "Dark Souls" is present. Long version
-    map<string, int>::iterator foundGame = gamesMap.find("Dark Souls");
+    std::cout << std::endl;
+
+    // check if "The Witcher" is present. Save the iterator and use it.
+    std::map<std::string, int>::iterator foundGame = gamesMap.find("The Witcher");
     if (foundGame == gamesMap.end()) {
-        std::cout << "Dark Souls not found!" << std::endl;
+        std::cout << "The Witcher not found!" << std::endl;
     }
     else {
-        std::cout << "Dark Souls is found!" << std::endl;
+        std::cout << "Found " << foundGame->first << " with value " <<  foundGame->second << std::endl;
     }
+
+    std::cout << std::endl;
 
     // check if "Dark Souls" is present. If not, add it in.
     if (gamesMap.find("Dark Souls") == gamesMap.end()) {

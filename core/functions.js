@@ -25,8 +25,8 @@ window.onload = function() {
                 element.textContent = resultText;
 
                 // Step 2. Escape syntax for HTML special tags
-                //resultText = resultText.replace(/</gi, "&lt;");
-                //resultText = resultText.replace(/>/gi, "&gt;");
+                // resultText = resultText.replace(/</gi, "&lt;");
+                // resultText = resultText.replace(/>/gi, "&gt;");
         }
     };
     xhttp.open("GET", window.location.origin + absoluteFilePath, true);
