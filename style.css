@@ -256,6 +256,22 @@ code {
         padding: 4px;
         width: 50% ;
     }
+.code_table2 {
+    border-collapse: collapse;
+    border: 1px solid #000000;
+    width: 50%
+    }
+    .code_table2 th {
+        background-color: #e0e0e0;
+        border: 1px solid#000000;
+        padding: 4px;
+    }
+    .code_table2 td {
+        border-right: 1px solid#000000;
+        border-right: 1px solid#000000;
+        padding: 4px;
+        width: 50% ;
+    }
 
 #cplusplus_img {
     background-image: url("resources/cplusplus/titleShadow-768x256.png");

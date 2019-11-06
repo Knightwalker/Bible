@@ -18,12 +18,14 @@ function openPage(argument1)
   else if (argument1 == "cplusplus_stl") { path = "/app/cplusplus/03_STL/stl.php"; }
   else if (argument1 == "cplusplus_map") { path = "/app/cplusplus/containers/map.php"; }
   else if (argument1 == "cplusplus_iterators") { path = "/app/cplusplus/iterators.php"; }
-  else if (argument1 == "cplusplus_algebra") { path = "/app/cplusplus/algebra.php"; }
   else if (argument1 == "cplusplus_strings_and_streams") { path = "/app/cplusplus/strings_and_streams.php"; }
 
   // IV. Object Oriented Programming (OOP)
   else if (argument1 == "cplusplus_classes_and_objects") { path = "/app/cplusplus/04_OOP/classes_and_objects.php"; }
 
+  // V. Solutions
+  else if (argument1 == "cplusplus_algorithms") { path = "/app/cplusplus/solutions/algorithms.php"; }
+  else if (argument1 == "cplusplus_algebra") { path = "/app/cplusplus/solutions/algebra.php"; }
   // Graphics
   else if (argument1 == "cplusplus_blur_algorithm") { path = "/app/cplusplus/solutions/graphics/blur_algorithm.php"; }
 

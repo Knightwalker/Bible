@@ -68,8 +68,13 @@
             <div>4. <span onclick="openPage('cplusplus_iterators')" class="btn3">bidirectional</span></div>
             <div>5. <span onclick="openPage('cplusplus_iterators')" class="btn3">random_access</span></div>
             <br>
-            <div><b>IV. Solutions</b></div>
-            <div>1. <span onclick="openPage('cplusplus_algebra')" class="btn3">Algebra</span></div>
+            <div><b>V. Solutions</b></div>
+            <div>1. <span onclick="openPage('cplusplus_algorithms')" class="btn3">Algorithms</span></div>
+            <ul class="ul_custom">
+               <li>Longest Increasing Subsequence (LIS) of Continuous Elements</li>
+            </ul>
+            <br/>
+            <div>2. <span onclick="openPage('cplusplus_algebra')" class="btn3">Algebra</span></div>
             <ul class="ul_custom">
                <li>Quadratic Equation</li>
                <li>Greatest Common Divisor</li>
