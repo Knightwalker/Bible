@@ -40,8 +40,8 @@
             <div>1. <span onclick="openPage('cplusplus_stl')" class="btn3">Introduction to STL</span></div>
             <br>
             <div><b>III.1. Algorithms:</b></div>
-            <div>1. <span onclick="openPage('cplusplus_vector')" class="btn3">sorting</span></div>
-            <div>2. <span onclick="openPage('cplusplus_vector')" class="btn3">searching</span></div>
+            <div>1. <span onclick="openPage('cplusplus_sorting')" class="btn3">sorting</span></div>
+            <div>2. <span onclick="openPage('cplusplus_searching')" class="btn3">searching</span></div>
             <br>
             <div><b>III.2. Containers:</b></div>
             <div><b>Sequence Containers:</b></div>

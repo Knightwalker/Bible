@@ -16,6 +16,8 @@ function openPage(argument1)
   else if (argument1 == "cplusplus_queue") { path = "/app/cplusplus/queue.php"; }
   // III. Standard Template Library (STL)
   else if (argument1 == "cplusplus_stl") { path = "/app/cplusplus/03_STL/stl.php"; }
+  else if (argument1 == "cplusplus_sorting") { path = "/app/cplusplus/03_STL/sorting.php"; }
+  else if (argument1 == "cplusplus_searching") { path = "/app/cplusplus/03_STL/searching.php"; }
   else if (argument1 == "cplusplus_map") { path = "/app/cplusplus/containers/map.php"; }
   else if (argument1 == "cplusplus_iterators") { path = "/app/cplusplus/iterators.php"; }
   else if (argument1 == "cplusplus_strings_and_streams") { path = "/app/cplusplus/strings_and_streams.php"; }
