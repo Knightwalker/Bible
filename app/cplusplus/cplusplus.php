@@ -33,6 +33,12 @@
             <br>
             <div><b>IV. Object Oriented Programming (OOP)</b></div>
             <div>2. <span onclick="openPage('cplusplus_classes_and_objects')" class="btn3">classes and objects</span></div>
+            <br>
+            <div><b>V. Algorithms</b></div>
+            <div>1. <span onclick="openPage('cplusplus_recursion')" class="btn3">recursion</span></div>
+            <ul class="ul_custom">
+               <li>The "8 Queens" Puzzle</li>
+            </ul>
          </div>
 
          <div class="cpp_main_grid_2">

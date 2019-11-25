@@ -25,6 +25,9 @@ function openPage(argument1)
   // IV. Object Oriented Programming (OOP)
   else if (argument1 == "cplusplus_classes_and_objects") { path = "/app/cplusplus/04_OOP/classes_and_objects.php"; }
 
+  // IV. Object Oriented Programming (OOP)
+  else if (argument1 == "cplusplus_recursion") { path = "/app/cplusplus/05_Algorithms/recursion.php"; }
+
   // V. Solutions
   else if (argument1 == "cplusplus_algorithms") { path = "/app/cplusplus/solutions/algorithms.php"; }
   else if (argument1 == "cplusplus_algebra") { path = "/app/cplusplus/solutions/algebra.php"; }
