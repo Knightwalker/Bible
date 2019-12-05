@@ -39,6 +39,12 @@
             <ul class="ul_custom">
                <li>The "8 Queens" Puzzle</li>
             </ul>
+            <br>
+            <div>2. <span onclick="openPage('cplusplus_graph_traversal')" class="btn3">Graph Traversal Algorithms</span></div>
+            <ul class="ul_custom">
+               <li>Depth First Search (DFS)</li>
+               <li>Breadth First Search (BFS)</li>
+            </ul>
          </div>
 
          <div class="cpp_main_grid_2">

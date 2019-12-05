@@ -212,7 +212,6 @@
   padding: 5px;
   text-align: center;
 }
-
 </style>
 
 <?php include($_SERVER['DOCUMENT_ROOT'] . "/footer.php") ?>
