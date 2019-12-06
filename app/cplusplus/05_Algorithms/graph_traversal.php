@@ -21,7 +21,18 @@
       <p>Depth-First Search (DFS) is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.</p>
       <div class="matrix_grid">
         <div class="matrix_sub1">
+            <div>Easy</div>
             <div id="dfs_labyrinth1_render_btn">Start</div>
+            <table id="dfs_labyrinth1" class="array5x5"></table>
+        </div>
+        <div class="matrix_sub2">
+            <div>Medium</div>
+            <div id="dfs_labyrinth2_render_btn">Start</div>
+            <table id="dfs_labyrinth1" class="array5x5"></table>
+        </div>
+        <div class="matrix_sub3">
+            <div>Hard</div>
+            <div id="dfs_labyrinth3_render_btn">Start</div>
             <table id="dfs_labyrinth1" class="array5x5"></table>
         </div>
       </div>
@@ -89,7 +100,6 @@
     class Labyrinth {
       constructor() {
         this.size = 14,
-        this.mazeCollection = [],
         this.maze = [
           ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ['*', 's', ' ', ' ', ' ', ' ', ' ', '*', ' ', ' ', ' ', '*', ' ', '*'],
@@ -105,22 +115,30 @@
           ['*', ' ', '*', ' ', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ['*', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '*'],
           ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', 'e', '*']
-        ]
+        ],
+          this.mazeCollection = [],
           this.pathVect = [];
+          this.pathsDict = [];
           this.steps = 0;
       }
 
       _hasPath(y, x) {
 		    if (this.maze[y][x] == '*') {
-			  return false; // there is a wall, no path ahead
-		  }
+			    return false; // there is a wall, no path ahead
+		    }
 
 		    if (this.maze[y][x] == '.') {
 			    return false; // we have been here already, escape endless loop
 		    }
 
-        if (this.maze[y][x] == 'e') {
-         // this.drawLabyrinth(labyrinthEl);
+        if (this.maze[y][x] == 'e') { // save current exit and search for more
+          if (this.pathsDict[this.steps] === undefined) { // if key does not exist
+            this.pathsDict[this.steps] = [];
+            this.pathsDict[this.steps].push([...this.pathVect]);
+          } else {
+            this.pathsDict[this.steps].push([...this.pathVect]);
+          }
+          
           return false; // search for more exits
         }
 
@@ -137,18 +155,7 @@
         this.pathVect.push({y, x});
         this.steps++;
 
-        //let arr = this.maze.map(x => ({...x}));
-        let arr = [];
-       
-        for (let row = 0; row < this.size; row++) {
-          let subarr = [];
-          arr.push(subarr);
-          for (let col = 0; col < this.size; col++) {
-            arr[row][col] = this.maze[row][col];
-          } 
-        }
-
-        this.mazeCollection.push(arr);
+        this.mazeCollection.push(this.maze.map(x => ({...x}))); // push a deep copy of the current maze inside the render collection
 
         this._findExit(y - 1, x); // check up
         this._findExit(y, x - 1); // check left
@@ -161,10 +168,7 @@
 
       }
 
-      
       calculate() {   
-        this._findExit(1, 1);
-
         // function printNumbers(from, to) {
         //   let timer = setInterval(() => { from <= to ? console.log(from++) : clearInterval(timer); }, 1000);
         //   }
@@ -179,7 +183,19 @@
 
       }
 
-      render() {
+      _drawShortestExit() {
+        // Get the smallest key from the pathsDict, e.g the sortest path
+        let key = Object.keys(this.pathsDict).reduce((key, v) => this.pathsDict[v] < this.pathsDict[key] ? v : key);
+        let arr = this.pathsDict[key][0];
+        this.maze[arr[0].y][arr[0].x] = 's';
+        this.mazeCollection.push(this.maze.map(x => ({...x}))); // push a deep copy of the current maze inside the render collection
+        for (let i = 1; i < arr.length; i++) {
+          let y = arr[i].y;
+          let x = arr[i].x;
+          this.maze[y][x] = 'p';
+          this.mazeCollection.push(this.maze.map(x => ({...x}))); // push a deep copy of the current maze inside the render collection
+        }
+
         console.log(this);
 
         let myTimer = setInterval(doStuff, 100, this);
@@ -194,11 +210,17 @@
             clearInterval(myTimer);
           }
         }
-        
+
+        //this.mazeCollection = []; i need to figure out how to reset this !!!
+
+      }
+
+      findExit() {
+        this._findExit(1, 1);
+        this._drawShortestExit();
       }
 
       drawLabyrinth(el, collection) {
-        
         let table = document.createElement("table");
         let tbody = document.createElement("tbody");
         table.appendChild(tbody);
@@ -218,6 +240,9 @@
             } else if (collection[row][col] == 'e') {
               td.className = "array5x5_td_red";
               td.innerText = "e";
+            } else if (collection[row][col] == 'p') {
+              td.className = "array5x5_td_green";
+              td.innerText = ".";
             } else if (collection[row][col] == '.') {
               td.className = "array5x5_td_blue";
               td.innerText = ".";
@@ -240,10 +265,9 @@
     let labyrinth1El = document.getElementById("dfs_labyrinth1");  
     let labyrinth = new Labyrinth();
     labyrinth.drawLabyrinth(labyrinth1El, labyrinth.maze);
-    labyrinth.calculate();
-
+  
     let labyrinthRenderBtn = document.getElementById("dfs_labyrinth1_render_btn");  
-    labyrinthRenderBtn.addEventListener("click", function(){ labyrinth.render(); });
+    labyrinthRenderBtn.addEventListener("click", function(){ labyrinth.findExit(); });
 
     
 </script>
@@ -265,9 +289,9 @@
   grid-template-columns: 30% 25% 25%;
 }
 .matrix_sub1 { grid-column: 1; }
-.matrix_sub2 { grid-column: 2; margin-top: auto; margin-bottom: auto; }
-.matrix_sub3 { grid-column: 3; margin: auto; font-weight: bolder; font-size: 24px; }
-.matrix_sub4 { grid-column: 4; margin-top: auto; margin-bottom: auto; }
+.matrix_sub2 { grid-column: 2; }
+.matrix_sub3 { grid-column: 3; }
+
 .array5x5 {
   border-collapse: collapse;
   border: 1px solid #000000;
