@@ -24,6 +24,11 @@ app.get("/mssql", function(req, res) { res.render("mssql.ejs"); });
 app.get("/cpp", function(req, res) { res.render("cpp/cpp.ejs"); });
 
 // C++
+// I. Basics
+app.get("/cpp/data_types", function(req, res) { 
+  res.render("cpp/01_Basics/data_types.ejs"); 
+});
+
 app.get("/cpp/array1", function(req, res) {
   let strArrayDeclaration1 = fs.readFileSync('resources/cpp/c_array/01_1_arrayDeclaration.txt', 'utf8');
   let strArrayDeclaration2 = fs.readFileSync('resources/cpp/c_array/01_2_arrayDeclaration.txt', 'utf8');
