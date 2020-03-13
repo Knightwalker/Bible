@@ -22,6 +22,7 @@ app.get("/", function(req, res) { res.render("index.ejs"); });
 app.get("/csharp", function(req, res) { res.render("csharp.ejs"); });
 app.get("/mssql", function(req, res) { res.render("mssql.ejs"); });
 app.get("/cpp", function(req, res) { res.render("cpp/cpp.ejs"); });
+app.get("/javascript", function(req, res) { res.render("javascript/javascript.ejs"); });
 
 // C++
 // I. Basics
@@ -201,6 +202,12 @@ app.get("/cpp/blur_algorithm", function(req, res) {
   }
 
   res.render("cpp/05_Solutions/graphics/blur_algorithm.ejs", options); 
+});
+
+
+
+app.get("/javascript/classes_and_objects", function(req, res) { 
+  res.render("javascript/classes_and_objects.ejs"); 
 });
 
 
