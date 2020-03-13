@@ -207,7 +207,19 @@ app.get("/cpp/blur_algorithm", function(req, res) {
 
 
 app.get("/javascript/classes_and_objects", function(req, res) { 
-  res.render("javascript/classes_and_objects.ejs"); 
+  let class_syntax = fs.readFileSync('resources/javascript/class_syntax.txt', 'utf8');
+  let demo1_esnext = fs.readFileSync('resources/javascript/demo1_esnext.js', 'utf8');
+  let demo2_es6 = fs.readFileSync('resources/javascript/demo2_es6.js', 'utf8');
+  let demo3_es5 = fs.readFileSync('resources/javascript/demo3_es5.js', 'utf8');
+
+  let options = {
+    class_syntax: class_syntax,
+    demo1_esnext: demo1_esnext,
+    demo2_es6: demo2_es6,
+    demo3_es5: demo3_es5
+  }
+
+  res.render("javascript/classes_and_objects.ejs", options); 
 });
 
 
