@@ -23,6 +23,7 @@ app.get("/csharp", function(req, res) { res.render("csharp.ejs"); });
 app.get("/mssql", function(req, res) { res.render("mssql.ejs"); });
 app.get("/cpp", function(req, res) { res.render("cpp/cpp.ejs"); });
 app.get("/javascript", function(req, res) { res.render("javascript/javascript.ejs"); });
+app.get("/biology", function(req, res) { res.render("biology/biology.ejs"); });
 
 // C++
 // I. Basics
@@ -220,6 +221,20 @@ app.get("/javascript/classes_and_objects", function(req, res) {
   }
 
   res.render("javascript/classes_and_objects.ejs", options); 
+});
+
+app.get("/javascript/ajax", function(req, res) {
+
+  res.render("javascript/ajax.ejs");
+});
+
+
+
+app.get("/biology/class_7", function(req, res) { 
+  //let demo1_esnext = fs.readFileSync('resources/javascript/demo1_esnext.js', 'utf8');
+  let options = { }
+
+  res.render("biology/class_7.ejs", options); 
 });
 
 
