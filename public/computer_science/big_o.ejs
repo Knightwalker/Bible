@@ -1,0 +1,65 @@
+<%- include("../header.ejs") %>
+
+<div id="cpp_grid">
+  <div id="cpp_sidebar">
+    <div class="sidebarButton">Introduction</div>
+    <div class="sidebarButton">Data Types</div>
+    <div class="sidebarButton">Variables</div>
+    <div class="cpp_sidebar_h1">Solutions</div>
+    <div class="cpp_sidebar_h2">Algebra</div>
+    <div>Quadratic Equation</div>
+    <div>Greatest Common Divisor</div>
+  </div>
+  <div class="cpp_main">
+
+    <div id="big_o_notation">
+      <h1>1.1. Big-O</h1> 
+      <h2>1. Asymptotic Notations</h2>
+      <p>In computer science, asymptotic notations are primarily used to represent <b>time and space complexity</b> of algorithms for asymptotic analysis. The main idea of asymptotic analysis is to examine algorithm's according to how their running time or space requirements grow as the input size grows.</p> 
+      <p>There are three types of <b>asymptotic notations</b> to represent the growth of any algorithm, as input increases:</p>
+      <ul>
+        <li>Big Oh, &Omicron;(f(n)) – asymptotic upper bound. (worst-case)</li>
+        <li>Big Theta, &Theta;(f(n)) – asymptotic upper and lower bound. (average case)</li>
+        <li>Big Omega, &Omega;(f(n)) – asymptotic lower bound. (best case)</li>
+      </ul>
+      <p><b>The Big O</b>, (Big Oh) is the most used <b>asymptotic notation</b> when we talk about <b>time and space complexity</b> of algorithms. The O-notation defines an upper bound of an algorithm, it bounds a function only from above, or in other words, we define the worst-case scenario for the running time of an algorithm. Generally we would like to know how fast is a given algorithm. Does it gets slower as input grows? (time complexity) How much memory does it consume as input grows? (space complexity)</p>
+      <div id="bigOChartImg" class="printable"></div>
+      <b>We classify algorithms based on their theoretical worst-case running time complexities:</b>
+      <ul>
+        <li><b>A logarithmic algorithm – O(logn)</b></li> 
+        Runtime grows logarithmically in proportion to n.
+        <li><b>A linear algorithm – O(n)</b></li>
+        Runtime grows directly in proportion to n.
+        <li><b>A superlinear algorithm – O(nlogn)</b></li> 
+        Runtime grows in proportion to n.
+        <li><b>A polynomial algorithm – O(nc)</b></li>  
+        Runtime grows quicker than previous all based on n.
+        <li><b>A exponential algorithm – O(cn)</b></li>
+        Runtime grows even faster than polynomial algorithm based on n.
+        <li><b>A factorial algorithm – O(n!)</b></li>
+        Runtime grows the fastest and becomes quickly unusable for even
+          small values of n.
+      </ul>
+      <p><b>Example 1 - Access Array Element</b></p>
+      <code class="code_1 printable"><%= arrayAccess %></code>
+      <ul>
+        <li><b>Time Complexity:</b> O(1). Arrays are sequence containers with random-access iterators, meaning we allays get a specific element from the memory for a constant time. Most data structure operations are either O(1), O(log n) or O(n).</li>
+      </ul>
+      <p><b>Example 2 - Search Array Element</b></p>
+      <code class="code_1 printable"><%= searchArray %></code>
+      <ul>
+        <li><b>Time Complexity:</b> O(n). We are assuming the worst case scenario. In this worst case, the needle would be the last element and the for-loop will need to cycle 10,000,000 (ten milion) times in order to find it.</li>
+        <li><b>Actual Runtime:</b> 5.53513000253588 milliseconds. Despite sounding scary, this is how much actual time it took on my machine, RAM - 16GB, CPU - Ryzen 5 2600X and even if we test the solution 1,000 (one thousand) times, the result would be approximately the same.</li>
+      </ul>
+      <p><b>Example 3 - Make Tuples from Array Element</b></p>
+      <code class="code_1 printable"><%= makeTuples %></code>
+      <ul>
+        <li><b>Time Complexity:</b> O(n^2). This is considered slow. For every input, we have to go through a full loop inside of another full loop, meaning we're doing a lot of work! If our array was for example arr[1, 2, 3... 10,000] and we attempt this function then we would hit JavaScript's heap memory limit (space complexity) and receive a "FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed".</li>
+        <li><b>Explanation:</b> Generally speaking, nested loops are slow. A loop inside of a loop inside of a loop would likewise be O(n^3). Until deemed necessary, more than three nested loops is always a bad idea.</li>
+      </ul>
+    </div> <!-- END big_o_notation -->
+     
+  </div>
+</div>
+
+<%- include("../footer.ejs") %>

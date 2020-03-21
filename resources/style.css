@@ -2,6 +2,13 @@ body {
     margin: 0px;
 }
 
+span.keyword {
+    padding: 0 .3em;
+    line-height: 1.5em;
+    background: #f1f2f3;
+    border-radius: 5px;
+}
+
 #navigation {
     display: grid;
     width: 100%;
@@ -94,6 +101,13 @@ body {
 
 #biology_btn {
     grid-column: 4;
+    grid-row: 4;
+    background-image: url(https://i.redd.it/b3esnz5ra34y.jpg);
+    font-size: 60px;  
+}
+
+#computer_science_btn {
+    grid-column: 2;
     grid-row: 4;
     background-image: url(https://i.redd.it/b3esnz5ra34y.jpg);
     font-size: 60px;  
@@ -336,3 +350,25 @@ code {
 }
 .cpp_header_color { color: #8B4513; } /* saddlebrown */
 .cpp_container_color { color: #48D1CC; } /* turquoise */
+
+#bigOChartImg { 
+    background-image: url(computer_science/bigOChart.jpeg);
+    padding-top: 45%;
+    background-size: 60% auto;
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+#recursionImg {
+    background-image: url(computer_science/recursion/recursion.jpeg);
+    padding-top: 38%;
+    background-size: 50% auto;
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+
+.printable {
+    /* Makes an image printable */
+    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+    color-adjust: exact !important;                 /* Firefox */
+}

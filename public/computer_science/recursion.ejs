@@ -1,0 +1,78 @@
+<%- include("../header.ejs") %>
+
+<div id="cpp_grid">
+  <div id="cpp_sidebar">
+    <div class="sidebarButton">Introduction</div>
+    <div class="sidebarButton">Data Types</div>
+    <div class="sidebarButton">Variables</div>
+    <div class="cpp_sidebar_h1">Solutions</div>
+    <div class="cpp_sidebar_h2">Algebra</div>
+    <div>Quadratic Equation</div>
+    <div>Greatest Common Divisor</div>
+  </div>
+  <div class="cpp_main">
+
+    <div id="recursion">
+      <h1>1.2. Recursion</h1> 
+      <div id="recursionImg" class="printable"></div>
+      <p>Almost every programming language has various control structures like <span class="keyword">if-else</span>/<span class="keyword">switch-case</span> blocks and iterative structures like <span class="keyword">for-loop</span> and <span class="keyword">while-loop</span>. Most new programmers learn those iterative control structures first, but there is another very powerful control structure: <span class="keyword">recursion</span>.</p>
+
+      <p>Recursion is one of the most important <b>ideas</b> in computer science, but it’s usually viewed as one of the harder parts of programming to grasp. Books often introduce it much later than iterative control structures. <b>But it does not have to be difficult</b> and it can be learned through practice.</p>
+
+      <p>There is a well known saying in the wisdoms of programming, which says that <b>"in order to understand recursion you must first understand recursion"</b>. Humorous as it sounds it does not stand far from the truth. What is a computer? "It's something that computes things". This would be a recursive definition.</p>
+
+      <h2>1. Theory</h2>
+      <p><b>Definition:</b> Recursion occurs when a thing is defined in terms of itself or of its type.</p> 
+      <p>In computer science, when we talk about recursion, we are talking about a function that calls itself in order to solve the problem.</p>  
+      <p><b>Recursion</b> is a problem solving technique, where the problem is solved by reducing it to smaller versions of itself. However if we create a function that continues to calls itself without a bottom, we would end up in a infinite loop.</p>     
+      <p><b>Infinite recursion</b> happens when a function calls itself over and over endlessly. A function with a missing or badly written base case causes infinite recursion, similar to an infinite loop (there is no stop!). This is why recursive solution to a problem must be written carefully and in such a way that no infinite loop or infinite chain of references can occur.</p>
+      <b>The idea:</b>
+      <ul>
+        <li>The recursion divides a problem into subproblems of the same type.</li>
+        <li>Each successive recursive call should bring you one step closer to a resolution.</li>
+        <li>Each recursive function has two separate parts: a base case and a general (or recursive) case:</li>
+        <ol>
+          <li>The base case, which is the resolution of the problem. A simple case of the problem that we can answer directly. The base case does NOT use recursion. Each recursive algorithm must have at least one base case in order to terminate the loop and avoid becoming an infinite recursion.</li>
+          <li>The general (recursive) case is the more complicated case of the problem that isn't easy to answer directly, but can be expressed elegantly with recursion. The general case is the place where the recursive calls are made --> written so that with repeated calls it reduces to the base case (or brings you closer to the base case). Must eventually be reduced to a base case; if not --> infinite recursion.</li>
+        </ol>
+        <li>In addition to the base and recursive case, each recursive definition has an implicit case. The base case states one or more cases that immediately satisfy the definition. The recursive case states how to apply the definition again to satisfy other cases. The implicit case (which is implied, not mentioned) states "And nothing else satisfies the definition".</li>
+      </ul>
+      <p><b>Example 1 - Recursive Array Sum</b></p>
+      <p><b>The problem:</b> Write a function to find the sum of all positive integers inside the following array [1, 2, 3, 4, 5].</p>
+      <p>The following example is a very dumb approach to find the sum in array, but it works. Nobody should ever try to find a solution for something like this using a recursion, because it is extremely slow compared to iteration. However the example is adequate enough for beginners to grasp the <b>idea</b> of recursion for the first time and see that a big problem can be divided into smaller and smaller problems of the same type.</p>
+      <p><b>The Iterative Method:</b></p>
+      <code class="code_1 printable"><%= iterativeArraySum %></code>
+      <p><b>The Recursive Method:</b></p>
+      <code class="code_1 printable"><%= recursiveArraySum %></code>
+      
+      <p><b>Example 2 - Factorial</b></p>
+      <p><b>The problem:</b> Write a recursive method to find <span class="keyword">n</span> factorial</p>
+      <p>In mathematics, even the definition of factorial is recursive in nature. <span class="keyword">n! = n * (n-1)! for n > 0.</span> The value of <span class="keyword">0! is 1</span>, according to the convention for an empty product. For example:</p>
+      5! = 5 * 4!<br>
+      4! = 4 * 3!<br>
+      3! = 3 * 2!<br>
+      2! = 2 * 1!<br>
+      1! = 1 * 0!<br>
+      0! = 1<br>
+      <p><span class="keyword">5! = 5 x 4 x 3 x 2 x 1 = 120.</span></p>
+      <p><b>The Iterative Method:</b></p>
+      <code class="code_1 printable"><%= iterativeFactorial %></code>
+      <p><b>The Recursive Method:</b></p>
+      <code class="code_1 printable"><%= recursiveFactorial %></code>
+      <p><b>The Recursive Method:</b> (with accumulator)</p>
+      <code class="code_1 printable"><%= recursiveFactorialAccumulator %></code>
+      <ul>
+        <li>We are able to achieve better speeds by sacraficing memory.</li>
+        <li>0.037011000071652235 (recursive factorial with accumulator) vs 0.041618000459857286 milliseconds. (normal recursive factorial)</li>
+      </ul>
+
+      <p><b>Example 6 - Fibonacci</b></p>
+      <p><b>The problem:</b> Write a recursive method to determine the n-th Fibonacci number. The first Fibonacci number is <span class="keyword">0</span> and the second Fibonacci number is <span class="keyword">1</span>. A Fibonacci number in the sequence is the <span class="keyword">sum of the previous 2</span> Fibonacci numbers.</p>
+      <p><b>The Recursive Method:</b></p>
+      <code class="code_1 printable"><%= fibonacci %></code>
+    </div> <!-- END recursion -->
+     
+  </div>
+</div>
+
+<%- include("../footer.ejs") %>

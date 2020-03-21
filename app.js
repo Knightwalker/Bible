@@ -24,6 +24,7 @@ app.get("/mssql", function(req, res) { res.render("mssql.ejs"); });
 app.get("/cpp", function(req, res) { res.render("cpp/cpp.ejs"); });
 app.get("/javascript", function(req, res) { res.render("javascript/javascript.ejs"); });
 app.get("/biology", function(req, res) { res.render("biology/biology.ejs"); });
+app.get("/computer_science", function(req, res) { res.render("computer_science/computer_science.ejs"); });
 
 // C++
 // I. Basics
@@ -237,6 +238,41 @@ app.get("/biology/class_7", function(req, res) {
   res.render("biology/class_7.ejs", options); 
 });
 
+// BEGIN Computer Science
+app.get("/computer_science/big_o", function(req, res) {
+  let arrayAccess = fs.readFileSync('resources/computer_science/arrayAccess.txt', 'utf8');
+  let searchArray = fs.readFileSync('resources/computer_science/searchArray.js', 'utf8');
+  let makeTuples = fs.readFileSync('resources/computer_science/makeTuples.js', 'utf8');
+  
+  let options = {
+    arrayAccess: arrayAccess,
+    searchArray: searchArray,
+    makeTuples: makeTuples,
+  }
+
+  res.render("computer_science/big_o.ejs", options);
+});
+
+app.get("/computer_science/recursion", function(req, res) {
+  let iterativeArraySum = fs.readFileSync('resources/computer_science/recursion/01_iterativeArraySum.js', 'utf8');
+  let recursiveArraySum = fs.readFileSync('resources/computer_science/recursion/01_recursiveArraySum.js', 'utf8');
+  let iterativeFactorial = fs.readFileSync('resources/computer_science/recursion/02_iterativeFactorial.js', 'utf8');
+  let recursiveFactorial = fs.readFileSync('resources/computer_science/recursion/02_recursiveFactorial.js', 'utf8');
+  let recursiveFactorialAccumulator = fs.readFileSync('resources/computer_science/recursion/02_recursiveFactorialAccumulator.js', 'utf8');
+  let fibonacci = fs.readFileSync('resources/computer_science/recursion/03_fibonacci.js', 'utf8');
+
+  let options = {
+    iterativeArraySum: iterativeArraySum,
+    recursiveArraySum: recursiveArraySum,
+    iterativeFactorial: iterativeFactorial,
+    recursiveFactorial: recursiveFactorial,
+    recursiveFactorialAccumulator: recursiveFactorialAccumulator,
+    fibonacci: fibonacci
+  }
+
+  res.render("computer_science/recursion.ejs", options);
+});
+// END Computer Science
 
 app.listen(port, hostname, function() {
   console.log(`Server running at http://${hostname}:${port}/`);
