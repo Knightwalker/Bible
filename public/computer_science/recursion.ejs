@@ -5,10 +5,10 @@
     <div class="sidebarButton">Introduction</div>
     <div class="sidebarButton">Data Types</div>
     <div class="sidebarButton">Variables</div>
-    <div class="cpp_sidebar_h1">Solutions</div>
-    <div class="cpp_sidebar_h2">Algebra</div>
-    <div>Quadratic Equation</div>
-    <div>Greatest Common Divisor</div>
+    <div class="cpp_sidebar_h1">I. Basics</div>
+    <div class="cpp_sidebar_h2">1.2. Recursion</div>
+    <div>1. Theory</div>
+    <div>2. Types of Recursion</div>
   </div>
   <div class="cpp_main">
 
@@ -25,7 +25,7 @@
       <p><b>Definition:</b> Recursion occurs when a thing is defined in terms of itself or of its type.</p> 
       <p>In computer science, when we talk about recursion, we are talking about a function that calls itself in order to solve the problem.</p>  
       <p><b>Recursion</b> is a problem solving technique, where the problem is solved by reducing it to smaller versions of itself. However if we create a function that continues to calls itself without a bottom, we would end up in a infinite loop.</p>     
-      <p><b>Infinite recursion</b> happens when a function calls itself over and over endlessly. A function with a missing or badly written base case causes infinite recursion, similar to an infinite loop (there is no stop!). This is why recursive solution to a problem must be written carefully and in such a way that no infinite loop or infinite chain of references can occur.</p>
+      <p><b>Infinite recursion</b> happens when a function calls itself over and over endlessly. A function with a missing or badly written base case causes infinite recursion, similar to an infinite loop (there is no stop!). This is why recursive solution to a problem must be written carefully and in such a way that no infinite loop or infinite chain of references can occur, otherwise we exceed the maximum call stack size and get the famous -> <b>StackOverflow</b> Exception Error.</p>
       <b>The idea:</b>
       <ul>
         <li>The recursion divides a problem into subproblems of the same type.</li>
@@ -37,15 +37,21 @@
         </ol>
         <li>In addition to the base and recursive case, each recursive definition has an implicit case. The base case states one or more cases that immediately satisfy the definition. The recursive case states how to apply the definition again to satisfy other cases. The implicit case (which is implied, not mentioned) states "And nothing else satisfies the definition".</li>
       </ul>
-      <p><b>Example 1 - Recursive Array Sum</b></p>
+      <p><b>The Syntax</b></p>
+      <code class="code_1 printable"><%= syntax %></code>
+      
+      <h3>a) Basic Recursion Examples</h3>
+      <p><b>Example 1 - Counter</b></p>
+      <code class="code_1 printable"><%= callMe %></code>
+      <p><b>Example 2 - Recursive Array Sum</b></p>
       <p><b>The problem:</b> Write a function to find the sum of all positive integers inside the following array [1, 2, 3, 4, 5].</p>
       <p>The following example is a very dumb approach to find the sum in array, but it works. Nobody should ever try to find a solution for something like this using a recursion, because it is extremely slow compared to iteration. However the example is adequate enough for beginners to grasp the <b>idea</b> of recursion for the first time and see that a big problem can be divided into smaller and smaller problems of the same type.</p>
-      <p><b>The Iterative Method:</b></p>
+      <p><b>The Iterative Solution:</b></p>
       <code class="code_1 printable"><%= iterativeArraySum %></code>
-      <p><b>The Recursive Method:</b></p>
+      <p><b>The Recursive Solution:</b></p>
       <code class="code_1 printable"><%= recursiveArraySum %></code>
       
-      <p><b>Example 2 - Factorial</b></p>
+      <p><b>Example 3 - Factorial</b></p>
       <p><b>The problem:</b> Write a recursive method to find <span class="keyword">n</span> factorial</p>
       <p>In mathematics, even the definition of factorial is recursive in nature. <span class="keyword">n! = n * (n-1)! for n > 0.</span> The value of <span class="keyword">0! is 1</span>, according to the convention for an empty product. For example:</p>
       5! = 5 * 4!<br>
@@ -66,10 +72,42 @@
         <li>0.037011000071652235 (recursive factorial with accumulator) vs 0.041618000459857286 milliseconds. (normal recursive factorial)</li>
       </ul>
 
-      <p><b>Example 6 - Fibonacci</b></p>
+      <p><b>Example 7 | Fibonacci</b></p>
+      <div id="fibonacciImg" class="printable"></div>
       <p><b>The problem:</b> Write a recursive method to determine the n-th Fibonacci number. The first Fibonacci number is <span class="keyword">0</span> and the second Fibonacci number is <span class="keyword">1</span>. A Fibonacci number in the sequence is the <span class="keyword">sum of the previous 2</span> Fibonacci numbers.</p>
+      1-fib = 0<br>
+      2-fib = 1<br>
+      3-fib = 2 (0 + 1)<br>
+      4-fib = 3 (1 + 2)<br>
+      5-fib = 5 (2 + 3)<br>
+      6-fib = 8 (3 + 5)<br>
+      7-fib = 13 (5 + 8)<br>
+      8-fib = 21 (8 + 13)<br>
+      9-fib = 34 (13 + 21)<br>
+      10-fib = 55 (21 + 34)<br>
       <p><b>The Recursive Method:</b></p>
       <code class="code_1 printable"><%= fibonacci %></code>
+      
+      <h3>b) Recursion Pre-Actions and Post-Actions</h3>
+      <code class="code_1 printable"><%= pre_and_post_actions %></code>
+      <p><b>Example 8 | PrintFigure</b></p>
+      <p><b>The problem:</b> Write a program that draws the figure below depending on input size <span class="keyword">n</span>.</p>
+      <table class="code_table">
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>*****<br>****<br>***<br>**<br>*<br>#<br>##<br>###<br>####<br>#####</td>
+        </tr>
+      </table>
+      <br>
+      <code class="code_1 printable"><%= printFigure %></code>
+
+      <h2>2. Types of Recursion</h2>
+      <p><b>Tail Recursion:</b> A recursive function in which no statements are executed after the return from the recursive call and the recursive call is the last statement in the function. Compilers optimize this type of recursion in such a way, that they may even skip the creation of a new stack frame, which saves memory and allows tail-recursion to take no more space and perform similarly in execution time with <span class="keyword">for-loop</span> and <span class="keyword">while-loop</span>.</p>
+
     </div> <!-- END recursion -->
      
   </div>

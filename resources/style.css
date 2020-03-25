@@ -278,6 +278,7 @@ code {
         border-right: 1px solid#000000;
         padding: 4px;
         width: 50% ;
+        vertical-align: top;
     }
 .code_table2 {
     border-collapse: collapse;
@@ -363,6 +364,13 @@ code {
     background-image: url(computer_science/recursion/recursion.jpeg);
     padding-top: 38%;
     background-size: 50% auto;
+    background-position: top left;
+    background-repeat: no-repeat;
+}
+#fibonacciImg {
+    background-image: url(computer_science/recursion/fibonacci_black.png);
+    padding-top: 35%;
+    background-size: 80% auto;
     background-position: top left;
     background-repeat: no-repeat;
 }

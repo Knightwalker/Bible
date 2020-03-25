@@ -254,20 +254,28 @@ app.get("/computer_science/big_o", function(req, res) {
 });
 
 app.get("/computer_science/recursion", function(req, res) {
-  let iterativeArraySum = fs.readFileSync('resources/computer_science/recursion/01_iterativeArraySum.js', 'utf8');
-  let recursiveArraySum = fs.readFileSync('resources/computer_science/recursion/01_recursiveArraySum.js', 'utf8');
-  let iterativeFactorial = fs.readFileSync('resources/computer_science/recursion/02_iterativeFactorial.js', 'utf8');
-  let recursiveFactorial = fs.readFileSync('resources/computer_science/recursion/02_recursiveFactorial.js', 'utf8');
-  let recursiveFactorialAccumulator = fs.readFileSync('resources/computer_science/recursion/02_recursiveFactorialAccumulator.js', 'utf8');
-  let fibonacci = fs.readFileSync('resources/computer_science/recursion/03_fibonacci.js', 'utf8');
+  let syntax = fs.readFileSync('resources/computer_science/recursion/01_syntax.js', 'utf8');
+  let callMe = fs.readFileSync('resources/computer_science/recursion/01_callMe.js', 'utf8');
+  let iterativeArraySum = fs.readFileSync('resources/computer_science/recursion/02_iterativeArraySum.js', 'utf8');
+  let recursiveArraySum = fs.readFileSync('resources/computer_science/recursion/02_recursiveArraySum.js', 'utf8');
+  let iterativeFactorial = fs.readFileSync('resources/computer_science/recursion/03_iterativeFactorial.js', 'utf8');
+  let recursiveFactorial = fs.readFileSync('resources/computer_science/recursion/03_recursiveFactorial.js', 'utf8');
+  let recursiveFactorialAccumulator = fs.readFileSync('resources/computer_science/recursion/03_recursiveFactorialAccumulator.js', 'utf8');
+  let fibonacci = fs.readFileSync('resources/computer_science/recursion/04_fibonacci.js', 'utf8');
+  let pre_and_post_actions = fs.readFileSync('resources/computer_science/recursion/05_pre_and_post_actions.js', 'utf8');
+  let printFigure = fs.readFileSync('resources/computer_science/recursion/08_printFigure.js', 'utf8');
 
   let options = {
+    syntax: syntax,
+    callMe: callMe,
     iterativeArraySum: iterativeArraySum,
     recursiveArraySum: recursiveArraySum,
     iterativeFactorial: iterativeFactorial,
     recursiveFactorial: recursiveFactorial,
     recursiveFactorialAccumulator: recursiveFactorialAccumulator,
-    fibonacci: fibonacci
+    fibonacci: fibonacci,
+    pre_and_post_actions: pre_and_post_actions,
+    printFigure: printFigure
   }
 
   res.render("computer_science/recursion.ejs", options);
