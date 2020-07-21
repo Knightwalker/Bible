@@ -1,6 +1,196 @@
 <%- include("header.ejs") %>
 
-    <div id="slider">
+    <div id="slider"></div>
+
+    <div id="section_delimiter_one">CHOOSE A PATH</div>
+
+    <div id="path"></div>
+
+<script>
+    let pathEl = document.getElementById("path");
+    const pathElObj = {
+        width: pathEl.getBoundingClientRect().width,
+        height: pathEl.getBoundingClientRect().height,
+        x_center: pathEl.getBoundingClientRect().width / 2
+    }
+
+    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.id = "path_svg";
+    svg.setAttribute("width", pathElObj.width);
+    svg.setAttribute("height", "500");
+
+    let rect_HtmlAndCss = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    let rect_HtmlAndCssObj = {
+        width: 50,
+        width_half: 25,
+        height: 50,
+        left: -40
+    };
+    rect_HtmlAndCss.id = "rect_html_and_css"
+    rect_HtmlAndCss.setAttribute("x", pathElObj.x_center - rect_HtmlAndCssObj.width_half + rect_HtmlAndCssObj.left);
+    rect_HtmlAndCss.setAttribute("y", "80");
+    rect_HtmlAndCss.setAttribute("width", rect_HtmlAndCssObj.width);
+    rect_HtmlAndCss.setAttribute("height", rect_HtmlAndCssObj.height);
+
+    let rect_JavaScript = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    let rect_JavaScriptObj = {
+        width: 50,
+        width_half: 25,
+        height: 50,
+        right: 40
+    };
+    rect_JavaScript.id = "rect_javascript";
+    rect_JavaScript.setAttribute("x", pathElObj.x_center - rect_HtmlAndCssObj.width_half + rect_JavaScriptObj.right);
+    rect_JavaScript.setAttribute("y", "80");
+    rect_JavaScript.setAttribute("width", rect_JavaScriptObj.width);
+    rect_JavaScript.setAttribute("height", rect_JavaScriptObj.height);
+
+    let text_JavaScript = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    text_JavaScript.id = "text_javascript";
+    text_JavaScript.textContent = "JS";
+    text_JavaScript.setAttribute("x", 675);
+    text_JavaScript.setAttribute("y", 120);
+
+    svg.appendChild(rect_HtmlAndCss);
+    svg.appendChild(rect_JavaScript);
+
+    svg.appendChild(text_JavaScript);
+
+    pathEl.appendChild(svg);
+
+    // let pathEl_ResizeObserver = new ResizeObserver(function(entries){
+    //     let pathEl_DOMRectReadOnly = entries[0].contentRect;
+    //     let width = pathEl_DOMRectReadOnly.width;
+    //     let height = pathEl_DOMRectReadOnly.height;
+    //     console.log(pathEl_DOMRectReadOnly);
+
+    //     const x_center = width / 2;
+
+    //     svg.setAttribute("width", width);
+    //     rect_HtmlAndCss.setAttribute("x", x_center - (rect_HtmlAndCssObj.width / 2) - 40);
+    //     rect_JavaScript.setAttribute("x", x_center - (rect_JavaScriptObj.width / 2) + 40);
+
+    //     //text
+    //     text_JavaScript.setAttribute("x", x_center + rect_JavaScriptObj.width);
+
+    // }).observe(pathEl);
+
+</script>
+
+
+<style>
+#rect_html_and_css {
+    fill: #f2672c;
+    stroke: black;
+    stroke-width: 1;
+}
+#rect_html_and_css:hover {
+    fill: #e65125;
+}
+
+#rect_javascript {
+    fill: #f2bf25;
+    stroke: black;
+    stroke-width: 1;
+}
+#rect_javascript:hover {
+    fill: #e5a228;
+}
+
+#text_javascript {
+    fill: black;
+}
+
+</style>
+
+<script>
+// let data = {
+//     "name": "HTML/CSS",
+//     "children": [
+//         {
+//             "name": "Sylvia",
+//             "children": [
+//                 {"name": "test1"},
+//                 {"name": "test2"},
+//                 {"name": "test1"},
+//                 {"name": "test2"},
+//                 {"name": "test1"},
+//                 {"name": "test2"},
+//                 {"name": "test3"}
+//             ]
+//         },
+//         {
+//             "name": "Sylvia",
+//             "children": [
+//                 {"name": "test1"},
+//                 {"name": "test2"},
+//                 {"name": "test3"}
+//             ]
+//         },
+//         {
+//             "name": "Sylvia",
+//             "children": [
+//                 {"name": "test1"},
+//                 {"name": "test2"},
+//                 {"name": "test3"}
+//             ]
+//         }
+//     ]
+// }
+
+// let svg2 = d3.select("#path")
+//             .append("svg")
+//                 .attr("width", 1000)
+//                 .attr("height", 1000)
+//             .append("g")
+//                 .attr("transform", "translate(0,80)");
+
+// svg2.style("border", "2px black solid");
+
+
+// let tree = d3.tree().size([1000, 300]);
+// let root = d3.hierarchy(data);
+
+// svg2.selectAll("path").data(tree(root).links()).enter().append("path")
+//     .attr("d", function(d) {
+//         return "M" + d.source.x + "," + d.source.y + " C " +
+//         d.source.x + "," + (d.source.y + d.target.y) / 2 + " " +
+//         d.target.x + "," + (d.source.y + d.target.y) / 2 + " " +
+//         d.target.x + "," + d.target.y
+//     });
+
+// svg2.selectAll("rect").data(root.descendants()).enter().append("rect")
+//     .attr("x", function(d){return d.x - 50;})
+//     .attr("y", function(d){return d.y - 20;})
+//     .attr("rx", 10)
+//     .attr("ry", 10)
+//     .attr("width", "100px")
+//     .attr("height", "40px")
+//     ;
+
+// svg2.selectAll('text').data(root.descendants()).enter().append("text")
+//     .attr("x", function(d) { return d.x - 10; })
+//     .attr("y", function(d) { return d.y; })
+//     .text(d => d.data.name);
+
+// </script>
+
+  <!-- <style>
+      path {
+          fill: none;
+          stroke: black;
+          stroke-width: 6;
+      }
+      rect {
+          fill: none;
+          stroke: black;
+          stroke-width: 3;
+      }
+      text {
+          fill: white;
+      }
+  </style> -->
+
 
     </div>
 
@@ -11,10 +201,6 @@
         <a href="/javascript" id="javascript_btn" class="language">JS</a> 
         <a href="/biology" id="biology_btn" class="language">Biology</a>
         <a href="/computer_science" id="computer_science_btn" class="language">CS</a>
-    </div>
-
-    <div id="path">
-
     </div>
 
 <%- include("footer.ejs") %>

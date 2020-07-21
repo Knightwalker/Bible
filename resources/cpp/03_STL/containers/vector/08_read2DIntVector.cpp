@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 using std::vector;
 
-void read2DIntVector(vector<vector<int>>& intVector);
+void read2DIntVector(vector<vector<int>>& vect);
 
 int main()
 {
@@ -23,10 +23,10 @@ int main()
 
 }
 
-void read2DIntVector(vector<vector<int>>& intVector) {
+void read2DIntVector(vector<vector<int>>& vect) {
 	int n = 0; cin >> n;
 	int m = 0; cin >> m;
-	intVector.reserve(n);
+	vect.reserve(n);
 
 	for (int i = 0; i < n; i++)
 	{
@@ -36,7 +36,7 @@ void read2DIntVector(vector<vector<int>>& intVector) {
 			int el = 0; cin >> el;
 			array.push_back(el);
 		}
-		intVector.push_back(array);
+		vect.push_back(array);
 	}
 
 }

@@ -8,29 +8,24 @@ using std::endl;
 using std::string;
 using std::vector;
 
-int readStringVector(vector<string>& vector);
+void readStringVector(vector<string>& vect);
 
 int main()
 {
 	vector<string> inputStringVect; readStringVector(inputStringVect);
 
-	for (int i = 0; i < inputStringVect.size(); i++)
-	{
+	for (size_t i = 0; i < inputStringVect.size(); i++) {
 		cout << inputStringVect[i] << " ";
 	}
 
 	return 0;
 }
 
-int readStringVector(vector<string>& vector) {
-
+void readStringVector(vector<string>& vect) {
 	int n = 0; cin >> n;
 	string el = "";
-	for (int i = 0; i < n; i++)
-	{
+	for (int i = 0; i < n; i++) {
 		cin >> el;
-		vector.push_back(el);
+		vect.push_back(el);
 	}
-
-	return 0;
 }

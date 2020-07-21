@@ -1,0 +1,63 @@
+<%- include("../../header.ejs") %>
+
+<div id="cpp_grid">
+  <div id="cpp_sidebar">
+    <div class="sidebarButton">Introduction</div>
+    <div class="sidebarButton">Data Types</div>
+    <div class="sidebarButton">Variables</div>
+    <div class="cpp_sidebar_h1">Solutions</div>
+    <div class="cpp_sidebar_h2">Algebra</div>
+    <div>Quadratic Equation</div>
+    <div>Greatest Common Divisor</div>
+  </div>
+  <div class="cpp_main">
+
+    <div id="cpp_hello_world">
+      <h1>Hello World</h1> 
+      <h2>First Steps Into Programming</h2>
+      <ul class="ul_custom">
+        <li>An array is a collection of data types, all of the same type, accessed using a common name.</li>
+        <li>A one-dimensional array is like a list;  A two dimensional array is like a table;  The C/C++ language places no limits on the number of dimensions in an array, though specific implementations may.</li>
+        <li>Some texts refer to one-dimensional arrays as vectors, two-dimensional arrays as matrices, and use the general term arrays when the number of dimensions is unspecified or unimportant.</li>
+      </ul>
+
+      <h2>Array Declaration</h2>
+      <p>1. Array declaration by specifying size</p>
+      <code></code>
+
+      <h2>Read Int Array</h2>
+      <table class="code_table">
+        <tr>
+            <th>Input</th>
+            <th>Output</th>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>1 2 3 4 5</td>
+        </tr>
+        <tr>
+            <td>1 2 3 4 5</td>
+            <td></td>
+        </tr>
+      </table>
+      <br>
+ 
+
+      <h2>Multidimensional Arrays (2D, 3D... ND)</h2>
+      <ul class="ul_custom">
+        <li>Multi-dimensional arrays are declared by providing more than one set of square [ ] brackets after the variable name in the declaration statement.</li>
+        <li>One dimensional arrays do not require the dimension to be given if the array is to be completely initialized.  By analogy, multi-dimensional arrays do not require the first dimension to be given if the array is to be completely initialized.  All dimensions after the first must be given in any case.</li>
+        <li>For two dimensional arrays, the first dimension is commonly considered to be the number of rows, and the second dimension the number of columns.</li>
+        <li>Two dimensional arrays are considered by C/C++ to be an array of ( single dimensional arrays ).  For example, "int numbers[ 5 ][ 6 ]"  would refer to a single dimensional array of 5 elements, wherein each element is a single dimensional array of 6 integers.  By extension, "int numbers[ 12 ][ 5 ][ 6 ]" would refer to an array of twelve elements, each of which is a two dimensional array, and so on.</li>
+        <li>Multidimensional arrays may be completely initialized by listing all data elements within a single pair of curly {} braces, as with single dimensional arrays.</li>
+        <li>Multidimensional arrays may be partially initialized by not providing complete initialization data.  Individual rows of a multidimensional array may be partially initialized, provided that subset braces are used.</li>
+        <li>Individual data items in a multidimensional array are accessed by fully qualifying an array element.  Alternatively, a smaller dimensional array may be accessed by partially qualifying the array name.  For example, if  "data" has been declared as a three dimensional array of floats, then data[ 1 ][ 2 ][ 5 ] would refer to a float, data[ 1 ][ 2 ] would refer to a one-dimensional array of floats, and data[ 1 ] would refer to a two-dimensional array of floats.  The reasons for this and the incentive to do this relate to memory-management issues that are beyond the scope of these notes.</li>
+      </ul>
+      <br>
+
+    </div> <!-- END cpp_data_types -->
+
+  </div>
+</div>
+
+<%- include("../../footer.ejs") %>

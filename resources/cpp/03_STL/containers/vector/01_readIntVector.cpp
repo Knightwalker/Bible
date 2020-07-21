@@ -6,7 +6,7 @@ using std::cout;
 using std::endl;
 using std::vector;
 
-int readIntVector(vector<int>& vector);
+void readIntVector(vector<int>& vect);
 
 int main()
 {
@@ -20,15 +20,11 @@ int main()
 	return 0;
 }
 
-int readIntVector(vector<int>& vector) {
-
-	int n = 0; cin >> n;
-	int el = 0;
-	for (size_t i = 0; i < n; i++)
-	{
-		cin >> el;
-		vector.push_back(el);
-	}
-
-	return 0;
+void readIntVector(vector<int>& vect) {
+    int n = 0; cin >> n;
+    int el = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> el;
+        vect.push_back(el);
+    }
 }

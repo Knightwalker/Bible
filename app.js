@@ -18,7 +18,8 @@ app.use("/resources", express.static(__dirname + '/resources'));
 app.locals.loggedIn = true;
 
 // Routes
-app.get("/", function(req, res) { res.render("index.ejs"); });
+const webRoutes = require("./routes/web.js");
+app.use("/", webRoutes);
 app.get("/csharp", function(req, res) { res.render("csharp.ejs"); });
 app.get("/mssql", function(req, res) { res.render("mssql.ejs"); });
 app.get("/cpp", function(req, res) { res.render("cpp/cpp.ejs"); });
@@ -30,6 +31,10 @@ app.get("/computer_science", function(req, res) { res.render("computer_science/c
 // I. Basics
 app.get("/cpp/data_types", function(req, res) { 
   res.render("cpp/01_Basics/data_types.ejs"); 
+});
+
+app.get("/cpp/hello_world", function(req, res) { 
+  res.render("cpp/01_Basics/hello_world.ejs"); 
 });
 
 app.get("/cpp/array1", function(req, res) {
@@ -106,26 +111,28 @@ app.get("/cpp/sorting", function(req, res) {
 });
 app.get("/cpp/searching", function(req, res) { res.render("cpp/03_STL/searching.ejs", options); });
 app.get("/cpp/vector", function(req, res) { 
-  let vectorDeclaration = fs.readFileSync('resources/cpp/03_STL/containers/vector/01_vectorDeclaration.txt', 'utf8');
-  let vectorOptimization = fs.readFileSync('resources/cpp/03_STL/containers/vector/02_vectorOptimization.txt', 'utf8');
-  let readIntVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/readIntVector.cpp', 'utf8');
-  let readStringVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/readStringVector.cpp', 'utf8');
-  let read2DIntVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/read2DIntVector.cpp', 'utf8');
-  let readIntVectorFromStringStream = fs.readFileSync('resources/cpp/03_STL/containers/vector/07_readIntVectorFromStringStream.cpp', 'utf8');
-  let readStringVectorFromStringStream = fs.readFileSync('resources/cpp/03_STL/containers/vector/08_readStringVectorFromStringStream.cpp', 'utf8');
-  let splitStringToIntVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/09_splitStringToIntVector.cpp', 'utf8');
-  let splitStringToStringVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/10_splitStringToStringVector.cpp', 'utf8');
+  let vectorDeclaration = fs.readFileSync('resources/cpp/03_STL/containers/vector/00_vectorDeclaration.txt', 'utf8');
+  let vectorOptimization = fs.readFileSync('resources/cpp/03_STL/containers/vector/00_vectorOptimization.txt', 'utf8');
+  let readIntVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/01_readIntVector.cpp', 'utf8');
+  let printIntVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/02_printIntVector.cpp', 'utf8');
+  let readStringVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/03_readStringVector.cpp', 'utf8');
+  let readIntVectorFromStringStream = fs.readFileSync('resources/cpp/03_STL/containers/vector/04_readIntVectorFromStringStream.cpp', 'utf8');
+  let readStringVectorFromStringStream = fs.readFileSync('resources/cpp/03_STL/containers/vector/05_readStringVectorFromStringStream.cpp', 'utf8');
+  let splitStringToIntVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/06_splitStringToIntVector.cpp', 'utf8');
+  let splitStringToStringVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/07_splitStringToStringVector.cpp', 'utf8');
+  let read2DIntVector = fs.readFileSync('resources/cpp/03_STL/containers/vector/08_read2DIntVector.cpp', 'utf8');
 
   let options = {
     vectorDeclaration: vectorDeclaration,
     vectorOptimization: vectorOptimization,
     readIntVector: readIntVector,
+    printIntVector: printIntVector,
     readStringVector: readStringVector,
-    read2DIntVector: read2DIntVector,
     readIntVectorFromStringStream: readIntVectorFromStringStream,
     readStringVectorFromStringStream: readStringVectorFromStringStream,
     splitStringToIntVector: splitStringToIntVector,
     splitStringToStringVector: splitStringToStringVector,
+    read2DIntVector: read2DIntVector
   }
 
   res.render("cpp/03_STL/containers/vector.ejs", options); 
@@ -279,6 +286,18 @@ app.get("/computer_science/recursion", function(req, res) {
   }
 
   res.render("computer_science/recursion.ejs", options);
+});
+
+app.get("/computer_science/caching", function(req, res) {
+  let isArrayUnique = fs.readFileSync('resources/computer_science/caching/01_isArrayUnique.js', 'utf8');
+  let isArrayUnique2 = fs.readFileSync('resources/computer_science/caching/01_isArrayUnique2.js', 'utf8');
+
+  let options = {
+    isArrayUnique: isArrayUnique,
+    isArrayUnique2: isArrayUnique2
+  }
+
+  res.render("computer_science/caching.ejs", options);
 });
 // END Computer Science
 
