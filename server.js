@@ -21,12 +21,14 @@ app.get("/", (req, res, next) => {
   res.render("index.ejs");
 });
 
+const port = process.env.PORT || 5000;
+
 // App Init
 database.connect((err) => {
   if (err) { throw err; }
   console.log("Connected to MongoDB at port 27017");
 
-  app.listen(5000, () => {
+  app.listen(port, () => {
     console.log("Server listening at http://localhost:5000/")
   });
 });
