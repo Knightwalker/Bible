@@ -1,26 +1,19 @@
 {
-  "name": "cyber-bible",
+  "name": "codegigas",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
-  "dependencies": {
-    "ejs": "^3.0.1",
-    "express.js": "^1.0.0",
-    "nodemon": "^2.0.4"
-  },
-  "devDependencies": {},
+  "main": "server.js",
   "scripts": {
-    "start": "node app",
-    "dev": "nodemon app"
+    "start": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Knightwalker/Cyber-Bible.git"
-  },
-  "author": "",
+  "author": "Knightwalker",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Knightwalker/Cyber-Bible/issues"
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2"
   },
-  "homepage": "https://github.com/Knightwalker/Cyber-Bible#readme"
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }

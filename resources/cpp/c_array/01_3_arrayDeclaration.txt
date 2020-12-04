@@ -1,8 +1,0 @@
-// declare an array and initialize it with specific elements
-int arr[6] = { 10, 20, 30, 40 };  
-
-// result
-10, 20, 30, 40, 0, 0
-
-// explanation
-by both declaring (with size) and initializing an array, by providing specific elements, the compiler creates an array with 6 elements, which are: 10, 20, 30, 40, 0, 0

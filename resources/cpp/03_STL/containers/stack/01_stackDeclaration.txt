@@ -1,5 +1,0 @@
-std::vector<data_type> name; // creates an empty vector
-
-std::vector<int> name; // creates an empty int vector
-
-std::vector<string> name; // creates an empty string vector

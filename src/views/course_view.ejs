@@ -1,0 +1,24 @@
+<%- include("header.ejs"); -%>
+
+  <div class="topics_grid">
+    <div class="sidebar"></div>
+    <div class="course">
+      <h1><%= course.display_name %></h1>
+
+      <% for (let i = 0; i < course.topics.length; i++) { %> 
+        
+        <a href="/topics/<%- course.topics[i].slug %>">
+          <div><%- course.topics[i].position %>. <%- course.topics[i].name %></div>
+        </a>
+
+      <% } %>
+
+      <form action="/topics/mode/new_topic" method="get">
+        <input type="hidden" name="course_id" value="<%= course._id %>" />
+        <button type="submit" class="course_buttons">new topic</button>
+      </form>
+
+    </div>
+  
+</body>
+</html>

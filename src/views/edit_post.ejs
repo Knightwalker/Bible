@@ -1,0 +1,9 @@
+<%- include("header.ejs"); -%>
+
+  <form action="/post/edit/<%- post._id %>" method="POST">
+    <textarea class="codegigas_editor" name="content"><%- post.content %></textarea>
+    <button type="submit">Save</button>
+  </form>
+
+</body>
+</html>

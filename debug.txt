@@ -1,0 +1,492 @@
+This chapter deals with the basic language mechanisms for referring to memory. Obviously, we can refer to an object by name, but in C++ (most) objects "have identity". That is, they reside at a specific address in memory, and an object can be accessed if you know its address and its type. The language constructs for holding and using addresses are pointers and references.
+
+<div class="toc">
+<b">Table of contents</b>
+1. References
+2. Pointers
+</div>
+
+<b>Hacks</b>
+int arr[] {1, 2, 3, 4, 5};
+int arrSize = sizeof(arr)/sizeof(arr[0]); // this hack will give the length of the array.
+
+<b>1. Reference</b>
+A reference is an alternative name for an already existing variable or object, an alias.
+
+<b>Syntax</b>
+<code class="code_language_cpp">
+int x = 5;
+int& y = x;
+y++; 
+std::cout << x << std::endl; // 6
+std::cout << y << std::endl; // 6
+</code>
+
+<code class="code_language_cpp">
+int& x = y; // compilation error: initializer missing;
+int y = 5;
+int& x2 = y; // OK: x2 initialized
+double& x3 = y; // compilation error: wrong type;
+</code>
+
+Reference is actually a sugar syntax over pointers and like a pointer, is also implemented by storing the address of an object. A reference can be thought of as a constant pointer (not to be confused with a pointer to a constant value!) with automatic indirection, i.e the compiler will apply the * operator for you.
+
+<b>1.2. const reference</b>
+They are read-only, e.g. they provide visibility to an object, but you can't modify it.
+
+<code class="code_language_cpp">
+int x = 5;
+const int& y = x;
+y = 6; // compilation error; x isn't const but can't be changed through y
+x = 42; // that's fine
+std::cout << x << std::endl; // 42
+</code>
+
+<b>1.4. Common Usage</b>
+<b>1.4.1. Avoiding copy of large structures</b>
+A reference allows us to pass potentially large amounts of data around at low cost: instead of copying the data we simply pass its address as a pointer value. For example, in the function bellow, if we pass the parameters x and y without a reference, a new copy of those variables is created, which causes a wastage of CPU time and memory. The cost to pay here is minimal, but this basic example is enough to explain the root of this problem. If the data was a large object instead, the cost of CPU resources would be bigger.
+
+<code class="code_language_cpp">
+#include <iostream>
+
+void swap(int& x, int& y);
+
+int main()
+{
+    int x = 13;
+    int y = 42;
+    swap(x, y);
+    std::cout << "x = " << x << "; " << "y = " << y << std::endl;
+
+    return 0;
+}
+
+void swap(int& a, int& b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+</code>
+
+<b>1.4.2. Provide additional "return" values</b>
+<code>
+#include <iostream>
+#include <vector>
+
+int fMinValue(std::vector<int>& numbers, int& foundAtIndex);
+
+int main()
+{
+    std::vector<int> numbers = { 1, 2, 3, 4, 5 };
+    int foundAtIndex = -1;
+    int minValue = fMinValue(numbers, foundAtIndex);
+    std::cout << minValue << std::endl;
+
+    return 0;
+}
+
+int fMinValue(std::vector<int>& numbers, int& foundAtIndex) {
+    foundAtIndex = 0;
+
+    for (int i = 1; i < numbers.size(); i++) {
+        if (numbers[i] < numbers[foundAtIndex]) {
+            foundAtIndex = i;
+        }
+    }
+
+    return numbers[foundAtIndex];
+}
+</code>
+
+<b>1.4.3. Modifying caller's object</b>
+<b>In For-Each Loops to modify all objects</b> - We can use references in for-each loops to modify all elements in the iterated container
+<code>
+#include <iostream>
+#include <vector>
+
+int main()
+{
+    std::vector<int> vect{ 10, 20, 30, 40, 50 };
+
+    // We can modify elements if we a use reference
+    for (int& n : vect) {
+        n = n + 5;
+    }
+
+    // Printing elements
+    for (int n : vect) { std::cout << n << " "; } // 15 25 35 45 55
+
+    return 0;
+}
+</code>
+
+<b>1.5. Common Pitfalls</b>
+<b>1.5.1 Returning References</b>
+<code>
+#include <iostream>
+#include <vector>
+
+std::vector<double>& generateRoots(int toNumber);
+
+int main() {
+	std::vector<double>& rootsRef = generateRoots(10);
+	for (int v : rootsRef) {
+		std::cout << v << " " << std::endl;
+	}
+	std::cout << std::endl;
+
+	std::vector<double> otherVector{ 42, 13, 69 };
+	std::cout << rootsRef[4] << std::endl;
+	std::cout << &rootsRef << std::endl;
+
+	return 0;
+}
+
+std::vector<double>& generateRoots(int toNumber) {
+	std::vector<double> roots;
+	for (int i = 0; i < toNumber; i++) {
+		roots.push_back(sqrt(i));
+	}
+	return roots;
+}
+
+// It may seem that this code will work as expected, as the program is short and the memory could still remain the same even after being freed. However this program is not guaranteed to work, especially in a real, non-debug environment, where the memory freed by the vector is likely to be overwritten at some point by another program, or even the same program.
+
+// The "otherVector" is here to simulate a real environment, where additional memory allocations might overwrite the freed memory. Under windows in Visual Studio this "otherVector" seems to overwrite that memory, filling the "rootsRef" vector with random data. With other compiler, something different might happen and this is exactly why the behaviour is "undefined", as we can't be sure what will happen, because the C++ standard does not place a strict requirement on what should happen, hence different compilers can create code that behaves differently in different situations.
+</code>
+
+<b>2. Pointer</b>
+To understand pointers we must understand one thing. A pointer is just a variable that holds an address of variable or a memory location. It is basically just an integer that stores the address of a memory cell.
+
+For type T, T* is the type "pointer to T". That is, a variable of type T* can hold the address of an object of type T. 
+
+<b>Syntax:</b>
+<code>
+    int x = 5;
+    int* p = &x; // to declare a pointer variable we use the indirection operator* (asterisk) after the type declaration, before the variable name.
+    std::cout << ptr << std::endl; // 004FFB90, because ptr holds the address of a; & is the address-of operator
+</code>
+
+<b>Figure 1. Pointer graphical example</b>
+<img src="/assets/cpp/pointer_example1.png" width="400px"></img>
+
+<b>2.1. Operations</b>
+1. Referencing - setting what a pointer points to.  We can store an address of a variable, using the address-of operator & (ampersand), which returns the address of that variable.
+<code>
+    int a = 10;
+    int* ptr = &a; // ptr holds the address of a; & is the address-of operator
+    std::cout << ptr << std::endl; // 004FFB90
+</code>
+2. Dereferencing - operator* - referring to the object pointed toby the pointer. This operation is also called indirection. The dereferencing operator is (prefix) unary ∗
+<code>
+    int a = 10;
+    int* ptr = &a; // p holds the address of c; & is the address-of operator
+    int b = *ptr // * is the dereference operator
+    std::cout << b << std::endl; // 10
+</code>
+3. operator-> - access member of pointed object
+<code>
+    std::string s = "World";
+    std::string* ptr = &s;
+    ptr->insert(0, "Hello ");     // the operator-> is sugar syntax for dereferencing operator* and calling an object member.
+    // (*ptr).insert(0, "Hello"); // this is how the above line looks without the syntax sugar.
+    std::cout << s << std::endl;  // Hello World
+</code>
+
+<b>2.2 Types of pointers</b>
+The operator∗, means "pointer to" and its used as a suffix for a type name. Unfortunately, pointers to
+arrays and pointers to functions need a more complicated notation:
+
+<code>
+   int∗ pi;          // pointer to int
+   char∗∗ ppc;       // pointer to pointer to char
+   int∗ ap[15];      // array of 15 pointers to ints
+   int (∗fp)(char∗); // pointer to function taking a char* argument; returns an int
+   int∗ f(char∗);    // function taking a char* argument; returns a pointer to int
+</code>
+
+<code>
+     int p = 5;                    // int variable
+     int * pPointer = &p;          // int pointer
+     int*& pPointerRef = pPointer; // reference to pointer to int
+</code>
+
+<b>2.3. The void Pointer (void*)</b>
+Occasionally we need to store or pass along an address of a memory location without actually knowing what type of object is stored there. A void∗ is used for that. You can read void∗ as "pointer to an object of unknown type."
+
+<code>
+int n = 5;
+char = cStr[] = "Hello";
+char* = otherStr[] = "World";
+
+void* p;
+p = &numbers;
+p = cStr;
+p = otherStr;
+std::cout << p << std::endl;    // prints address of memory location
+
+p++                             // compilation error;
+std::cout << (*p) << std::endl; // compilation error
+</code>
+
+Because there is no information about the data type:
+- You can't reference/dereference
+- No pointer arithmetic
+
+<b>2.4. The NULL Pointer (nullptr)</b>
+The literal nullptr represents the null pointer, that is, a pointer that does not point to an object, indicating a lack of value. It can be assigned to any pointer type, but not to other built-in types.
+
+<code>
+    int∗ ptr = nullptr;
+    double∗ ptr = nullptr;
+    int i = nullptr; // error : i is not a pointer
+</code>
+ 
+Before nullptr was introduced, either zero (0) or NULL was used as a notation for the null pointer. Initializing a pointer and setting its value to either 0 or NULL, instead of nullptr will generally work, but is considered a <b>bad practice</b>, because the behavior will be unexpected in different implementations. For example, NULL might be 0 or 0L. In C, NULL is typically (void∗)0, which makes it illegal in C++.
+
+<b>Example</b>
+<code>
+#include <iostream>
+#include <vector>
+
+int* findElementInCollection(std::vector<int>& vect, int element);
+
+int main()
+{
+	std::vector<int> vect{ 1,2,3,4,5 };
+	int n = 3;
+	int* element = findElementInCollection(vect, n);
+
+	// if the element exists, return a pointer to it
+	if (element != nullptr) {
+		std::cout << (*element) << std::endl;
+	}
+	else {
+		std::cout << "element not found" << std::endl;
+	}
+
+}
+
+int* findElementInCollection(std::vector<int>& vect, int element) {
+	for (int i = 0; i < vect.size(); i++) {
+		if (vect[i] == element) {
+			return &vect[i];
+		}
+	}
+	return nullptr;
+}
+</code>
+
+<b>2.5. Pointers and const</b>
+Declaring something const ensures that its value will not change within its scope.
+
+When using a pointer, two objects are involved: the pointer itself and the object pointed to. "Prefixing" a declaration of a pointer with const makes the object, but not the pointer, a constant. To
+declare a pointer itself, rather than the object pointed to, to be a constant, we use the declarator operator ∗const instead of plain ∗. 
+
+Variations table:
+<table>
+    <tbody>
+        <tr>
+            <td>Pointer</td>
+            <td>Memory editable?</td>
+            <td>Address editable?</td>
+        </tr>
+        <tr>
+            <td>Type * ptr</td>
+            <td>YES</td>
+            <td>YES</td>
+        </tr>
+        <tr>
+            <td>const Type * ptr</td>
+            <td>NO</td>
+            <td>YES</td>
+        </tr>
+        <tr>
+            <td>Type * const ptr</td>
+            <td>YES</td>
+            <td>NO</td>
+        </tr>
+        <tr>
+            <td>const Type * const ptr</td>
+            <td>NO</td>
+            <td>NO</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<b>2.6  Pointer arithmetic</b>
+This is WIP (Work In Progress)
+
+Array operator[] is just pointer arithmetic. *(a + b) is the same as *(b + a), so arr[1] is the same as 1[arr].
+<code>
+int arr[3] = { 1,2,3 };
+std::cout << arr[1] << std::endl; // 2
+std::cout << 1[arr] << std::endl; // 2
+</code>
+
+
+<b>2.7. Function pointer</b>
+Pointers (and references) can point to functions.
+
+<b>Syntax</b>
+FunctionReturnType (*ptr_name)(function parameter types)
+
+<b>Example</b>
+<code>
+#include <iostream>
+#include <string>
+#include <vector>
+
+#define log(x) std::cout << x << std::endl;
+
+using std::string;
+using std::vector;
+
+std::vector<std::string> fSplitStringByDelimiter(std::string s, char delimiter) {
+	std::vector<std::string> tokens;
+
+	string str = "";
+	for (int i = 0; i < s.size(); i++) {
+		if (s[i] == delimiter) {
+			tokens.push_back(str);
+			str = "";
+		}
+		else {
+			str += s[i];
+		}
+	}
+	tokens.push_back(str);
+
+	return tokens;
+}
+
+int main() {
+	vector<string>(*p)(string, char) = &fSplitStringByDelimiter;                  // a pointer to function
+	vector<string> words = p("the quick brown fox jumps over the lazy dog", ' '); // use instead of function name
+
+	for (string w : words) {
+		log(w);
+	}
+
+	return 0;
+}
+</code>
+
+<b>Example 2</b>
+<code>
+#include <iostream>
+#include <string>
+#include <vector>
+
+#define log(x) std::cout << x << std::endl;
+
+using std::string;
+using std::vector;
+
+std::vector<int> filter(const std::vector<int>& numbers, bool(*someFunction)(int));
+bool isEven(int number);
+
+int main() {
+	vector<int> evenNumbers = filter({ 1,2,3,4,5,7,8,9,10 }, isEven);
+	
+	// print even numbers
+	for (int n : evenNumbers) {
+		log(n);
+	}
+
+	log("");
+	vector<int> oddNumbers = filter({ 1,2,3,4,5,7,8,9,10 }, [](int n) { return n % 2 == 1; });
+
+	// print odd numbers
+	for (int n : oddNumbers) {
+		log(n);
+	}
+
+	return 0;
+}
+
+std::vector<int> filter(const std::vector<int>& numbers, bool(*someFunction)(int)) {
+	std::vector<int> filtered;
+
+	for (int n : numbers) {
+		if (someFunction(n)) {
+			filtered.push_back(n);
+		}
+	}
+
+	return filtered;
+}
+
+bool isEven(int number) {
+	return number % 2 == 0;
+}
+</code>
+
+<b>2.8. Pointer casting</b>
+All pointers can be casted.
+
+<b>2.8.1. C-Style casting can be used, NOT recommended.</b>
+void* (void pointer) can be used to point to anything, without knowing its type and exactly because we have no type information, the void* cannot perform pointer operations and arithmetic. Therefore we can cast the pointer to a known data type and perform those operations afterwards. However, we must be careful when doing so with C-Style casting, because there are no type checks performed by the compiler and even if the data type is not compatible, the compiler will not stop us, which will result in unpredictable behavior once we later perform operations on the pointer.
+
+<code>
+char letter = 'A';
+void* voidPtr = &letter;
+char* cStyleCastPtr = (char*)voidPtr; 
+int* cStyleCastBadPtr = (int*)voidPtr; // the compiler will not stop us here, despite that void* is a (pointer to char).
+</code>
+
+<b>2.8.2. C++ Pointer Casting</b>
+static_cast<Type*>(ptr) – compile-time type checking. This takes the pointer in ptr and tries to safely cast it to a pointer of type Type*. This cast is done at compile time. It will only perform the cast if the types are related. If the types are not related, you will get a compiler error.
+<code>
+char letter = 'A';
+void* voidPtr = &letter;
+char* p1 = static_cast<char*>(voidPtr); // no checks for void*
+int* p2 = static_cast<int*>(p1); // compilation error
+</code>
+
+dynamic_cast<Type*>(ptr) – runtime checks, nullptr if failure. This again tries to take the pointer in ptr and safely cast it to a pointer of type Type*. But this cast is executed at runtime, not compile time. Because this is a run-time cast, it is useful especially when combined with polymorphic classes. In fact, in certian cases the classes must be polymorphic in order for the cast to be legal.
+
+<b>2.9. Common Pitfalls</b>
+<b>2.9.1. Pointer Casting - Unchecked C Style Casting</b>
+You are John Snow. What will the following code print?
+<code>
+#include <iostream>
+
+int main() {
+	using namespace std;
+
+	char letter1 = 'a', letter2 = 'b', letter3 = 'c', letter4 = 'd';
+	int* letter4Ptr = (int*)&letter1;
+
+	*letter4Ptr = 842281524;
+
+	cout << letter1 << letter2 << letter3 << letter4 << endl; // ???
+
+	return 0;
+}
+</code>
+
+a) It will print abcd
+b) It will cause a compilation error
+c) It will summon demons
+d) You know nothing
+
+Answer d) is the correct one. The fact is... you don't know. Under Visual Studio 2019 it prints 4bcd, however this is implementation/system specific and the memory is already overwritten.
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+            C++ PITFALL: UNCHECKED ACCESS TO C-STYLE CASTED POINTER MEMORY
+
+            C-Style pointer casting doesn't check type, so you can change to any type of pointer. But that's dangerous. E.g. an int* on a system where int is 4 bytes, assigned to the address of a 1-byte char, will access 4 bytes, 3 of which are not guaranteed to be part of your program.
+            </td>
+            <td>
+                <img src="/assets/cpp/meme_pointer_casting_c_style.png" width="600px"></img>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+

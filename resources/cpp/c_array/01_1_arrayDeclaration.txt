@@ -1,8 +1,0 @@
-// declare an array with 10 elements
-int arr1[10]; 
-
-// result
--858993460 -858993460 -858993460 -858993460 -858993460 -858993460 -858993460 -858993460 -858993460 -858993460
-
-// explanation
-if you do not provide a declaration together with initialization, the compiler will fill up the array with -858993460, which seems like a bizarre number, however it's actually just 0xCCCCCCCC in hex (which is bit pattern 1100 1100 1100 1100 1100 1100 1100 1100) and I have no further information on what this stands for.

@@ -1,0 +1,35 @@
+<%- include("../header.ejs"); -%>
+
+  <div class="breadcrumbs">
+    <a href="/">Home</a>
+    <span>&gt;</span>
+    <a href="/courses/<%= course.slug %>"><%= course.slug %></a>
+    <span>&gt;</span>
+    <a href="/topics/<%= topic.slug %>"><b><%= topic.slug %></b></a>
+  </div>
+
+  <div class="topics_grid">
+    <div class="sidebar"></div>
+    <div class="topics_body">
+    <h1><%= topic.display_name %></h1>
+
+    <% for (let i = 0; i < topic.posts.length; i++) { %> 
+      
+      <div><%- topic.posts[i]._id %></div>
+      <div class="post_body"><%- topic.posts[i].content %></div>
+      <form action="/post/edit/<%= topic.posts[i]._id %>" method="GET">
+        <button type="submit">Edit</button>
+      </form>
+
+    <% } %>
+    </div>
+  </div>
+
+  <style>
+    .post_body {
+      padding: 20px 40px;
+    }
+  </style>
+  
+</body>
+</html>

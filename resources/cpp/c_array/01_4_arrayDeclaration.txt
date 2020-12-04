@@ -1,8 +1,0 @@
-// declare an array and initialize it with specific elements
-int arr[10] = { 0 };  
-
-// result
-0 0 0 0 0 0 0 0 0 0
-
-// explanation
-by both declaring (with size) and initializing an array, by providing ONE element, the compiler creates an array with 10 elements, inserts the first element and automatically fills the rest of the array with zeroes. The result is: 0, 0, 0, 0, 0, 0, 0, 0, 0, 0

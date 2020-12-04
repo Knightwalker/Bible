@@ -1,8 +1,0 @@
-int sum_of_four(int a, int b, int c, int d) {
-    int sum = 0;
-    sum += a;
-    sum += b;
-    sum += c;
-    sum += d;
-    return sum;
-}
