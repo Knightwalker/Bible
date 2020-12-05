@@ -1,9 +1,9 @@
 const mongodb = require("mongodb");
+const config = require("../../config");
 const MongoClient = mongodb.MongoClient;
 
 let db = null;
-//let url = "mongodb://localhost:27017/codegigas";
-let url = "mongodb+srv://codegigas:123@sandbox.3n3eg.mongodb.net/<dbname>?retryWrites=true&w=majority";
+let url = config.db.production_url;
 
 const options = {
   useUnifiedTopology: true
