@@ -3,7 +3,7 @@ const config = require("../../config");
 const MongoClient = mongodb.MongoClient;
 
 let db = null;
-let url = null;
+let url = process.env.production_url;
 
 // are we on Heroku?
 if (process.env.production_url) {
