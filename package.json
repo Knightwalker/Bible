@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "APP_ENVIRONMENT=heroku && node server.js",
     "start:dev": "set APP_ENVIRONMENT=local && nodemon server.js",
     "start:heroku": "APP_ENVIRONMENT=heroku && node server.js"
   },
