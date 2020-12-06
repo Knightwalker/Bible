@@ -1,16 +1,8 @@
 const mongodb = require("mongodb");
-//const config = require("../../config");
 const MongoClient = mongodb.MongoClient;
 
 let db = null;
-let url = null;
-
-// are we on Heroku?
-if (process.env.production_url) {
-  url = process.env.production_url;
-} else {
-  url = config.db.production_url;
-}
+let url = process.env.DB_REMOTE_URL;
 
 const options = {
   useUnifiedTopology: true

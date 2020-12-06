@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "set APP_ENVIRONMENT=heroku && node server.js",
+    "start:dev": "set APP_ENVIRONMENT=local && nodemon server.js"
   },
   "author": "Knightwalker",
   "license": "ISC",

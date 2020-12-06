@@ -2,6 +2,7 @@ const path = require("path");
 
 const express = require("express");
 const app = express();
+const config = require("./config.js");
 
 const database = require("./src/database/mongodb");
 const adminRoutes = require("./src/routes/admin");
@@ -18,10 +19,11 @@ app.use(userRoutes.routes);
 
 // Routes
 app.get("/", (req, res, next) => {
+  console.log(process.env.NODE_ENV);
   res.render("index.ejs");
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.APP_PORT;
 
 // App Init
 database.connect((err) => {
