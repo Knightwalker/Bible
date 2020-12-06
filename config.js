@@ -8,6 +8,7 @@ if (process.env.APP_ENVIRONMENT.trim() == "local") {
   process.env["DB_REMOTE_URL"] = envObj.DB_REMOTE_URL;
 
 } else if (process.env.APP_ENVIRONMENT.trim() == "heroku") {
+  process.env["APP_PORT"] = process.env.PORT;
   // check heroku .env file.
   // heroku loads it automatically.
 }
