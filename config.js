@@ -1,5 +1,6 @@
 const fs = require("fs");
-
+console.log(process.env.APP_ENVIRONMENT);
+console.log('kur');
 if (process.env.APP_ENVIRONMENT.trim() == "local") {
   let envObj = JSON.parse(fs.readFileSync("./env.json", {encoding: "utf-8"}));
   process.env["APP_HOST"] = envObj.APP_HOST;
