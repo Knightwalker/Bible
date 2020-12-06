@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "start:dev": "set APP_ENVIRONMENT=local && nodemon server.js",
-    "start:heroku": "set APP_ENVIRONMENT=heroku && nodemon server.js"
+    "start:heroku": "APP_ENVIRONMENT=heroku && node server.js"
   },
   "author": "Knightwalker",
   "license": "ISC",
