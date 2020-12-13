@@ -30,19 +30,47 @@ body {
 .nav_item3 {
   display: flex;
 }
-#login { 
-  background-color: #0bc4e2;
-  color: black;
-}
-.navButton {
+.nav_logoBtn {
+  font-family: "Inter-Medium", "sans-serif";
   color: #ffffff;
   text-decoration: none;
-  width: 120px;
+  width: 140px;
   height: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-.navButton:hover {
+.nav_normalBtn {
+  font-family: "Inter-Medium", "sans-serif";
+  color: #ffffff;
+  text-decoration: none;
+  width: 140px;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.nav_loginBtn {
+  font-family: "Inter-Medium", "sans-serif";
+  background-color: #0bc4e2;
+  color: black;
+  text-decoration: none;
+  width: 140px;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.nav_logoBtn:hover {
+  text-decoration: underline;
+  background-color: #0bc4e2;
+  color: black;
+  cursor: pointer;
+}
+.nav_normalBtn:hover {
+  text-decoration: underline;
+  background-color: #0bc4e2;
+  color: black;
+  cursor: pointer;
+}
+.nav_loginBtn:hover {
   text-decoration: underline;
   background-color: #0bc4e2;
   color: black;
@@ -52,6 +80,7 @@ body {
 .nav_flexbox {
   display: flex;
   justify-content: space-between;
+  height: 100%;
   margin: auto;
 }
 
@@ -76,8 +105,6 @@ body {
   background-image: url("/assets/views/slider.jpg");
   background-size: cover;
   height: 476px;
-  font-family: sans-serif;
-  font-weight: 700;
   color: rgb(255, 255, 255);
   font-size: 28px;
   text-align: center;
@@ -90,6 +117,7 @@ body {
   margin-bottom: 25px;
 }
 #slider_item2_button1 {
+  font-family: "Inter-Black", "sans-serif";
   border: 1px solid #ffffff;
   cursor: pointer;
   margin-left: 10px;
@@ -101,6 +129,7 @@ body {
   line-height: 40px;
 }
 #slider_item2_button2 {
+  font-family: "Inter-Black", "sans-serif";
   border: 1px solid #ffffff;
   cursor: pointer;
   margin-left: 10px;
@@ -112,18 +141,21 @@ body {
   line-height: 40px;
 }
 .slider_text1 {
-  font-size: 60px;
+  font-family: "Inter-Black", "sans-serif";
   font-variant: petite-caps;
+  font-size: 72px;
   margin-block-start: 0px;
   margin-block-end: 25px;
 }
 .slider_text2 {
+  font-family: "Inter-Medium", "sans-serif";
   font-size: 14px;
   color: rgb(221, 221, 221);
   margin-block-start: 0px;
   margin-block-end: 0px;
 }
 .slider_text3 {
+  font-family: "Inter-Black", "sans-serif";
   font-size: 22px;
 }
 .slider_text4 {
@@ -326,7 +358,11 @@ code {
 
 .course_buttons {
   width: 100px;
+  background-color: #ff4655;
+  color: white;
   border: 1px solid black;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 .breadcrumbs a {
@@ -398,16 +434,21 @@ code {
 .career_paths {
   background-color: #ffffff;
   position: relative;
-  font-family: 'Cinzel', serif;
-  font-weight: 700;
+  font-family: "Inter-Regular", "sans-serif";
   text-align: center;
-  z-index: 0;
+  z-index: 2;
+  margin-top: -25px;
+  padding-bottom: 50px;
 }
 .career_paths_head {
-  font-family: 'Architects Daughter';
+  font-family: "Inter-Black", "sans-serif";
+  font-size: 48px;
+  margin-block-start: 0px;
+  margin-block-end: 15px;
 }
 .career_paths_description {
-  margin-bottom: 14px;
+  font-family: "Inter-Medium", "sans-serif";
+  margin-bottom: 22px;
 }
 
 .career_paths_flexbox {
@@ -446,8 +487,57 @@ code {
   transform: translate(-10px, -10px);
   border-color: #0bc4e2;
 }
+.career_paths_card_head {
+  font-family: "Inter-Black", "sans-serif";
+}
 
 .courses {
-  height: 100vh;
+  position: relative;
+  height: 600px;
   background-color: #ece8e1;
+  padding-top: 10px;
+  padding-bottom: 25px;
+}
+.courses_distortion_top {
+  position: absolute;
+  background-image: url("./views/courses_top_distortion.svg");
+  height: 108px;
+  width: 216px;
+  background-repeat: no-repeat;
+  top: 0;
+  right: 0;
+}
+
+.footer {
+  position: relative;
+  margin-top: 100px;
+  background-color: #000000;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.footer_distortion_top {
+  position: absolute;
+  background-image: url(./views/footer_distortion_top.svg);
+  height: 180px;
+  width: 504px;
+  background-repeat: no-repeat;
+  right: 0;
+  top: 0;
+  transform: translateY(-60%);
+}
+.footer_body {
+  height: 100%;
+}
+.footer_flexbox {
+  display: flex;
+  height: 100%;
+  justify-content: space-evenly;
+}
+.footer_flexbox_item {
+  font-family: 'Inter-Medium';
+  color: #ffffff;
+}
+.footer_flexbox_item_head {
+  font-family: 'Inter-Black';
+  color: #0bc4e2;
 }

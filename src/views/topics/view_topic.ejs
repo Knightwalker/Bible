@@ -18,7 +18,7 @@
       <div><%- topic.posts[i]._id %></div>
       <div class="post_body"><%- topic.posts[i].content %></div>
       <form action="/post/edit/<%= topic.posts[i]._id %>" method="GET">
-        <button type="submit">Edit</button>
+        <button class="course_buttons" type="submit">Edit</button>
       </form>
 
     <% } %>
