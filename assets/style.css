@@ -7,7 +7,11 @@
   box-sizing: border-box;
 }
 
+html{
+  height: 100%;
+}
 body {
+  height: 100%;
   margin: 0;
 }
 
@@ -540,4 +544,11 @@ code {
 .footer_flexbox_item_head {
   font-family: 'Inter-Black';
   color: #0bc4e2;
+}
+
+
+
+.codegigas_editor {
+  width: 100%;
+  min-height: 300px;
 }
