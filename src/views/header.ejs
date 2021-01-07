@@ -17,18 +17,86 @@
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav_flexbox">
-    <div class="nav_item1">
-      <a id="home" href="/" class="nav_logoBtn">codegigas</a>
+<% if(typeof bUserIsLoggedIn !== "undefined" && bUserIsLoggedIn === true) { %> 
+
+  <nav class="nav">
+    <div class="nav__flexbox">
+      <div class="nav__item1">
+        <a href="/" id="home" class="nav__logoBtn noselect">codegigas</a>
+      </div>
+      <div class="nav__item2">
+        <a id="courses" class="nav__normalBtn noselect">Courses</a>
+        <a id="courses" class="nav__normalBtn noselect">Paths</a>
+        <a id="aboutUs" class="nav__normalBtn noselect">About us</a>
+      </div>
+      <div class="nav__item3">
+        <a id="nav__account-btn" class="noselect"><%- user.username %></a>
+        <div id="nav__account">
+          <a href="/auth/login" class="nav__account-flexbox1">
+            <div class="nav__loginBtn">Log In</div>
+          </a>
+          <div class="nav__account-flexbox2">
+            <div class="nav__logout-btn">
+              <form action="/auth/logout" method="POST">
+                <input type="submit" name="logout_form" value="logout">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="nav_item2">
-      <a id="courses" class="nav_normalBtn">Courses</a>
-      <a id="courses" class="nav_normalBtn">Paths</a>
-      <a id="aboutUs" class="nav_normalBtn">About us</a>
+  </nav>
+  
+
+
+<% } else { %> 
+
+  <nav class="nav">
+    <div class="nav__flexbox">
+      <div class="nav__item1">
+        <a href="/" id="home" class="nav__logoBtn noselect">codegigas</a>
+      </div>
+      <div class="nav__item2">
+        <a id="courses" class="nav__normalBtn noselect">Courses</a>
+        <a id="courses" class="nav__normalBtn noselect">Paths</a>
+        <a id="aboutUs" class="nav__normalBtn noselect">About us</a>
+      </div>
+      <div class="nav__item3">
+        <a id="nav__account-btn" class="noselect">My Account</a>
+        <div id="nav__account">
+          <a href="/auth/login" class="nav__account-flexbox1">
+            <div class="nav__loginBtn">Log In</div>
+          </a>
+          <a href="/auth/register" class="nav__account-flexbox2">
+            <div class="nav__registerBtn">Create your Account</div>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="nav_item3">
-      <a class="nav_loginBtn">Log in</a>
-    </div>
-  </div>
-</nav>
+  </nav>
+
+<% } %>
+
+<script>
+  const navAccountBtnEl = document.getElementById("nav__account-btn");
+  const navAccountEl = document.getElementById("nav__account");
+
+  navAccountBtnEl.addEventListener("click", () => {
+    const display = window.getComputedStyle(navAccountEl).display;
+
+    if (display == "none") {
+      navAccountEl.style.display = "block";
+      navAccountBtnEl.style.boxShadow = "rgba(118, 118, 118, 0.5) 0px -2px 20px 0px inset";
+      navAccountBtnEl.style.backgroundColor = "#0bc4e2";
+      navAccountBtnEl.style.color = "#000000";
+    } else {
+      navAccountEl.style.display = "none";
+      navAccountBtnEl.style.boxShadow = "none";
+      navAccountBtnEl.style.backgroundColor = "#000000";
+      navAccountBtnEl.style.color = "#ffffff";
+    }
+  });
+
+</script>
+
+<div id="slider_top"></div>

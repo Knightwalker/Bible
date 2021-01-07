@@ -2,13 +2,59 @@
 
 const User = require("../models/user");
 
-const getRegisterPage = (req, res) => {
-
+const getLoginPage = (req, res) => {
   const data = {
     pageTitle: "Registration",
     path: "/auth/register",
+    bUserIsLoggedIn: req.session.bUserIsLoggedIn
   }
-  res.render("auth/register", data);
+  console.log(req.sessionID);
+  console.log(req.session);
+  res.render("auth/login", data);
+}
+
+const getRegisterPage = (req, res) => {
+  res.render("auth/register.ejs");
+}
+
+const postLogin = async (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  var user = null;
+  try {
+    user = await User.getUser(username);
+  } catch (err) {
+    console.log(err);
+    res.render("index.ejs");
+    return;
+  }
+
+  if (user == null) {
+    const data = {
+      bUserDoesNotExist: true
+    }
+    res.render("auth/login.ejs", data);
+    return;
+  }
+
+  const salt = user.salt;
+  const hash = user.hash;
+  const current_hash = User.generateHash(password, salt);
+
+  if (hash != current_hash) {
+    const data = {
+      bPasswordIsIncorrect: true
+    }
+    res.render("auth/login.ejs", data);
+    return;
+  }
+
+  req.session.bUserIsLoggedIn = true;
+  req.session.user = user;
+  req.session.save((err) => {
+    res.redirect("/");
+  })
 }
 
 const postRegister = async (req, res) => {
@@ -22,13 +68,12 @@ const postRegister = async (req, res) => {
   var results = null;
   try {
     results = await Promise.all([
-      User.bCheckIfUsernameIsAvaliableWithPromise(username),
-      User.bCheckIfEmailIsAvaliableWithPromise(email),
+      User.bCheckIfUsernameIsAvaliableAsync(username),
+      User.bCheckIfEmailIsAvaliableAsync(email),
     ]);
   } catch (err) {
     console.log(err);
-    // log error to logger
-    // render view with some error
+    res.render("index.ejs");
     return;
   }
 
@@ -44,7 +89,7 @@ const postRegister = async (req, res) => {
       bUsernameIsAvaliable: bUsernameIsAvaliable,
       bEmailIsAvaliable: bEmailIsAvaliable
     }
-    res.render("auth/register", data);
+    res.render("auth/register.ejs", data);
     return;
   }
  
@@ -59,21 +104,21 @@ const postRegister = async (req, res) => {
     hash: hash
   }
 
-  await User.insertOneAsync(user, renderView);
+  await User.insertOneAsync(user);
+  res.render("auth/register_successfully.ejs");
   
-  const data = {
-    pageTitle: "Registration",
-    path: "/auth/register",
-  }
-  res.render("auth/register", data);
-  
+}
 
-
+const postLogout = (req, res) => {
+  req.session.destroy((err) => {
+    res.redirect("/");
+  });
 }
 
 module.exports = {
-  //getLoginPage: getLoginPage,
+  getLoginPage: getLoginPage,
   getRegisterPage: getRegisterPage,
-  //postLogin: postLogin
-  postRegister: postRegister
+  postLogin: postLogin,
+  postRegister: postRegister,
+  postLogot: postLogout
 }

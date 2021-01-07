@@ -1,0 +1,87 @@
+<%- include("../header.ejs"); -%>
+
+<div class="register__page">
+  <div class="register__h1">Log Inside Your Account</div>
+
+  <% if(typeof bUserDoesNotExist !== "undefined" && bUserDoesNotExist == true) { %>
+  <div class="login__errors-container">
+    <div>We can't find that CodeGigas account.</div>
+  </div>
+  <% } else if (typeof bPasswordIsIncorrect !== "undefined" && bPasswordIsIncorrect == true) { %>
+    <div class="login__errors-container">
+      <div>Your password is incorrect.</div>
+    </div>
+  <% } %>
+
+  <div class="register__container">
+    <form id="register__form" autocomplete="off" action="/auth/login" method="POST">
+      <div class="register__grid">
+        <div id="username__icon" class="register__grid_icon"></div>
+        <% if(typeof username !== "undefined") { %> 
+          <label class="register__grid_label" style="font-size: 15px; transform: translate(-60px, -26px);">Username</label>
+          <input class="register__grid_input" type="text" name="username" value="<%- username %>">
+        <% } else { %> 
+          <label class="register__grid_label">Username</label>
+          <input class="register__grid_input" type="text" name="username">
+        <% } %>
+        <% if(typeof bUsernameIsAvaliable !== "undefined" && bUsernameIsAvaliable === false) { %> 
+          <div class="register__grid_error">Username is not avaliable</div>
+        <% } else { %> 
+          <div class="register__grid_error"></div> 
+        <% } %>
+      </div>
+
+      <div class="register__grid">
+        <div id="password__icon" class="register__grid_icon"></div>
+        <label class="register__grid_label">Password</label>
+        <input class="register__grid_input" type="password" name="password">
+        <div class="register__grid_error"></div>
+      </div>
+
+      <input class="register__form_button" type="submit" name="register_form" value="LOGIN">
+      <hr class="register__hr">
+
+      <div>
+        <p>Or login with</p>
+        <p class="register__block"><a href="/">Facebook WIP</a> or <a href="/">Google WIP</a></p>
+      </div>        
+    </form>
+
+  </div>
+</div>
+
+<script>
+  const registerFormEl = document.getElementById("register__form");
+  const registerUsernameEl = registerFormEl.children[0].children[2];
+  const registerPasswordEl = registerFormEl.children[1].children[2];
+  const registerSubmitBtnEl = registerFormEl.children[2];
+
+  const objLoginForm = {
+    
+    onfocus: (field, mode) => {
+      let parentEl = event.currentTarget.parentElement;
+      let labelEl = parentEl.getElementsByClassName("register__grid_label")[0];
+      let inputEl = parentEl.getElementsByClassName("register__grid_input")[0];
+      let errorEl = parentEl.getElementsByClassName("register__grid_error")[0];
+
+      // BEING VISUALS - Label movement on focusin and focusout
+      if (mode == "focusin") {
+        labelEl.style.fontSize = "15px";
+        labelEl.style.transform = "translate(-60px, -26px)";
+
+      } else if (mode == "focusout" && inputEl.value == "") {
+        labelEl.style.fontSize = "24px";
+        labelEl.style.transform = "initial";
+      }
+      // END VISUALS - Label movement on focusin and focusout
+    }
+  }
+
+  registerUsernameEl.addEventListener("focusin", function(){ objLoginForm.onfocus("username", "focusin"); }, false);
+  registerUsernameEl.addEventListener("focusout", function(){ objLoginForm.onfocus("username", "focusout"); }, false);
+  registerPasswordEl.addEventListener("focusin", function(){ objLoginForm.onfocus("password", "focusin"); }, false);
+  registerPasswordEl.addEventListener("focusout", function(){ objLoginForm.onfocus("password", "focusout"); }, false);
+
+</script>
+
+<%- include("../footer.ejs"); -%>

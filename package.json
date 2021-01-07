@@ -8,8 +8,10 @@
     "start:dev": "set APP_ENVIRONMENT=local && nodemon server.js"
   },
   "dependencies": {
+    "connect-mongodb-session": "^2.4.1",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "mongodb": "^3.6.2"
   },
   "devDependencies": {

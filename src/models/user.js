@@ -19,7 +19,7 @@ const bCheckIfUsernameIsAvaliable = (username, callback) => {
   });
 }
 
-const bCheckIfUsernameIsAvaliableWithPromise = async (username) => {
+const bCheckIfUsernameIsAvaliableAsync = async (username) => {
   const db = getDb();
   let result = null;
   try {
@@ -36,7 +36,7 @@ const bCheckIfUsernameIsAvaliableWithPromise = async (username) => {
     
 }
 
-const bCheckIfEmailIsAvaliableWithPromise = async (email) => {
+const bCheckIfEmailIsAvaliableAsync = async (email) => {
   const db = getDb();
   let result = null;
   try {
@@ -78,22 +78,29 @@ const insertOneWithCallback = (user, callback) => {
   });
 }
 
+const getUser = async (username) => {
+  const db = getDb();
+  return db.collection("users").findOne({username: username});
+}
+
 const insertOneAsync = async (user) => {
   const db = getDb();
-  let result = null;
+  var result = null;
   try {
     result = await db.collection("users").insertOne(user);
   } catch (err) {
     throw new Error(err);
   }
 
+  return result;
 }
 
 module.exports = {
   bCheckIfUsernameIsAvaliable: bCheckIfUsernameIsAvaliable,
-  bCheckIfUsernameIsAvaliableWithPromise: bCheckIfUsernameIsAvaliableWithPromise,
-  bCheckIfEmailIsAvaliableWithPromise: bCheckIfEmailIsAvaliableWithPromise,
+  bCheckIfUsernameIsAvaliableAsync: bCheckIfUsernameIsAvaliableAsync,
+  bCheckIfEmailIsAvaliableAsync: bCheckIfEmailIsAvaliableAsync,
   generateSalt: generateSalt,
   generateHash: generateHash,
-  insertOneAsync: insertOneAsync
+  insertOneAsync: insertOneAsync,
+  getUser: getUser
 };
