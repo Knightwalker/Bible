@@ -7,13 +7,20 @@
   box-sizing: border-box;
 }
 
+/* Layout - HolyGrail*/
 html{
   height: 100%;
 }
 body {
-  height: 100%;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   margin: 0;
 }
+.holygrail-body {
+  flex: 1;
+}
+
 
 .noselect {
   user-select: none;
@@ -24,13 +31,8 @@ body {
 .nav {
   position: relative;
   z-index: 3;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
   background-color: #000000;
   color: white;
-  text-align: center;
-  text-transform: uppercase;
   font-family: 'Inter-Medium';
 }
 .nav__flexbox {
@@ -55,9 +57,12 @@ body {
   color: black;
   text-decoration: none;
   width: 160px;
-  height: 100%;
+  height: 60px;
+  line-height: 60px;
   padding-left: 10px;
   padding-right: 10px;
+  text-align: center;
+  text-transform: uppercase;
 }
 .nav__logoBtn:hover {
   text-decoration: underline;
@@ -67,9 +72,12 @@ body {
   color: #ffffff;
   text-decoration: none;
   width: 160px;
-  height: 100%;
+  height: 60px;
+  line-height: 60px;
   padding-left: 10px;
   padding-right: 10px;
+  text-align: center;
+  text-transform: uppercase;
 }
 .nav__normalBtn:hover {
   text-decoration: underline;
@@ -81,17 +89,20 @@ body {
   color: #ffffff;
   text-decoration: none;
   width: 160px;
-  height: 100%;
+  height: 60px;
+  line-height: 60px;
   padding-left: 5px;
   padding-right: 5px;
+  text-align: center;
+  text-transform: uppercase;
 }
 #nav__account-btn:hover {
   background-color: #0bc4e2 !important;
   color: black !important;
   cursor: pointer;
 }
-#nav__account-btn::after {
-  content: ' \25BD';
+#nav__account-btn-arrow {
+  padding-left: 5px;
 }
 #nav__account {
   display: none;
@@ -102,51 +113,59 @@ body {
   top: 60px;
   right: 0px;
   padding-top: 19px;
-  padding-bottom: 19px;
   padding-left: 5px;
   padding-right: 5px;
   box-shadow: inset 0px 2px 20px 1px rgba(118,118,118,.5);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
-.nav__account-flexbox1 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-bottom: solid 1px #000000;
-  padding: 0 20px;
-  font-size: 16px;
-  text-decoration: none;
-  color: rgba(255,255,255,0.7);
-}
-.nav__account-flexbox2 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-bottom: solid 1px #000000;
-  padding: 0 20px;
-  font-size: 16px;
-  text-decoration: none;
-  color: rgba(255,255,255,0.7);
-}
-.nav__account-flexbox:hover {
-  text-decoration: underline;
-  color: #000000;
-}
-.nav__loginBtn {
+.nav__login-btn {
   display: flex;
   text-decoration: none;
   color: white;
   text-align: center;
   width: 100%;
   justify-content: center;
-  margin-bottom: 19px;
   background: black;
+  height: 60px;
+  line-height: 60px;
 }
-.nav__registerBtn {
+.nav__register-btn {
   display: flex;
   color: #000000;
   text-decoration: none;
+}
+
+.nav__account_profile {
+  padding-bottom: 19px;
+  border-bottom: solid 1px #000000;
+}
+.nav__account_profile p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+.nav__account_middle {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #000000;
+}
+.nav__account_bottom {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.nav__account-settings-btn {
+  color: #000000;
+  text-decoration: none;
+}
+.nav__account-logout-btn {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  text-transform: capitalize;
 }
 
 #slider_top {
@@ -204,6 +223,27 @@ body {
   width: 200px;
   height: 40px;
   line-height: 40px;
+}
+.slider__devil {
+  position: relative;
+}
+.slider__devil-left-horn {
+  position: absolute;
+  font-size: 14px;
+  display: inline-block;
+  top: -1px;
+  left: 0;
+  color: #ff4655;
+  transform: rotate(-14deg);
+}
+.slider__devil-right-horn {
+  position: absolute;
+  font-size: 14px;
+  display: inline-block;
+  top: -1px;
+  right: 10px;
+  color: #ff4655;
+  transform: rotate(14deg);
 }
 .slider_text1 {
   font-family: "Inter-Black", "sans-serif";

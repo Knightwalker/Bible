@@ -1,9 +1,9 @@
 <%- include("../header.ejs"); -%>
 
-<div class="register__page">
+<main class="register">
   <div class="register__h1">Log Inside Your Account</div>
 
-  <% if(typeof bUserDoesNotExist !== "undefined" && bUserDoesNotExist == true) { %>
+  <% if(typeof bUsernameLenghtIsValid !== "undefined" && bUsernameLenghtIsValid == true) { %>
   <div class="login__errors-container">
     <div>We can't find that CodeGigas account.</div>
   </div>
@@ -48,7 +48,7 @@
     </form>
 
   </div>
-</div>
+</main>
 
 <script>
   const registerFormEl = document.getElementById("register__form");

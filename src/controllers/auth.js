@@ -54,7 +54,7 @@ const postLogin = async (req, res) => {
   req.session.user = user;
   req.session.save((err) => {
     res.redirect("/");
-  })
+  });
 }
 
 const postRegister = async (req, res) => {
@@ -64,7 +64,43 @@ const postRegister = async (req, res) => {
   const email = req.body.email;
   const verify_age = req.body.verify_age;
   const verify_tos = req.body.verify_tos;
+
+  // Step 1. Validation
+  const bUsernameFieldIsEmpty = (username === "" ? true : false );
+  const bPasswordFieldIsEmpty = (password === "" ? true : false );
+  const bEmailFieldIsEmpty = (email === "" ? true : false );
+  const bUsernameLengthIsValid = User.isUsernameLengthValid(username);
+  const bPasswordLengthIsValid = User.isPasswordLengthValid(password);
+  const bPasswordsMatch = (password === passwordRe);
+  const bEmailIsValid = User.isEmailValid(email);
+  const bUserAgreedWithAge = User.didUserAgreeWithAge(verify_age);
+  const bUserAgreedWithTOS = User.didUserAgreeWithTOS(verify_tos);
   
+  if (bUsernameLengthIsValid == false || bPasswordLengthIsValid == false) {
+    const data = {
+      username: username,
+      password: password,
+      passwordRe: passwordRe,
+      email: email,
+      verify_age: verify_age,
+      verify_tos: verify_tos,
+      objRegisterErrors: {
+        bUsernameFieldIsEmpty: bUsernameFieldIsEmpty,
+        bPasswordFieldIsEmpty: bPasswordFieldIsEmpty,
+        bEmailFieldIsEmpty: bEmailFieldIsEmpty,
+        bUsernameLengthIsValid: bUsernameLengthIsValid,
+        bPasswordLengthIsValid: bPasswordLengthIsValid,
+        bPasswordsMatch: bPasswordsMatch,
+        bEmailIsValid: bEmailIsValid,
+        bUserAgreedWithAge: bUserAgreedWithAge,
+        bUserAgreedWithTOS: bUserAgreedWithTOS
+      }
+    }
+    res.render("auth/register.ejs", data);
+    return;
+  }
+
+  // Step 2. Database Validation
   var results = null;
   try {
     results = await Promise.all([
@@ -83,17 +119,21 @@ const postRegister = async (req, res) => {
   if (bUsernameIsAvaliable == false || bEmailIsAvaliable == false) {
     const data = {
       username: username,
-      email: email,
       password: password,
       passwordRe: passwordRe,
-      bUsernameIsAvaliable: bUsernameIsAvaliable,
-      bEmailIsAvaliable: bEmailIsAvaliable
+      email: email,
+      verify_age: verify_age,
+      verify_tos: verify_tos,
+      objRegisterErrors: {
+        bUsernameIsAvaliable: bUsernameIsAvaliable,
+        bEmailIsAvaliable: bEmailIsAvaliable
+      }
     }
     res.render("auth/register.ejs", data);
     return;
   }
- 
 
+  // Step 3. User Creation
   const salt = User.generateSalt();
   const hash = User.generateHash(password, salt);
   

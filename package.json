@@ -1,7 +1,7 @@
 {
   "name": "codegigas",
   "version": "1.0.0",
-  "description": "",
+  "description": "Education platform",
   "main": "server.js",
   "scripts": {
     "start": "set APP_ENVIRONMENT=heroku && node server.js",
@@ -12,13 +12,18 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "mongodb": "^3.6.2"
+    "mongodb": "^3.6.2",
+    "nodemailer": "^6.4.17"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
   },
   "engines": {
     "node": "12.16.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/knightwalker/codegigas.git"
   },
   "author": "Knightwalker",
   "license": "ISC"

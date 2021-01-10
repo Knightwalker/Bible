@@ -31,12 +31,14 @@ app.use(userRoutes.routes);
 app.use(authRoutes.routes);
 
 app.get("/", (req, res, next) => {
-  console.log(process.env.NODE_ENV);
+  console.log("get / = " + process.env.NODE_ENV);
 
   const data = {
     bUserIsLoggedIn: req.session.bUserIsLoggedIn,
     user: req.session.user
   }
+
+  console.log(data);
 
   res.render("index.ejs", data);
 });

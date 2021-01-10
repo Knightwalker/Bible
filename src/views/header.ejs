@@ -30,17 +30,19 @@
         <a id="aboutUs" class="nav__normalBtn noselect">About us</a>
       </div>
       <div class="nav__item3">
-        <a id="nav__account-btn" class="noselect"><%- user.username %></a>
+        <a id="nav__account-btn" class="noselect"><%- user.username %><span id="nav__account-btn-arrow">&#x25BD;</span></a>
         <div id="nav__account">
-          <a href="/auth/login" class="nav__account-flexbox1">
-            <div class="nav__loginBtn">Log In</div>
-          </a>
-          <div class="nav__account-flexbox2">
-            <div class="nav__logout-btn">
-              <form action="/auth/logout" method="POST">
-                <input type="submit" name="logout_form" value="logout">
-              </form>
-            </div>
+          <div class="nav__account_profile">
+            <p><%- user.username %></p>
+            <p><%- user.email %></p>
+          </div>
+          <div class="nav__account_middle">
+            <a href="/" class="nav__account-settings-btn">Account Settings</a>
+          </div>
+          <div class="nav__account_bottom">
+            <form action="/auth/logout" method="POST">
+              <input type="submit" class="nav__account-logout-btn" name="logout" value="Logout">
+            </form>
           </div>
         </div>
       </div>
@@ -62,14 +64,17 @@
         <a id="aboutUs" class="nav__normalBtn noselect">About us</a>
       </div>
       <div class="nav__item3">
-        <a id="nav__account-btn" class="noselect">My Account</a>
+        <a id="nav__account-btn" class="noselect">My Account<span id="nav__account-btn-arrow">&#x25BD;</span></a>
         <div id="nav__account">
-          <a href="/auth/login" class="nav__account-flexbox1">
-            <div class="nav__loginBtn">Log In</div>
-          </a>
-          <a href="/auth/register" class="nav__account-flexbox2">
-            <div class="nav__registerBtn">Create your Account</div>
-          </a>
+          <div class="nav__account_profile">
+            <a href="/auth/login" class="nav__login-btn">Log In</a>
+          </div>
+          <div class="nav__account_middle">
+            <a href="/auth/login" class="nav__account-settings-btn">Account Settings</a>
+          </div>
+          <div class="nav__account_bottom">
+            <a href="/auth/register" class="nav__register-btn">Create your Account</a>
+          </div>
         </div>
       </div>
     </div>
@@ -77,20 +82,28 @@
 
 <% } %>
 
+<!-- BEGIN holygrail-body | ends in footer -->
+<div class="holygrail-body"> 
+
 <script>
   const navAccountBtnEl = document.getElementById("nav__account-btn");
+  const navAccountBtnArrowEl = document.getElementById("nav__account-btn-arrow");
   const navAccountEl = document.getElementById("nav__account");
 
   navAccountBtnEl.addEventListener("click", () => {
     const display = window.getComputedStyle(navAccountEl).display;
 
+    
+
     if (display == "none") {
       navAccountEl.style.display = "block";
+      navAccountBtnArrowEl.innerHTML = "&#x25B3;";
       navAccountBtnEl.style.boxShadow = "rgba(118, 118, 118, 0.5) 0px -2px 20px 0px inset";
       navAccountBtnEl.style.backgroundColor = "#0bc4e2";
       navAccountBtnEl.style.color = "#000000";
     } else {
       navAccountEl.style.display = "none";
+      navAccountBtnArrowEl.innerHTML = "&#x25BD;";
       navAccountBtnEl.style.boxShadow = "none";
       navAccountBtnEl.style.backgroundColor = "#000000";
       navAccountBtnEl.style.color = "#ffffff";
@@ -98,5 +111,3 @@
   });
 
 </script>
-
-<div id="slider_top"></div>

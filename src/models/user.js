@@ -95,6 +95,56 @@ const insertOneAsync = async (user) => {
   return result;
 }
 
+// Validation Checks
+const isUsernameLengthValid = (username) => {
+  if (username.length >= 4 && username.length <= 32) { 
+    return true; 
+  } else { 
+    return false; 
+  }
+}
+
+const isPasswordLengthValid = (password) => {
+  if (password.length >= 8 && password.length <= 64) { 
+    return true;
+  } else {
+    return false;
+  } 
+}
+
+const isEmailValid = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/gm;
+
+  if (regex.test(email)) { 
+    return true; 
+  } 
+  else { 
+    return false; 
+  }
+}
+
+const didUserAgreeWithAge = (age) => {
+  // Protect against unexisting variables. HTML form, checkbox will not send value if unchecked. 
+  if (typeof age === "undefined") {
+    return false;
+  } else if (age === "yes") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const didUserAgreeWithTOS = (tos) => {
+  // Protect against unexisting variables. HTML form, checkbox will not send value if unchecked. 
+  if (typeof tos === "undefined") {
+    return false;
+  } else if (tos === "yes") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 module.exports = {
   bCheckIfUsernameIsAvaliable: bCheckIfUsernameIsAvaliable,
   bCheckIfUsernameIsAvaliableAsync: bCheckIfUsernameIsAvaliableAsync,
@@ -102,5 +152,11 @@ module.exports = {
   generateSalt: generateSalt,
   generateHash: generateHash,
   insertOneAsync: insertOneAsync,
-  getUser: getUser
+  getUser: getUser,
+
+  isUsernameLengthValid: isUsernameLengthValid,
+  isPasswordLengthValid: isPasswordLengthValid,
+  isEmailValid: isEmailValid,
+  didUserAgreeWithAge: didUserAgreeWithAge,
+  didUserAgreeWithTOS: didUserAgreeWithTOS
 };

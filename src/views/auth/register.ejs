@@ -1,83 +1,143 @@
 <%- include("../header.ejs"); -%>
 
-<div class="register__page">
-  <div class="register__h1">Create Your Account</div>
-  <div class="register__container">
+<div class="holygrail-body">
+  <main>
 
-    <form id="register__form" autocomplete="off" action="/auth/register" method="POST">
-      <div class="register__grid">
-        <div id="username__icon" class="register__grid_icon"></div>
-        <% if(typeof username !== "undefined") { %> 
-          <label class="register__grid_label" style="font-size: 15px; transform: translate(-60px, -26px);">Username</label>
-          <input class="register__grid_input" type="text" name="username" value="<%- username %>">
-        <% } else { %> 
-          <label class="register__grid_label">Username</label>
-          <input class="register__grid_input" type="text" name="username">
+    <div class="register__h1">Create Your Account</div>
+
+    <% if(typeof objRegisterErrors !== "undefined") { %>
+      <div class="login__errors-container">
+        <% if(typeof objRegisterErrors.bUsernameFieldIsEmpty !== "undefined" && objRegisterErrors.bUsernameFieldIsEmpty == true) { %>
+          <div>Username field cannot be empty.</div>
         <% } %>
-        <% if(typeof bUsernameIsAvaliable !== "undefined" && bUsernameIsAvaliable === false) { %> 
-          <div class="register__grid_error">Username is not avaliable</div>
-        <% } else { %> 
-          <div class="register__grid_error"></div> 
+        <% if(typeof objRegisterErrors.bPasswordFieldIsEmpty !== "undefined" && objRegisterErrors.bPasswordFieldIsEmpty == true) { %>
+          <div>Password field cannot be empty.</div>
         <% } %>
-      </div>
-
-      <div class="register__grid">
-        <div id="password__icon" class="register__grid_icon"></div>
-        <label class="register__grid_label">Password</label>
-        <input class="register__grid_input" type="password" name="password">
-        <div class="register__grid_error"></div>
-      </div>
-
-      <div class="register__grid">
-        <div id="password__icon" class="register__grid_icon"></div>
-        <label class="register__grid_label">Confirm Password</label>
-        <input class="register__grid_input" type="password" name="passwordRe">
-        <div class="register__grid_error"></div>
-      </div>
-
-      <div class="register__grid">
-        <div id="email__icon" class="register__grid_icon"></div>
-        <% if(typeof email !== "undefined") { %> 
-          <label class="register__grid_label" style="font-size: 15px; transform: translate(-60px, -26px);">Email</label>
-          <input class="register__grid_input" type="text" name="email" value="<%- email %>">
-        <% } else { %> 
-          <label class="register__grid_label">Email</label>
-          <input class="register__grid_input" type="text" name="email">
+        <% if(typeof objRegisterErrors.bEmailFieldIsEmpty !== "undefined" && objRegisterErrors.bEmailFieldIsEmpty == true) { %>
+          <div>Email field cannot be empty.</div>
         <% } %>
-        <% if(typeof bEmailIsAvaliable !== "undefined" && bEmailIsAvaliable === false) { %> 
-          <div class="register__grid_error">Email is not avaliable</div>
-        <% } else { %> 
-          <div class="register__grid_error"></div> 
+        <% if(typeof objRegisterErrors.bUsernameLengthIsValid !== "undefined" && objRegisterErrors.bUsernameLengthIsValid == false) { %>
+          <div>Username must be between 4 and 32 characters.</div>
         <% } %>
+        <% if(typeof objRegisterErrors.bPasswordLengthIsValid !== "undefined" && objRegisterErrors.bPasswordLengthIsValid == false) { %>
+          <div>Password must be between 8 and 64 characters.</div>
+        <% } %>
+        <% if(typeof objRegisterErrors.bPasswordsMatch !== "undefined" && objRegisterErrors.bPasswordsMatch == false) { %>
+          <div>Passwords do not match.</div>
+        <% } %>
+        <% if(typeof objRegisterErrors.bEmailIsValid !== "undefined" && objRegisterErrors.bEmailIsValid == false) { %>
+          <div>Email is not valid.</div>
+        <% } %>
+        <% if(typeof objRegisterErrors.bUserAgreedWithAge !== "undefined" && objRegisterErrors.bUserAgreedWithAge == false) { %>
+          <div>User did not agree with the age requirement.</div>
+        <% } %>
+        <% if(typeof objRegisterErrors.bUserAgreedWithTOS !== "undefined" && objRegisterErrors.bUserAgreedWithTOS == false) { %>
+          <div>User did not agree with the Terms of Service.</div>
+        <% } %>
+        <% if(typeof objRegisterErrors.bUsernameIsAvaliable !== "undefined" && objRegisterErrors.bUsernameIsAvaliable === false) { %> 
+          <div>Username is not avaliable.</div>
+        <% } %>
+        <% if(typeof objRegisterErrors.bEmailIsAvaliable !== "undefined" && objRegisterErrors.bEmailIsAvaliable === false) { %> 
+          <div>Email is not avaliable</div>
+        <% } %>   
       </div>
+    <% } %>
 
-      <div class="register__normalbox">
-        <div>
-          <input id="verify_age" type="checkbox" name="verify_age" value="yes"> 
-          <label for="verify_age">I am over 18 years of age.</label>
+    <div class="register__container">
+      <form id="register__form" autocomplete="off" action="/auth/register" method="POST">
+        <div class="register__grid">
+          <div id="username__icon" class="register__grid_icon"></div>
+          <% if(typeof username !== "undefined") { %> 
+            <label class="register__grid_label" style="font-size: 15px; transform: translate(-60px, -26px);">Username</label>
+            <input class="register__grid_input" type="text" name="username" value="<%- username %>">
+            <div class="register__grid_error"></div> 
+          <% } else { %> 
+            <label class="register__grid_label">Username</label>
+            <input class="register__grid_input" type="text" name="username">
+            <div class="register__grid_error"></div> 
+          <% } %>
         </div>
-        <div>
-          <input id="verify_tos" type="checkbox" name="verify_tos" value="yes"> 
-          <label for="verify_tos">I agree to the <a href="/">Terms and Conditions.</a></label>
+
+        <div class="register__grid">
+          <div id="password__icon" class="register__grid_icon"></div>
+          <% if(typeof password !== "undefined") { %> 
+            <label class="register__grid_label" style="font-size: 15px; transform: translate(-60px, -26px);">Password</label>
+            <input class="register__grid_input" type="password" name="password" value="<%- password %>">
+            <div class="register__grid_error"></div> 
+          <% } else { %> 
+            <label class="register__grid_label">Password</label>
+            <input class="register__grid_input" type="password" name="password">
+            <div class="register__grid_error"></div>
+          <% } %>
         </div>
-        <br>
-        <p>*An email confirmation will be sent to this address to verify it before you can log in.</p>
-      </div>
 
-      <input class="register__form_button" type="submit" name="register_form" value="REGISTER" disabled="">
-      <hr class="register__hr">
+        <div class="register__grid">
+          <div id="password__icon" class="register__grid_icon"></div>
+          <% if(typeof passwordRe !== "undefined") { %> 
+            <label class="register__grid_label" style="font-size: 15px; transform: translate(-60px, -26px);">Confirm Password</label>
+            <input class="register__grid_input" type="password" name="passwordRe" value="<%- passwordRe %>">
+            <div class="register__grid_error"></div> 
+          <% } else { %> 
+            <label class="register__grid_label">Confirm Password</label>
+            <input class="register__grid_input" type="password" name="passwordRe">
+            <div class="register__grid_error"></div>
+          <% } %>
+        </div>
 
-      <div>
-        <p>Already have an account?</p>
-        <p class="register__block"><a href="/">Login</a> or <a href="/">Reset Password</a></p>
-      </div>        
-    </form>
+        <div class="register__grid">
+          <div id="email__icon" class="register__grid_icon"></div>
+          <% if(typeof email !== "undefined") { %> 
+            <label class="register__grid_label" style="font-size: 15px; transform: translate(-60px, -26px);">Email</label>
+            <input class="register__grid_input" type="text" name="email" value="<%- email %>">
+            <div class="register__grid_error"></div> 
+          <% } else { %> 
+            <label class="register__grid_label">Email</label>
+            <input class="register__grid_input" type="text" name="email">
+            <div class="register__grid_error"></div> 
+          <% } %>
+        </div>
 
-  </div>
+        <div class="register__normalbox">
+          <div>
+            <% if(typeof verify_age !== "undefined" && verify_age == "yes") { %> 
+              <input id="verify_age" type="checkbox" name="verify_age" value="yes" checked>  
+            <% } else { %> 
+              <input id="verify_age" type="checkbox" name="verify_age" value="yes"> 
+            <% } %>
+            <label for="verify_age">I am over 18 years of age.</label>
+          </div>
+          <div>
+            <% if(typeof verify_tos !== "undefined" && verify_tos == "yes") { %> 
+              <input id="verify_tos" type="checkbox" name="verify_tos" value="yes" checked>  
+            <% } else { %> 
+              <input id="verify_tos" type="checkbox" name="verify_tos" value="yes"> 
+            <% } %>
+            <label for="verify_tos">I agree to the <a href="/">Terms and Conditions.</a></label>
+          </div>
+          <br>
+          <p>*An email confirmation will be sent to this address to verify it before you can log in.</p>
+        </div>
+
+        <input class="register__form_button" type="submit" name="register_form" value="register" disabled>
+        <hr class="register__hr">
+
+        <div>
+          <p>Already have an account?</p>
+          <p class="register__block"><a href="/auth/login">Login</a> or <a href="/">Reset Password</a></p>
+        </div>        
+      </form>
+    </div>
+
+  </main>
 </div>
 
 <script>
   const registerFormEl = document.getElementById("register__form");
+  const userEl = registerFormEl.children[0];
+  const passwordEl = registerFormEl.children[1];
+  const passwordReEl = registerFormEl.children[2];
+  const emailEl = registerFormEl.children[3];
+
   const registerUsernameEl = registerFormEl.children[0].children[2];
   const registerPasswordEl = registerFormEl.children[1].children[2];
   const registerPasswordReEl = registerFormEl.children[2].children[2];
@@ -86,45 +146,50 @@
   const registerTosEl = registerFormEl.children[4].children[1].children[0];
   const registerSubmitBtnEl = registerFormEl.children[5];
 
-  registerUsernameEl.addEventListener("focusin", function(){ RegisterFormController.main("username", "focusin"); }, false);
-  registerUsernameEl.addEventListener("focusout", function(){ RegisterFormController.main("username", "focusout"); }, false);
-  registerPasswordEl.addEventListener("focusin", function(){ RegisterFormController.main("password", "focusin"); }, false);
-  registerPasswordEl.addEventListener("focusout", function(){ RegisterFormController.main("password", "focusout"); }, false);
-  registerPasswordReEl.addEventListener("focusin", function(){ RegisterFormController.main("passwordre", "focusin"); }, false);
-  registerPasswordReEl.addEventListener("focusout", function(){ RegisterFormController.main("passwordre", "focusout"); }, false);
-  registerEmailEl.addEventListener("focusin", function(){ RegisterFormController.main("email", "focusin"); }, false);
-  registerEmailEl.addEventListener("focusout", function(){ RegisterFormController.main("email", "focusout"); }, false);
-  registerAgeEl.addEventListener("click", function(){ RegisterFormController.main("age", "click"); }, false);
-  registerTosEl.addEventListener("click", function(){ RegisterFormController.main("tos", "click"); }, false);
-  registerSubmitBtnEl.addEventListener("click", function(){ RegisterFormController.main("submit", "click"); }, false);
+  registerUsernameEl.addEventListener("focusin", () => { RegisterFormController.main(userEl, "username", "focusin"); }, false);
+  registerUsernameEl.addEventListener("focusout", () => { RegisterFormController.main(userEl, "username", "focusout"); }, false);
+  registerPasswordEl.addEventListener("focusin", () => { RegisterFormController.main(passwordEl, "password", "focusin"); }, false);
+  registerPasswordEl.addEventListener("focusout", () => { RegisterFormController.main(passwordEl, "password", "focusout"); }, false);
+  registerPasswordReEl.addEventListener("focusin", () => { RegisterFormController.main(passwordReEl, "passwordre", "focusin"); }, false);
+  registerPasswordReEl.addEventListener("focusout", () => { RegisterFormController.main(passwordReEl, "passwordre", "focusout"); }, false);
+  registerEmailEl.addEventListener("focusin", () => { RegisterFormController.main(emailEl, "email", "focusin"); }, false);
+  registerEmailEl.addEventListener("focusout", () => { RegisterFormController.main(emailEl, "email", "focusout"); }, false);
+  registerAgeEl.addEventListener("click", () => { RegisterFormController.checkIfUserAgreedWithAge(); }, false);
+  registerTosEl.addEventListener("click", () => { RegisterFormController.checkIfUserAgreedWithTOS(); }, false);
+  registerSubmitBtnEl.addEventListener("click", () => { RegisterFormController.main(registerSubmitBtnEl, "submit", "click"); }, false);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    if (registerUsernameEl.value != "") { RegisterFormController.main(userEl, "username", "focusout"); }
+    if (registerPasswordEl.value != "") { RegisterFormController.main(passwordEl, "password", "focusout"); }
+    if (registerPasswordReEl.value != "") { RegisterFormController.main(passwordReEl, "passwordre", "focusout"); }
+    if (registerEmailEl.value != "") { RegisterFormController.main(emailEl, "email", "focusout"); }
+    if (registerAgeEl.value != "") { RegisterFormController.checkIfUserAgreedWithAge(); }
+    if (registerTosEl.value != "") { RegisterFormController.checkIfUserAgreedWithTOS(); }
+  });
 
   const RegisterFormController = function() {
-    let validateUsernameEmpty = false;
-    let validateUsernameLen = false;
-    let validatePasswordEmpty = false;
-    let validatePasswordLen = false;
-    let validatePasswordReEmpty = false;
-    let validatePasswordReLen = false;
-    let validatePasswordReMatch = false;
-    let validateEmailRegex = false; 
-    let validateEmailEmpty = false; 
-    let validateYears = false;
-    let validateTos = false;
+    let bUsernameFieldIsEmpty = true;
+    let bPasswordFieldIsEmpty = true;
+    let bPasswordFieldReIsEmpty = true;
+    let bEmailIsEmpty = true;
+
+    let bUsernameLengthIsValid = false;
+    let bPasswordLengthIsValid = false;
+    let bPasswordsMatch = false;
+
+    let bEmailIsValid = false; 
+    let bUserAgreedWithAge = false;
+    let bUserAgreedWithTOS = false;
 
     let usernameErrorEl = registerUsernameEl.parentElement.children[3];
     let passwordErrorEl = registerPasswordEl.parentElement.children[3];
     let passwordReErrorEl = registerPasswordReEl.parentElement.children[3];
     let passwordEmailEl = registerEmailEl.parentElement.children[3];
 
-    function main(field, mode) {
-      let parentEl = event.currentTarget.parentElement;
+    function main(parentEl, field, mode) {
       let labelEl = parentEl.getElementsByClassName("register__grid_label")[0];
       let inputEl = parentEl.getElementsByClassName("register__grid_input")[0];
       let errorEl = parentEl.getElementsByClassName("register__grid_error")[0];
-      console.log("field = " + field);
-      console.log("mode = " + mode);
-      console.log(labelEl);
-      console.log(inputEl);
 
       // BEING VISUALS - Label movement on focusin and focusout
       if (mode == "focusin") {
@@ -142,88 +207,72 @@
         let username = registerUsernameEl.value;
 
         // Username field cannot be empty
-        if (username == "") { validateUsernameEmpty = false; }
-        else { validateUsernameEmpty = true; }
+        if (username != "") { bUsernameFieldIsEmpty = false; }
+        else { bUsernameFieldIsEmpty = true; }
 
-        // Username must be between 3-25 characters long
-        if (!(username.length >= 3 && username.length <= 25)) { validateUsernameLen = false; } 
-        else { validateUsernameLen = true; }
+        // Username must be between 4-32 characters long
+        if (username.length >= 4 && username.length <= 32) { bUsernameLengthIsValid = true; } 
+        else { bUsernameLengthIsValid = false; }
         
       } else if (field == "password" && mode == "focusout") {
         let password = registerPasswordEl.value;
 
         // Password field cannot be empty
-        if (password == "") { validatePasswordEmpty = false; }
-        else { validatePasswordEmpty = true; }
+        if (password != "") { bPasswordFieldIsEmpty = false; }
+        else { bPasswordFieldIsEmpty = true; }
 
-        // Password must be atleast 8 characters long
-        if (!(password.length >= 8)) { validatePasswordLen = false; } 
-        else { validatePasswordLen = true; }
+        // Password must be between 8 and 64 characters
+        if (password.length >= 8 && password.length <= 64) { bPasswordLengthIsValid = true; } 
+        else { bPasswordLengthIsValid = false; }
 
       } else if (field == "passwordre" && mode == "focusout") {
         let password = registerPasswordEl.value;
         let passwordre = registerPasswordReEl.value;
 
         // PasswordRe field cannot be empty
-        if (passwordre == "") { validatePasswordReEmpty = false; }
-        else { validatePasswordReEmpty = true; }
-
-        // PasswordRe must be atleast 8 characters long
-        if (!(passwordre.length >= 8)) { validatePasswordReLen = false; }
-        else { validatePasswordReLen = true; }
+        if (passwordre != "") { bPasswordFieldReIsEmpty = false; }
+        else { bPasswordFieldReIsEmpty = true; }
 
         // Password and PasswordRe must match
-        if (!(password == passwordre)) { validatePasswordReMatch = false; }
-        else { validatePasswordReMatch = true; }
+        if (password == passwordre) { bPasswordsMatch = true; }
+        else { bPasswordsMatch = false; }
       
       } else if (field == "email" && mode == "focusout") {
         let email = registerEmailEl.value;
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/gm;
 
         // Email field cannot be empty
-        if (email == "") { validateEmailEmpty = false; }
-        else { validateEmailEmpty = true; }
+        if (email != "") { bEmailIsEmpty = false; }
+        else { bEmailIsEmpty = true; }
 
         // Email validate regex
-        if (!regex.test(email)) { validateEmailRegex = false; } 
-        else { validateEmailRegex = true; }
-
-      } else if (field == "age" && mode == "click") {
-
-        // User agrees that their age is above 18
-        if (registerAgeEl.checked == false) { validateYears = false; } 
-        else { validateYears = true; }
-
-      } else if (field == "tos" && mode == "click") {
-
-        // User agrees on the TOS
-        if (registerTosEl.checked == false) { validateTos = false; } 
-        else { validateTos = true; }
+        if (regex.test(email)) { bEmailIsValid = true; } 
+        else { bEmailIsValid = false; }
 
       }
       // END BEGIN LOGIC - Validation and Error Handling
 
       // BEGIN VISUALS - Validation and Error Handling
       if (field == "username" && mode == "focusout") {
-        if (!validateUsernameEmpty) {
+        if (bUsernameFieldIsEmpty == true) {
           parentEl.style.borderBottom = "1px solid #be1e37";
           errorEl.innerHTML = "Field cannot be empty";
         }
-        else if (!validateUsernameLen) {
+        else if (bUsernameLengthIsValid == false) {
           parentEl.style.borderBottom = "1px solid #be1e37";
-          errorEl.innerHTML = "Username must be between 3 and 25 characters";
+          errorEl.innerHTML = "Username must be between 4 and 32 characters";
         } else {
           parentEl.style.borderBottom = "1px solid #3c763d";
           errorEl.innerHTML = "";
         }
 
       } else if (field == "password" && mode == "focusout") {
-        if (!validatePasswordEmpty) {
+        if (bPasswordFieldIsEmpty == true) {
           parentEl.style.borderBottom = "1px solid #be1e37";
           errorEl.innerHTML = "Field cannot be empty";
-        } else if (!validatePasswordLen) {
+        } else if (bPasswordLengthIsValid == false) {
           parentEl.style.borderBottom = "1px solid #be1e37";
-          errorEl.innerHTML = "Password must be atleast 8 characters long";
+          errorEl.innerHTML = "Password must be between 8 and 64 characters";
         } else {
           parentEl.style.borderBottom = "1px solid #3c763d";
           errorEl.innerHTML = "";
@@ -231,13 +280,10 @@
 
       } else if (field == "passwordre" && mode == "focusout") {
 
-        if (!validatePasswordReEmpty) {
+        if (bPasswordFieldReIsEmpty == true) {
           parentEl.style.borderBottom = "1px solid #be1e37";
           errorEl.innerHTML = "Field cannot be empty";
-        } else if (!validatePasswordReLen) {
-          parentEl.style.borderBottom = "1px solid #be1e37";
-          errorEl.innerHTML = "Password must be atleast 8 characters long";
-        } else if (!validatePasswordReMatch) {
+        } else if (bPasswordsMatch == false) {
           parentEl.style.borderBottom = "1px solid #be1e37";
           errorEl.innerHTML = "Passwords do not match";
         } else {
@@ -246,10 +292,10 @@
         }
 
       } else if (field == "email" && mode == "focusout") {
-        if (!validateEmailEmpty) {
+        if (bEmailIsEmpty == true) {
           parentEl.style.borderBottom = "1px solid #be1e37";
           errorEl.innerHTML = "Field cannot be empty";
-        } else if (!validateEmailRegex) {
+        } else if (bEmailIsValid == false) {
           parentEl.style.borderBottom = "1px solid #be1e37";
           errorEl.innerHTML = "Email is not valid";
         } else {
@@ -260,19 +306,45 @@
       }
       // END VISUALS - Validation and Error Handling
 
+      checkIfAllFieldsAreValid();
+    }
+
+    function checkIfUserAgreedWithAge() {
+      // User agrees that their age is above 18
+      if (registerAgeEl.checked == true) { 
+        bUserAgreedWithAge = true; 
+      } else { 
+        bUserAgreedWithAge = false;
+      }
+
+      checkIfAllFieldsAreValid();
+    }
+
+    function checkIfUserAgreedWithTOS() {
+      // User agrees on the TOS
+      if (registerTosEl.checked == true) { 
+        bUserAgreedWithTOS = true; 
+      } else { 
+        bUserAgreedWithTOS = false; 
+      }
+      
+      checkIfAllFieldsAreValid();
+    }
+
+    function checkIfAllFieldsAreValid() {
       // IF all fields are valid -> Enable the submit button.
-      if (validateUsernameLen && validatePasswordLen && validatePasswordReEmpty && validatePasswordReMatch && validateEmailEmpty && validateEmailRegex && validateYears && validateTos) {
+      if (bUsernameFieldIsEmpty == false && bPasswordFieldIsEmpty == false && bPasswordFieldReIsEmpty == false && bEmailIsEmpty == false && bUsernameLengthIsValid == true && bPasswordLengthIsValid == true && bPasswordsMatch == true && bEmailIsValid == true && bUserAgreedWithAge == true && bUserAgreedWithTOS == true) {
         registerSubmitBtnEl.disabled = false;
       } else {
         registerSubmitBtnEl.disabled = true;
       }
-
     }
 
     return {
-      main: function(field, mode) {
-        main(field, mode);
-      }
+      main: (parentEl, field, mode) => { main(parentEl, field, mode); },
+      checkIfUserAgreedWithAge: () => { checkIfUserAgreedWithAge(); },
+      checkIfUserAgreedWithTOS: () => { checkIfUserAgreedWithTOS(); },
+      checkIfAllFieldsAreValid: () => { checkIfAllFieldsAreValid(); },
     }
 
   }();
