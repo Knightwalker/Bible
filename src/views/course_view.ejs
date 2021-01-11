@@ -1,7 +1,7 @@
 <%- include("header.ejs"); -%>
 
-  <div class="topics_grid">
-    <div class="sidebar"></div>
+<div class="holygrail-body"> 
+  <main>
     <div class="course">
       <h1><%= course.display_name %></h1>
 
@@ -17,8 +17,11 @@
         <input type="hidden" name="course_id" value="<%= course._id %>" />
         <button type="submit" class="course_buttons">new topic</button>
       </form>
-
+      
     </div>
-  </div>
+  </main>
+  <div class="holygrail-aside sidebar"></div>
+  <div class="holygrail-ads ads"></div>
+</div>
   
 <%- include("footer.ejs"); -%>

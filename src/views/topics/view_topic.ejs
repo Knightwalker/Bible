@@ -1,15 +1,16 @@
 <%- include("../header.ejs"); -%>
 
-  <div class="breadcrumbs">
-    <a href="/">Home</a>
-    <span>&gt;</span>
-    <a href="/courses/<%= course.slug %>"><%= course.slug %></a>
-    <span>&gt;</span>
-    <a href="/topics/<%= topic.slug %>"><b><%= topic.slug %></b></a>
-  </div>
+<div class="holygrail-body"> 
+  <main>
 
-  <div class="topics_grid">
-    <div class="sidebar"></div>
+    <div class="breadcrumbs">
+      <a href="/">Home</a>
+      <span>&gt;</span>
+      <a href="/courses/<%= course.slug %>"><%= course.slug %></a>
+      <span>&gt;</span>
+      <a href="/topics/<%= topic.slug %>"><b><%= topic.slug %></b></a>
+    </div>
+
     <div class="topics_body">
     <h1><%= topic.display_name %></h1>
 
@@ -23,12 +24,10 @@
 
     <% } %>
     </div>
-  </div>
 
-  <style>
-    .post_body {
-      padding: 20px 40px;
-    }
-  </style>
+  </main>
+  <div class="holygrail-aside sidebar"></div>
+  <div class="holygrail-ads ads"></div>
+</div>
   
 <%- include("../footer.ejs"); -%>

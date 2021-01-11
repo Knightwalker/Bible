@@ -6,10 +6,8 @@ const getLoginPage = (req, res) => {
   const data = {
     pageTitle: "Registration",
     path: "/auth/register",
-    bUserIsLoggedIn: req.session.bUserIsLoggedIn
+    bUserIsAuthenticated: req.session.bUserIsAuthenticated
   }
-  console.log(req.sessionID);
-  console.log(req.session);
   res.render("auth/login", data);
 }
 
@@ -23,7 +21,7 @@ const postLogin = async (req, res) => {
 
   var user = null;
   try {
-    user = await User.getUser(username);
+    user = await User.getUserByUsername(username);
   } catch (err) {
     console.log(err);
     res.render("index.ejs");
@@ -50,9 +48,12 @@ const postLogin = async (req, res) => {
     return;
   }
 
-  req.session.bUserIsLoggedIn = true;
+  req.session.bUserIsAuthenticated = true;
   req.session.user = user;
   req.session.save((err) => {
+    if (err) {
+      console.log(err);
+    }
     res.redirect("/");
   });
 }

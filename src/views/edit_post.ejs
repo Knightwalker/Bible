@@ -1,8 +1,14 @@
 <%- include("header.ejs"); -%>
 
-  <form action="/post/edit/<%- post._id %>" method="POST">
-    <textarea class="codegigas_editor" name="content"><%- post.content %></textarea>
-    <button class="course_buttons" type="submit">Save</button>
-  </form>
+<div class="holygrail-body"> 
+  <main>
+
+    <form action="/post/edit/<%- post._id %>" method="POST">
+      <textarea class="codegigas_editor" name="content"><%- post.content %></textarea>
+      <button class="course_buttons" type="submit">Save</button>
+    </form>
+
+  </main>
+</div>
 
 <%- include("footer.ejs"); -%>

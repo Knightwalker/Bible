@@ -18,9 +18,19 @@ body {
   margin: 0;
 }
 .holygrail-body {
+  display: flex;
   flex: 1;
 }
-
+main {
+  flex: 1;
+}
+.holygrail-aside {
+  order: -1;
+  flex: 0 0 12em;
+}
+.holygrail-ads {
+  flex: 0 0 12em;
+}
 
 .noselect {
   user-select: none;
@@ -420,13 +430,6 @@ body {
 
 .course {
   padding: 10px 20px;
-}
-
-.topics_grid {
-  display: grid;
-  grid-template-columns: 14% 70% 16%;
-  min-height: 100%;
-  font-family: Verdana,sans-serif;
 }
 
 .topics_body {

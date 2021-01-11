@@ -78,7 +78,7 @@ const insertOneWithCallback = (user, callback) => {
   });
 }
 
-const getUser = async (username) => {
+const getUserByUsername = async (username) => {
   const db = getDb();
   return db.collection("users").findOne({username: username});
 }
@@ -152,7 +152,7 @@ module.exports = {
   generateSalt: generateSalt,
   generateHash: generateHash,
   insertOneAsync: insertOneAsync,
-  getUser: getUser,
+  getUserByUsername: getUserByUsername,
 
   isUsernameLengthValid: isUsernameLengthValid,
   isPasswordLengthValid: isPasswordLengthValid,
