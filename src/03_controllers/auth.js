@@ -1,6 +1,6 @@
 "use strict";
 
-const User = require("../models/user");
+const User = require("../01_models/user");
 
 const getLoginPage = (req, res) => {
   const data = {
@@ -49,7 +49,11 @@ const postLogin = async (req, res) => {
   }
 
   req.session.bUserIsAuthenticated = true;
-  req.session.user = user;
+  req.session.objUser = {
+    user_id: user._id,
+    username: user.username,
+    email: user.email
+  };
   req.session.save((err) => {
     if (err) {
       console.log(err);

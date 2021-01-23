@@ -20,7 +20,7 @@ const store = new MongoStore({
 });
 const port = process.env.APP_PORT;
 app.set("view engine", "ejs");
-app.set("views", "./src/views");
+app.set("views", "./src/02_views");
 
 // Middlewares
 app.use("/", express.urlencoded({ extended: true }));
@@ -46,7 +46,7 @@ app.get("/", (req, res, next) => {
 
   const data = {
     bUserIsAuthenticated: req.session.bUserIsAuthenticated,
-    user: req.session.user
+    objUser: req.session.objUser
   }
 
   console.log(data);

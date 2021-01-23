@@ -1,8 +1,8 @@
 "use strict";
 
-const CourseModel = require("../models/course");
-const TopicModel = require("../models/topic");
-const PostModel = require("../models/post");
+const CourseModel = require("../01_models/course");
+const TopicModel = require("../01_models/topic");
+const PostModel = require("../01_models/post");
 
 const readOneBySlug_WithTopics = (req, res, next) => {
   const slug = req.params.slug;

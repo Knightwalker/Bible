@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>CodeGigas</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="/assets/style.css">
@@ -30,11 +30,11 @@
         <a id="aboutUs" class="nav__normalBtn noselect">About us</a>
       </div>
       <div class="nav__item3">
-        <a id="nav__account-btn" class="noselect"><%- user.username %><span id="nav__account-btn-arrow">&#x25BD;</span></a>
+        <a id="nav__account-btn" class="noselect"><%- objUser.username %><span id="nav__account-btn-arrow">&#x25BD;</span></a>
         <div id="nav__account">
           <div class="nav__account_profile">
-            <p><%- user.username %></p>
-            <p><%- user.email %></p>
+            <p><%- objUser.username %></p>
+            <p><%- objUser.email %></p>
           </div>
           <div class="nav__account_middle">
             <a href="/" class="nav__account-settings-btn">Account Settings</a>
@@ -87,8 +87,6 @@
 
   navAccountBtnEl.addEventListener("click", () => {
     const display = window.getComputedStyle(navAccountEl).display;
-
-    
 
     if (display == "none") {
       navAccountEl.style.display = "block";

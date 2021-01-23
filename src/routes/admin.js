@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const adminController = require("../controllers/admin")
+const adminController = require("../03_controllers/admin")
 
 router.get("/courses/:slug", adminController.readOneBySlug_WithTopics)
 

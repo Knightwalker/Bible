@@ -1,8 +1,8 @@
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 
-let db = null;
 let url = process.env.DB_REMOTE_URL;
+let db = null;
 
 const options = {
   useUnifiedTopology: true
