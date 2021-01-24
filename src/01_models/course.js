@@ -3,6 +3,17 @@
 const mongodb = require("mongodb");
 const getDb = require("../database/mongodb").getDb;
 
+const getAll = async () => {
+  try {
+    const db = await getDb();
+    const collection = await db.collection("courses");
+    const result = await collection.find({}).toArray();
+    return Promise.resolve(result);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 const readOneById = (id, callback) => {
   const db = getDb();
   const _id = new mongodb.ObjectId(id);
@@ -62,5 +73,6 @@ const updateOneById_IncrementTopicsCountByOne = (id, callback) => {
 module.exports = {
   readOneById: readOneById,
   readOneBySlug_WithTopics: readOneBySlug_WithTopics,
-  updateOneById_IncrementTopicsCountByOne: updateOneById_IncrementTopicsCountByOne
+  updateOneById_IncrementTopicsCountByOne: updateOneById_IncrementTopicsCountByOne,
+  getAll: getAll
 }

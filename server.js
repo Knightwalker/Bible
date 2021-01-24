@@ -41,19 +41,6 @@ app.use(adminRoutes.routes);
 app.use(userRoutes.routes);
 app.use(authRoutes.routes);
 
-app.get("/", (req, res, next) => {
-  console.log("get / = " + process.env.NODE_ENV);
-
-  const data = {
-    bUserIsAuthenticated: req.session.bUserIsAuthenticated,
-    objUser: req.session.objUser
-  }
-
-  console.log(data);
-
-  res.render("index.ejs", data);
-});
-
 // App Init
 database.connect((err) => {
   if (err) { throw err; }
