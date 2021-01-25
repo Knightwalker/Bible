@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6 {
   margin-block-start: 0px;
   margin-block-end: 0px;
 }
@@ -469,13 +469,6 @@ code {
   white-space: pre-wrap;
 }
 
-.code_v1 {
-  display: block;
-  background-color: #f4f3f0;
-  border: 1px solid #ece8e1;
-  padding: 5px;
-  white-space: pre-wrap;
-}
 .keyword_code {
   background-color: #f4f3f0;
   border: 1px solid #ece8e1;
@@ -557,7 +550,7 @@ code {
 }
 
 .post_body {
-  padding: 20px 40px;
+  /* padding: 20px 40px; */
 }
 
 /* index.ejs */

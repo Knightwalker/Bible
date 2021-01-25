@@ -45,50 +45,48 @@ const readOneBySlug_WithTopics = (req, res, next) => {
 
 }
 
-const getTopicWithPostsBySlug = (req, res, next) => {
+const getTopicWithPostsBySlug = async (req, res, next) => {
   const slug = req.params.slug;
   
-  let course_data = {};
-  let topic_data = {};
-  let data = {
+  var course_data = {};
+  var topic_data = {};
+  var data = {
     course: {},
     topic: {}
   };
   
-  TopicModel.getTopicWithPostsBySlug(slug, (err, topic) => {
-    if (err) {
-      console.log(err);
-    } else {
-      topic_data = topic[0];
-      task2();
-    }
-  });
+  try {
+    const topic = await TopicModel.getTopicWithPostsBySlugAsync(slug);
+    topic_data = topic[0];
+    prepareTopic(topic_data);
 
-  const task2 = () => {
-    CourseModel.readOneById(topic_data.course_id, (error, result) => {
-      if (error) {
-        console.log(error);
-      } else {
-        course_data = result;
-        prepareTopic(topic_data);
-      }
-    });
+    const course = await CourseModel.readOneByIdAsync(topic_data.course_id);
+    course_data = course;
+  } catch (error) {
+    console.log(error);
   }
+
+  data.course = course_data;
+  data.topic = topic_data;
+  res.render("topics/view_topic.ejs", data);
 
   function prepareTopic(topic) {
     for (let i = 0; i < topic.posts.length; i++) {
       topic.posts[i].content = custom_nl2br(topic.posts[i].content);
       topic.posts[i].content = escapeCppForHtml(topic.posts[i].content);
     }
-    fRender();
   }
 
   // https://stackoverflow.com/questions/17646041/php-how-to-keep-line-breaks-using-nl2br-with-html-purifier
+  // https://stackoverflow.com/questions/28778928/how-should-one-handle-newlines-in-bbcode
   function custom_nl2br(str){
-    // Step 1: Add <br /> tags for each line-break
+    // Step 1: Add <br /> tags for each line-break (cross-platform)
     str = str.replace(/(?:\r\n|\r|\n)/g, "<br>");
 
     // Step 4: Removes extra <br /> tags
+    // After <p> tags
+    str = str.replace(/<\/p><br>/g, `</p>`);
+
     // Inside and After <ol class="ol_toc"></ol> custom tags
     // Inside and After <ol></ol> tags
     str = str.replace(/<ol class="ol_toc"><br>/g, `<ol class="ol_toc">`);
@@ -129,14 +127,8 @@ const getTopicWithPostsBySlug = (req, res, next) => {
 
      return str;
   }
-
-  function fRender() {
-    data.course = course_data;
-    data.topic = topic_data;
-    res.render("topics/view_topic.ejs", data);
-  }
-
-}
+ 
+} // END getTopicWithPostsBySlug
 
 const getEditPostById = (req, res, next) => {
   const id = req.params.id;

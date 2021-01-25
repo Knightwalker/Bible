@@ -37,36 +37,37 @@ const getOneById = (id, callback) => {
 
 }
 
-const getTopicWithPostsBySlug = (slug, cb) => {
+const getTopicWithPostsBySlugAsync = async (slug) => {
   const db = getDb();
 
-  db.collection("topics").aggregate([
-    {
-      $match: {
-        slug: slug
-      }
-    },
-    {
-      $lookup:
-        {
-          from: "posts",
-          localField: "_id",
-          foreignField: "topic_id",
-          as: "posts"
+  try {
+    const collection = await db.collection("topics");
+    const result = await collection.aggregate([
+      {
+        $match: {
+          slug: slug
         }
-    }
-  ]).toArray((err, res) => {
-    if (err) {
-      cb(err, null);
-    } else {
-      cb(null, res);
-    }
-  });
+      },
+      {
+        $lookup:
+          {
+            from: "posts",
+            localField: "_id",
+            foreignField: "topic_id",
+            as: "posts"
+          }
+      }
+    ]);
+    const resultArr = await result.toArray();
+    return Promise.resolve(resultArr);
+  } catch (error) {
+    return Promise.reject(error);
+  }
 
 }
 
 module.exports = {
   insertOne: insertOne,
   getOneById: getOneById,
-  getTopicWithPostsBySlug: getTopicWithPostsBySlug
+  getTopicWithPostsBySlugAsync: getTopicWithPostsBySlugAsync
 }

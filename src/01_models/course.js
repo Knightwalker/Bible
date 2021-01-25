@@ -14,6 +14,20 @@ const getAll = async () => {
   }
 }
 
+const readOneByIdAsync = async (id) => {
+  const db = getDb();
+  const _id = new mongodb.ObjectId(id);
+
+  try {
+    const collection = await db.collection("courses");
+    const result = collection.findOne({_id: _id});
+    return Promise.resolve(result);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+
+}
+
 const readOneById = (id, callback) => {
   const db = getDb();
   const _id = new mongodb.ObjectId(id);
@@ -71,6 +85,7 @@ const updateOneById_IncrementTopicsCountByOne = (id, callback) => {
 }
 
 module.exports = {
+  readOneByIdAsync: readOneByIdAsync,
   readOneById: readOneById,
   readOneBySlug_WithTopics: readOneBySlug_WithTopics,
   updateOneById_IncrementTopicsCountByOne: updateOneById_IncrementTopicsCountByOne,
