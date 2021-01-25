@@ -7,6 +7,11 @@
   box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
 /* Layout - HolyGrail*/
 html{
   height: 100%;
@@ -462,6 +467,23 @@ code {
   border: 1px solid #ece8e1;
   padding: 5px;
   white-space: pre-wrap;
+}
+
+.code_v1 {
+  display: block;
+  background-color: #f4f3f0;
+  border: 1px solid #ece8e1;
+  padding: 5px;
+  white-space: pre-wrap;
+}
+.keyword_code {
+  background-color: #f4f3f0;
+  border: 1px solid #ece8e1;
+  padding: 2px;
+  white-space: pre-wrap;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-family: monospace;
 }
 
 .course_buttons {
