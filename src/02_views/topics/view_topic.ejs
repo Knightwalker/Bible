@@ -1,28 +1,31 @@
 <%- include("../header.ejs"); -%>
 
-<div class="holygrail-body"> 
+<div class="topic_wrapper"> 
   <main>
 
     <div class="breadcrumbs">
-      <a href="/">Home</a>
-      <span>&gt;</span>
+      <a href="/">home</a>
+      <span>&#8680;</span>
       <a href="/courses/<%= course.slug %>"><%= course.slug %></a>
-      <span>&gt;</span>
+      <span>&#8680;</span>
       <a href="/topics/<%= topic.slug %>"><b><%= topic.slug %></b></a>
     </div>
 
-    <div class="topics_body">
-    <h1><%= topic.name %></h1>
+    <div class="topic">
+      <h1><%= topic.name %></h1>
+      <hr>
+      <% for (let i = 0; i < topic.posts.length; i++) { %> 
+        <div class="post_body"><%- topic.posts[i].content %></div>
+        <div class="post_foot">
+          <form action="/post/edit/<%= topic.posts[i]._id %>" method="GET">
+            <button class="course_buttons" type="submit">Edit</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
 
-    <% for (let i = 0; i < topic.posts.length; i++) { %> 
-      
-      <div><%- topic.posts[i]._id %></div>
-      <div class="post_body"><%- topic.posts[i].content %></div>
-      <form action="/post/edit/<%= topic.posts[i]._id %>" method="GET">
-        <button class="course_buttons" type="submit">Edit</button>
-      </form>
-
-    <% } %>
+    <div class="permissions">
+      <div class="permissions_head">Permissions in this topic:</div>
     </div>
 
   </main>

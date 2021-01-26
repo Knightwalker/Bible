@@ -21,6 +21,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   margin: 0;
+  font-family: 'Inter-Regular';
 }
 .holygrail-body {
   display: flex;
@@ -32,9 +33,11 @@ main {
 .holygrail-aside {
   order: -1;
   flex: 0 0 12em;
+  background-color: #ece8e1;
 }
 .holygrail-ads {
   flex: 0 0 12em;
+  background-color: #ece8e1;
 }
 
 .noselect {
@@ -433,18 +436,23 @@ main {
 
 }
 
+.course_wrapper {
+  display: flex;
+  flex: 1;
+  background-color: #ece8e1;
+}
 .course {
   padding: 10px 20px;
+  background-color: #ffffff;
 }
-
-.topics_body {
-  padding: 10px 20px;
-}
-
-.sidebar {
-  grid-column: 1;
+.topic_wrapper {
+  display: flex;
+  flex: 1;
   background-color: #ece8e1;
-  padding: 10px;
+}
+.topic {
+  padding: 10px 20px;
+  background-color: #ffffff;
 }
 
 .ol_toc {
@@ -469,7 +477,15 @@ code {
   white-space: pre-wrap;
 }
 
-.keyword_code {
+.code_cmd {
+  background-color: #0c0c0c;
+  border: 1px solid #000000;
+  padding: 5px;
+  white-space: pre-wrap;
+  color: #cccccc
+}
+
+span.keyword_code {
   background-color: #f4f3f0;
   border: 1px solid #ece8e1;
   padding: 2px;
@@ -488,9 +504,23 @@ code {
   cursor: pointer;
 }
 
+.breadcrumbs {
+  background: #ece8e1;
+  padding: 10px 20px;
+  font-family: 'Inter-Medium';
+}
 .breadcrumbs a {
-  text-decoration: none;
   color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.permissions {
+  background: #ece8e1;
+  padding: 10px 20px;
+}
+.permissions_head {
+  font-family: 'Inter-Bold';
 }
 
 .topic_body {
@@ -621,19 +651,9 @@ code {
   padding-top: 10px;
   padding-bottom: 25px;
 }
-.courses_distortion_top {
-  position: absolute;
-  background-image: url("./views/courses_top_distortion.svg");
-  height: 108px;
-  width: 216px;
-  background-repeat: no-repeat;
-  top: 0;
-  right: 0;
-}
 
 .footer {
   position: relative;
-  margin-top: 100px;
   background-color: #000000;
   padding-top: 100px;
   padding-bottom: 100px;
@@ -663,11 +683,4 @@ code {
 .footer_flexbox_item_head {
   font-family: 'Inter-Black';
   color: #0bc4e2;
-}
-
-
-
-.codegigas_editor {
-  width: 100%;
-  min-height: 300px;
 }

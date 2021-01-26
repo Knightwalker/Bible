@@ -1,16 +1,22 @@
-<%- include("header.ejs"); -%>
+<%- include("../header.ejs"); -%>
 
-<div class="holygrail-body"> 
+<div class="course_wrapper"> 
   <main>
+    
+    <div class="breadcrumbs">
+      <a href="/">home</a>
+      <span>&#8680;</span>
+      <a href="/courses/<%= course.slug %>"><b><%= course.slug %></b></a>
+    </div>
+
     <div class="course">
-      <h1><%= course.display_name %></h1>
+      <h1><%= course.name %></h1>
+      <hr>
 
       <% for (let i = 0; i < course.topics.length; i++) { %> 
-        
         <a href="/topics/<%- course.topics[i].slug %>">
           <div><%- course.topics[i].position %>. <%- course.topics[i].name %></div>
         </a>
-
       <% } %>
 
       <form action="/topics/mode/new_topic" method="get">
@@ -24,4 +30,4 @@
   <div class="holygrail-ads ads"></div>
 </div>
   
-<%- include("footer.ejs"); -%>
+<%- include("../footer.ejs"); -%>

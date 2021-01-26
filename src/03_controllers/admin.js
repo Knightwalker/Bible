@@ -39,7 +39,7 @@ const readOneBySlug_WithTopics = (req, res, next) => {
   }
 
   const task3 = () => {
-    res.render("course_view", options);
+    res.render("course/view_course", options);
   }
   task1();
 
@@ -84,8 +84,20 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
     str = str.replace(/(?:\r\n|\r|\n)/g, "<br>");
 
     // Step 4: Removes extra <br /> tags
-    // After <p> tags
+    // After <h1>, <h2>, <h3>, <h4>, <h5>, <h6>, <p>, <li> tags
+    str = str.replace(/<\/h1><br>/g, `</h1>`);
+    str = str.replace(/<\/h2><br>/g, `</h2>`);
+    str = str.replace(/<\/h3><br>/g, `</h3>`);
+    str = str.replace(/<\/h4><br>/g, `</h4>`);
+    str = str.replace(/<\/h5><br>/g, `</h5>`);
+    str = str.replace(/<\/h6><br>/g, `</h6>`);
     str = str.replace(/<\/p><br>/g, `</p>`);
+    str = str.replace(/<\/li><br>/g, `</li>`);
+
+    // Inside and After <ul></ul> tags
+    str = str.replace(/<ul><br>/g, `<ul>`);
+    str = str.replace(/<br><\/ul>/g, `</ul>`);
+    str = str.replace(/<\/ul><br>/g, `</ul>`);
 
     // Inside and After <ol class="ol_toc"></ol> custom tags
     // Inside and After <ol></ol> tags
@@ -95,6 +107,7 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
     str = str.replace(/<\/ol><br>/g, `</ol>`);
 
     // Inside and After <code class="code_language_cpp"></code> custom tags
+    str = str.replace(/<code class="code_cmd"><br>/g, `<code class="code_cmd">`);
     str = str.replace(/<code class="code_language_cpp"><br>/g, `<code class="code_language_cpp">`);
     str = str.replace(/<code><br>/g, `<code>`);
     str = str.replace(/<br><\/code>/g, `</code>`);
