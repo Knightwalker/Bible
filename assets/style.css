@@ -445,6 +445,13 @@ main {
   padding: 10px 20px;
   background-color: #ffffff;
 }
+.course a {
+  color: #000000;
+  text-decoration: none;
+}
+.course a:hover {
+  font-weight: bold;
+}
 .topic_wrapper {
   display: flex;
   flex: 1;
@@ -474,16 +481,28 @@ code {
   background-color: #f4f3f0;
   border: 1px solid #ece8e1;
   padding: 5px;
+  font-size: 14px;
   white-space: pre-wrap;
 }
 
 .code_cmd {
+  display: block;
   background-color: #0c0c0c;
   border: 1px solid #000000;
   padding: 5px;
+  color: #cccccc;
+  font-size: 14px;
   white-space: pre-wrap;
-  color: #cccccc
 }
+.code_normal {
+  display: block;
+  background-color: #f4f3f0;
+  border: 1px solid #ece8e1;
+  padding: 5px;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
 
 span.keyword_code {
   background-color: #f4f3f0;
@@ -513,6 +532,9 @@ span.keyword_code {
   color: black;
   text-decoration: none;
   text-transform: uppercase;
+}
+.breadcrumbs a:hover {
+  font-weight: bold;
 }
 
 .permissions {

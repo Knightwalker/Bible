@@ -107,6 +107,7 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
     str = str.replace(/<\/ol><br>/g, `</ol>`);
 
     // Inside and After <code class="code_language_cpp"></code> custom tags
+    str = str.replace(/<code class="code_normal"><br>/g, `<code class="code_normal">`);
     str = str.replace(/<code class="code_cmd"><br>/g, `<code class="code_cmd">`);
     str = str.replace(/<code class="code_language_cpp"><br>/g, `<code class="code_language_cpp">`);
     str = str.replace(/<code><br>/g, `<code>`);
