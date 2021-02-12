@@ -1,7 +1,8 @@
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
+const config = require("../../config");
 
-const URI = process.env.DB_REMOTE_URL;
+const URI = config.MONGODB_URL;
 const mongoClient = new MongoClient(URI, {useUnifiedTopology: true});
 
 // Private Variables

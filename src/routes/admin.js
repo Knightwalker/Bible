@@ -9,10 +9,17 @@ router.get("/courses/:slug", adminController.readOneBySlug_WithTopics)
 router.get("/topics/:slug", adminController.getTopicWithPostsBySlug);
 
 router.get("/post/edit/:id", authMiddleware.authenticateAdmin, adminController.getEditPostById) // protected routes for now
-router.post("/post/edit/:id", authMiddleware.authenticateAdmin, adminController.postEditPostById) // protected routes for now
+router.post("/post/edit/:id", [
+  authMiddleware.authenticateAdmin, 
+  express.urlencoded({ extended: true }),
+  adminController.postEditPostById
+]) // protected routes for now
 
 router.get("/topics/mode/new_topic", authMiddleware.authenticateAdmin, adminController.getNewTopic); // protected routes for now
-router.post("/topics/mode/new_topic", authMiddleware.authenticateAdmin, adminController.postNewTopic); // protected routes for now
+router.post("/topics/mode/new_topic", [
+  authMiddleware.authenticateAdmin, 
+  express.urlencoded({ extended: true }),
+  adminController.postNewTopic]); // protected routes for now
 
 module.exports = {
   routes: router,

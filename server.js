@@ -14,17 +14,15 @@ const authRoutes = require("./src/routes/auth.js");
 // Settings
 const app = express();
 const store = new MongoStore({
-  url: process.env.DB_REMOTE_URL,
+  url: config.MONGODB_URL,
   collection: "sessions",
   autoRemove: 'interval',
   autoRemoveInterval: 10 // In minutes. Default
 });
-const port = process.env.APP_PORT;
 app.set("view engine", "ejs");
 app.set("views", "./src/02_views");
 
 // Middlewares
-app.use("/", express.urlencoded({ extended: true }));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use("/", session({ 
   secret: "cats", 
@@ -49,12 +47,13 @@ app.use(homeRoutes.routes);
     await mongodb.connect();
     console.log("Connected to MongoDB at port 27017");
   } catch (error) {
-    await disconnect();
+    await mongodb.disconnect();
+    console.log("ERROR Occured: Disconnecting MongoDB");
     console.log(error);
   }
 
-  app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}/`)
+  app.listen(config.APP_PORT, () => {
+    console.log(`Server listening at http://localhost:${config.APP_PORT}/`)
   });
 
 })();
