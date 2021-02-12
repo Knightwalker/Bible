@@ -18,9 +18,19 @@ const getHomePage = async (req, res) => {
     courses: courses
   }
 
-  res.render("./user/home.ejs", data);
+  res.render("./home/home.ejs", data);
 }
 
+const getPageJsWeb = (req, res) => {
+  res.render("home/js_web.ejs")
+} 
+
+const getPageCppWeb = (req, res) => {
+  res.render("home/cpp_games.ejs")
+} 
+
 module.exports = {
-  getHomePage: getHomePage
+  getHomePage: getHomePage,
+  getPageJsWeb: getPageJsWeb,
+  getPageCppWeb: getPageCppWeb
 }
