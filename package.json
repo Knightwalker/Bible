@@ -6,8 +6,8 @@
   "license": "ISC",
   "main": "server.js",
   "scripts": {
-    "start": "set APP_ENVIRONMENT=heroku && node server.js",
-    "start:dev": "set APP_ENVIRONMENT=local && nodemon server.js"
+    "start": "SET \"NODE_ENV=development\" && nodemon server.js",
+    "prod": "SET \"NODE_ENV=production\" && node server.js"
   },
   "dependencies": {
     "connect-mongo": "^3.2.0",

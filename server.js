@@ -6,6 +6,7 @@ const MongoStore = require("connect-mongo")(session);
 const config = require("./config.js");
 
 const database = require("./src/database/mongodb");
+const homeRoutes = require("./src/routes/home.js");
 const adminRoutes = require("./src/routes/admin");
 const userRoutes = require("./src/routes/user");
 const authRoutes = require("./src/routes/auth.js");
@@ -40,6 +41,7 @@ app.use("/", session({
 app.use(adminRoutes.routes);
 app.use(userRoutes.routes);
 app.use(authRoutes.routes);
+app.use(homeRoutes.routes);
 
 // App Init
 database.connect((err) => {
