@@ -7,7 +7,7 @@
   "main": "server.js",
   "scripts": {
     "start": "SET \"NODE_ENV=development\" && nodemon server.js",
-    "prod": "node server.js"
+    "production": "node server.js"
   },
   "dependencies": {
     "connect-mongo": "^3.2.0",

@@ -12,10 +12,10 @@ if (process.env.NODE_ENV == "development") {
     MONGODB_URL: envFileToObj.MONGODB_URL
   }
 
-} else if (process.env.NODE_ENV == "heroku") {
+} else if (process.env.NODE_ENV == "production") {
   config = {
     APP_HOST: "codegigas.com",
-    APP_PORT: process.env.PORT,
+    APP_PORT: process.env.PORT, // heroku assigns this automatically
     //DB_URL: "mongodb://localhost:27017/codegigas",
     MONGODB_URL: process.env.MONGODB_URL
   }
