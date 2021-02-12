@@ -15,7 +15,7 @@ if (process.env.NODE_ENV == "development") {
 } else if (process.env.NODE_ENV == "heroku") {
   config = {
     APP_HOST: "codegigas.com",
-    APP_PORT: 3000,
+    APP_PORT: process.env.PORT,
     //DB_URL: "mongodb://localhost:27017/codegigas",
     MONGODB_URL: process.env.MONGODB_URL
   }
