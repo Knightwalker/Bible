@@ -5,7 +5,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const config = require("./config.js");
 
-const database = require("./src/database/mongodb");
+const mongodb = require("./src/database/mongodb.js");
 const homeRoutes = require("./src/routes/home.js");
 const adminRoutes = require("./src/routes/admin");
 const userRoutes = require("./src/routes/user");
@@ -43,12 +43,18 @@ app.use(userRoutes.routes);
 app.use(authRoutes.routes);
 app.use(homeRoutes.routes);
 
-// App Init
-database.connect((err) => {
-  if (err) { throw err; }
-  console.log("Connected to MongoDB at port 27017");
+// APP Init - Using Top Level Await
+(async () => {
+  try {
+    await mongodb.connect();
+    console.log("Connected to MongoDB at port 27017");
+  } catch (error) {
+    await disconnect();
+    console.log(error);
+  }
 
   app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}/`)
   });
-});
+
+})();

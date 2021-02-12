@@ -15,7 +15,7 @@ const getAll = async () => {
 }
 
 const readOneByIdAsync = async (id) => {
-  const db = getDb();
+  const db = await getDb();
   const _id = new mongodb.ObjectId(id);
 
   try {
@@ -28,8 +28,8 @@ const readOneByIdAsync = async (id) => {
 
 }
 
-const readOneById = (id, callback) => {
-  const db = getDb();
+const readOneById = async (id, callback) => {
+  const db = await getDb();
   const _id = new mongodb.ObjectId(id);
 
   db.collection("courses").findOne({_id: _id}, (error, result) => {
@@ -42,8 +42,8 @@ const readOneById = (id, callback) => {
 
 }
 
-const readOneBySlug_WithTopics = (slug, callback) => {
-  const db = getDb();
+const readOneBySlug_WithTopics = async (slug, callback) => {
+  const db = await getDb();
 
   db.collection("courses").aggregate([
     {
@@ -69,8 +69,8 @@ const readOneBySlug_WithTopics = (slug, callback) => {
 
 }
 
-const updateOneById_IncrementTopicsCountByOne = (id, callback) => {
-  const db = getDb();
+const updateOneById_IncrementTopicsCountByOne = async (id, callback) => {
+  const db = await getDb();
   const _id = new mongodb.ObjectId(id);
 
   db.collection("courses").updateOne({_id: _id}, {

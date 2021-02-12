@@ -3,8 +3,8 @@
 const mongodb = require("mongodb");
 const getDb = require("../database/mongodb").getDb;
 
-const insertOne = (data, callback) => {
-  const db = getDb();
+const insertOne = async (data, callback) => {
+  const db = await getDb();
 
   let doc = {
     name: data.name,
@@ -23,8 +23,8 @@ const insertOne = (data, callback) => {
   });
 }
 
-const getOneById = (id, callback) => {
-  const db = getDb();
+const getOneById = async (id, callback) => {
+  const db = await getDb();
   const _id = new mongodb.ObjectId(id);
 
   db.collection("topics").findOne({_id: _id}, (error, result) => {
@@ -38,7 +38,7 @@ const getOneById = (id, callback) => {
 }
 
 const getTopicWithPostsBySlugAsync = async (slug) => {
-  const db = getDb();
+  const db = await getDb();
 
   try {
     const collection = await db.collection("topics");

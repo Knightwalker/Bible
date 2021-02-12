@@ -1,33 +1,54 @@
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 
-let url = process.env.DB_REMOTE_URL;
-let db = null;
+const URI = process.env.DB_REMOTE_URL;
+const mongoClient = new MongoClient(URI, {useUnifiedTopology: true});
 
-const options = {
-  useUnifiedTopology: true
+// Private Variables
+db = null;
+
+/**
+ * Establish connection to a MongoDB database server.
+ */
+const connect = async () => {  
+  try {
+    const client = await mongoClient.connect();
+    db = await client.db("codegigas");
+    return Promise.resolve();
+  } catch (error) {
+    if (mongoClient.isConnected) {
+      await mongoClient.close();
+    }
+    db = null;
+    return Promise.reject(error);
+  }
 }
 
-const connect = (callback) => {
-  MongoClient.connect(url, options, (err, client) => {
-    if (err) { 
-      callback(err); 
+const disconnect = async () => {
+  if (mongoClient.isConnected) {
+    await mongoClient.close();
+    return Promise.resolve();
+  } else {
+    return Promise.reject("ERROR: MongoClient was not connected");
+  }
+}
+
+/**
+ * Returns a database instance
+ * @see: {@link https://mongodb.github.io/node-mongodb-native/3.1/api/Db.html}
+ */
+const getDb = async () => {
+  return new Promise((resolve, reject) => {
+    if (mongoClient.isConnected && db != null) {
+      resolve(db);
     } else {
-      db = client.db();
-      callback(null);
+      reject("ERROR: There is no database instance");
     }
   });
 }
 
-const getDb = () => {
-  if (db) {
-    return db;
-  } else {
-    throw "MongoDB is unable to get codegigas"; // this is not needed
-  }
-}
-
 module.exports = {
   connect: connect,
+  disconnect: disconnect,
   getDb: getDb
-};
+}

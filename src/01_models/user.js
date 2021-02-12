@@ -4,8 +4,8 @@ const crypto = require("crypto");
 const mongodb = require("mongodb");
 const getDb = require("../database/mongodb").getDb;
 
-const bCheckIfUsernameIsAvaliable = (username, callback) => {
-  const db = getDb();
+const bCheckIfUsernameIsAvaliable = async (username, callback) => {
+  const db = await getDb();
   db.collection("users").findOne({username: username}, (error, result) => {
     if (error) { 
       callback(error, null);
@@ -20,7 +20,7 @@ const bCheckIfUsernameIsAvaliable = (username, callback) => {
 }
 
 const bCheckIfUsernameIsAvaliableAsync = async (username) => {
-  const db = getDb();
+  const db = await getDb();
   let result = null;
   try {
     result = await db.collection("users").findOne({username: username});
@@ -37,7 +37,7 @@ const bCheckIfUsernameIsAvaliableAsync = async (username) => {
 }
 
 const bCheckIfEmailIsAvaliableAsync = async (email) => {
-  const db = getDb();
+  const db = await getDb();
   let result = null;
   try {
     result = await db.collection("users").findOne({email: email});
@@ -67,8 +67,8 @@ const generateHash = (password, salt) => {
   return crypto.pbkdf2Sync(password, salt, 1000, 512, "sha512").toString("hex");
 }
 
-const insertOneWithCallback = (user, callback) => {
-  const db = getDb();
+const insertOneWithCallback = async (user, callback) => {
+  const db = await getDb();
   db.collection("users").insertOne(user, (err, res) => {
     if (err) {
       callback(err); 
@@ -79,12 +79,12 @@ const insertOneWithCallback = (user, callback) => {
 }
 
 const getUserByUsername = async (username) => {
-  const db = getDb();
+  const db = await getDb();
   return db.collection("users").findOne({username: username});
 }
 
 const insertOneAsync = async (user) => {
-  const db = getDb();
+  const db = await getDb();
   var result = null;
   try {
     result = await db.collection("users").insertOne(user);

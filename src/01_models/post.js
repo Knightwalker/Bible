@@ -1,10 +1,10 @@
 "use strict";
 
 const mongodb = require("mongodb");
-const getDb = require("../database/mongodb").getDb;
+const getDb = require("../database/mongodb.js").getDb;
 
-const createNew = (data, callback) => {
-  const db = getDb();
+const createNew = async (data, callback) => {
+  const db = await getDb();
 
   let doc = {
     content: data.content,
@@ -20,8 +20,8 @@ const createNew = (data, callback) => {
   });
 }
 
-const getOneById = (id, callback) => {
-  const db = getDb();
+const getOneById = async (id, callback) => {
+  const db = await getDb();
   const _id = new mongodb.ObjectId(id);
 
   db.collection("posts").findOne({_id: _id}, (error, result) => {
@@ -33,8 +33,8 @@ const getOneById = (id, callback) => {
   });
 }
 
-const modifyOneById = (id, content, callback) => {
-  const db = getDb();
+const modifyOneById = async (id, content, callback) => {
+  const db = await getDb();
   const _id = new mongodb.ObjectId(id);
 
   db.collection("posts").findOneAndUpdate({_id: _id}, {
