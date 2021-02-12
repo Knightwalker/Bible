@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const config = {};
+var config = {};
 
 if (process.env.NODE_ENV == "development") {
   let envFileToObj = JSON.parse(fs.readFileSync("./env.json", {encoding: "utf-8"}));
