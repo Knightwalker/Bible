@@ -72,6 +72,7 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
 
   function prepareTopic(topic) {
     for (let i = 0; i < topic.posts.length; i++) {
+      topic.posts[i].content = escapeHtml_InCodeTags(topic.posts[i].content);
       topic.posts[i].content = custom_nl2br(topic.posts[i].content);
       topic.posts[i].content = escapeCppForHtml(topic.posts[i].content);
     }
@@ -141,6 +142,45 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
 
      return str;
   }
+
+  function escapeHtml_InCodeTags(str) {
+    var sb = "";
+    
+    while(true) {
+      const openingTag = `<code class="code_normal">`;
+      const closingTag = `</code>`;
+      const openingTagLen = openingTag.length;
+      const closingTagLen = closingTag.length;
+      const firstIndexOfOpeningTag = str.indexOf(openingTag);
+      const firstIndexOfClosingTag = str.indexOf(closingTag);
+
+      if (firstIndexOfOpeningTag >= 0 && firstIndexOfClosingTag >= 0) {
+        let leftStr = str.substring(0, firstIndexOfOpeningTag);
+        let midStr = str.substring(firstIndexOfOpeningTag + openingTagLen, firstIndexOfClosingTag); 
+        let rightStr = str.substring(firstIndexOfClosingTag + closingTagLen);
+      
+        sb += leftStr;
+        sb += openingTag;
+        sb += escapeHTML(midStr);
+        sb += closingTag;
+        str = rightStr //save the rest for next iteration 
+      }
+
+      if (firstIndexOfOpeningTag == -1 || firstIndexOfClosingTag == -1) { 
+        sb += str;
+        break; 
+      }
+    }
+
+    return sb;
+ }
+
+ function escapeHTML(str) {
+    str = str.replace(/</g, "&lt;")
+    str = str.replace(/>/g, "&gt;")
+
+    return str;
+ }
  
 } // END getTopicWithPostsBySlug
 
