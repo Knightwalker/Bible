@@ -7,7 +7,7 @@ if (process.env.NODE_ENV == "development") {
 
   config = {
     APP_HOST: "localhost",
-    APP_PORT: 3000,
+    APP_PORT: 5000,
     //DB_URL: "mongodb://localhost:27017/codegigas",
     MONGODB_URL: envFileToObj.MONGODB_URL
   }
