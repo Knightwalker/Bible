@@ -7,7 +7,8 @@
   "main": "server.js",
   "scripts": {
     "start": "SET \"NODE_ENV=development\" && nodemon server.js",
-    "production": "node server.js"
+    "production": "node server.js",
+    "debug": "SET \"NODE_ENV=development\" && nodemon --inspect server.js"
   },
   "dependencies": {
     "connect-mongo": "^3.2.0",
@@ -24,11 +25,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/knightwalker/codegigas.git"
+    "url": "git://github.com/codegigas/codegigas.git"
   },
   "bugs": {
-    "url": "https://github.com/knightwalker/codegigas/issues"
+    "url": "https://github.com/codegigas/codegigas/issues"
   },
-  "homepage": "https://github.com/knightwalker/codegigas#readme",
+  "homepage": "https://github.com/codegigas/codegigas#readme",
   "keywords": []
 }

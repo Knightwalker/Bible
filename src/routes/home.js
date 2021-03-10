@@ -8,6 +8,4 @@ router.get("/home", homeController.getHomePage);
 router.get("/home/js_web", homeController.getPageJsWeb)
 router.get("/home/cpp_games", homeController.getPageCppWeb)
 
-module.exports = {
-  routes: router,
-};
+module.exports = router;

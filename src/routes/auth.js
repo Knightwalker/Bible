@@ -11,6 +11,4 @@ router.post("/auth/register", express.urlencoded({ extended: true }), authContro
 
 router.post("/auth/logout", authController.postLogot);
 
-module.exports = {
-  routes: router,
-};
+module.exports = router;

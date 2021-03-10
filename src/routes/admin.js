@@ -21,6 +21,4 @@ router.post("/topics/mode/new_topic", [
   express.urlencoded({ extended: true }),
   adminController.postNewTopic]); // protected routes for now
 
-module.exports = {
-  routes: router,
-};
+module.exports = router;

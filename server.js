@@ -1,3 +1,4 @@
+const http = require("http");
 const path = require("path");
 
 const express = require("express");
@@ -35,6 +36,8 @@ app.use("/", session({
 // Routes
 app.use(routes);
 
+const server = http.createServer(app);
+
 async function startServer() {
   try {
     await mongodb.connect();
@@ -45,7 +48,7 @@ async function startServer() {
     console.log(error);
   }
 
-  app.listen(config.APP_PORT, () => {
+  server.listen(config.APP_PORT, () => {
     console.log(`Server listening at http://localhost:${config.APP_PORT}/`)
   });
 }

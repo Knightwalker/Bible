@@ -5,6 +5,4 @@ const userController = require("../03_controllers/user")
 
 router.get("/path/js_web", userController.placeholder);
 
-module.exports = {
-  routes: router,
-};
+module.exports = router;
