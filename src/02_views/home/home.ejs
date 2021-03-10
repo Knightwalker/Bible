@@ -57,11 +57,30 @@
 </div>
 
 <div class="courses">
-  <h1 class="courses_head">All Technologies</h1>
-  <div>Browse All Courses</div>
-  <% for( let index = 0; index < courses.length; index++ ) { %>
-    <a href="/courses/<%= courses[index].slug %>"><div><%= courses[index].name %></div></a>
+  <div class="courses_header">
+    <h1 class="courses_head">All Technologies</h1>
+  </div>
+  <div class="technologies_container">
+  <% for( let i = 0; i < courses.length; ++i ) { %>
+
+    <div class="technology">
+      <div class="technology_head">
+        <img class="technology_image" src="<%= courses[i].image_src %>"></img>
+        <div class="technology_name"><%= courses[i].display_name %></div>
+      </div>
+      <div class="technology_description"><%= courses[i].description %></div>
+      
+      <form class="technology_form" action="/courses/<%= courses[i].slug %>" method="GET">
+        <button class="custom_btn">
+          <span class="custom_btn__inner">
+            <span class="custom_btn__slide"></span>
+            <span class="custom_btn__content">Learn More</span>
+          </span>
+        </button>
+      </form>
+    </div>
   <% } %>
+  </div>
 </div>
 
 <div class="section_delimiter_one">Your Path So Far</div>
