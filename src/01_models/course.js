@@ -42,33 +42,6 @@ const readOneById = async (id, callback) => {
 
 }
 
-const readOneBySlug_WithTopics = async (slug, callback) => {
-  const db = await getDb();
-
-  db.collection("courses").aggregate([
-    {
-      $match: {
-        slug: slug
-      }
-    },
-    {
-      $lookup: {
-          from: "topics",
-          localField: "_id",
-          foreignField: "course_id",
-          as: "topics"
-      },
-    }
-  ]).toArray((err, res) => {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, res);
-    }
-  });
-
-}
-
 const updateOneById_IncrementTopicsCountByOne = async (id, callback) => {
   const db = await getDb();
   const _id = new mongodb.ObjectId(id);
@@ -87,7 +60,6 @@ const updateOneById_IncrementTopicsCountByOne = async (id, callback) => {
 module.exports = {
   readOneByIdAsync: readOneByIdAsync,
   readOneById: readOneById,
-  readOneBySlug_WithTopics: readOneBySlug_WithTopics,
   updateOneById_IncrementTopicsCountByOne: updateOneById_IncrementTopicsCountByOne,
   getAll: getAll
 }

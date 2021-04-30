@@ -1,0 +1,40 @@
+<%- include("./header.ejs"); -%>
+
+<div class="course_wrapper"> 
+  <main>
+    
+    <div class="breadcrumbs">
+      <a href="/">home</a>
+      <span>&#8680;</span>
+      <a href="/courses/<%= subject.slug %>"><b><%= subject.slug %></b></a>
+    </div>
+
+    <div class="course">
+      <h1><%= subject.name %></h1>
+      <hr>
+
+      <% for (let i = 0; i < subject.sectionsArr.length; i++) { %> 
+        <div class="section">
+          <p class="section_title"><%- subject.sectionsArr[i].title %></p>
+          
+          <% for (let j = 0; j < subject.sectionsArr[i].topicsArr.length; j++) { %> 
+          <a href="/topics/<%- subject.sectionsArr[i].topicsArr[j].slug %>">
+            <div><%- subject.sectionsArr[i].topicsArr[j].position %>. <%- subject.sectionsArr[i].topicsArr[j].name %></div>
+          </a>
+          <% } %>
+
+        </div>
+      <% } %>
+
+      <form action="/topics/mode/new_topic" method="get">
+        <input type="hidden" name="course_id" value="<%= subject._id %>" />
+        <button type="submit" class="course_buttons">new topic</button>
+      </form>
+      
+    </div>
+  </main>
+  <div class="holygrail-aside sidebar"></div>
+  <div class="holygrail-ads ads"></div>
+</div>
+  
+<%- include("./footer.ejs"); -%>

@@ -3,8 +3,10 @@ const router = express.Router();
 
 const adminController = require("../03_controllers/admin")
 const authMiddleware = require("../middlewares/authentication.js");
+const subjectsController = require("../controllers/subjects");
 
-router.get("/courses/:slug", adminController.readOneBySlug_WithTopics)
+router.get("/courses/:slug", subjectsController.getOneBySlug_WithSectionsWithTopics);
+// router.get("/courses/:slug", adminController.readOneBySlug_WithTopics)
 
 router.get("/topics/:slug", adminController.getTopicWithPostsBySlug);
 

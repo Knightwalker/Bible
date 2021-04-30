@@ -4,47 +4,6 @@ const CourseModel = require("../01_models/course");
 const TopicModel = require("../01_models/topic");
 const PostModel = require("../01_models/post");
 
-const readOneBySlug_WithTopics = (req, res, next) => {
-  const slug = req.params.slug;
-
-  const sSortBy = "position";
-  const sSortMode = "ascending";
-
-  let options = {
-
-  }
-
-  const task1 = () => {
-    CourseModel.readOneBySlug_WithTopics(slug, (error, course) => {
-      if (error) {
-        console.log(error);
-      } else {
-        options.course = course[0];
-        task2();
-      }
-    });
-  }
-
-  const task2 = () => {
-    options.course.topics.sort(function(a, b) {
-      if (sSortBy == "position" && sSortMode == "ascending")
-      if (a.position > b.position) {
-        return 1;  // -1 means the first goes before the second, 1 means it goes after, and 0 means they're equivalent.
-      } else if (a.position < b.position) {
-        return -1;
-      }
-    });
-
-    task3();
-  }
-
-  const task3 = () => {
-    res.render("course/view_course", options);
-  }
-  task1();
-
-}
-
 const getTopicWithPostsBySlug = async (req, res, next) => {
   const slug = req.params.slug;
   
@@ -332,7 +291,6 @@ const postNewTopic = (req, res, next) => {
 }
 
 module.exports = {
-  readOneBySlug_WithTopics: readOneBySlug_WithTopics,
   getTopicWithPostsBySlug: getTopicWithPostsBySlug,
   getEditPostById: getEditPostById,
   postEditPostById: postEditPostById,

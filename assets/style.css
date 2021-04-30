@@ -917,3 +917,12 @@ span.keyword_code {
 .sponsors {
   height: 600px;
 }
+
+
+
+.section {
+  margin-bottom: 10px;
+}
+.section_title {
+  font-family: 'Inter-Bold';
+}
