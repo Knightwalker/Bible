@@ -75,6 +75,7 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
     str = str.replace(/<\/code><br>/g, `</code>`);
 
     // Inside and After <table"></table> tags
+    str = str.replace(/<table class="code_table"><br>/g, `<table class="code_table">`);
     str = str.replace(/<table><br>/g, `<table>`);
     str = str.replace(/<tbody><br>/g, `<tbody>`);
     str = str.replace(/<tr><br>/g, `<tr>`);
@@ -94,9 +95,9 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
   function escapeCppForHtml(str) {
      str = str.replace(/<iostream>/g, "&lt;iostream&gt;");
      str = str.replace(/<string>/g, "&lt;string&gt;");
-     str = str.replace(/<vector>/g, "&lt;vector&gt;");
      str = str.replace(/vector<int>/g, "vector&lt;int&gt;");
      str = str.replace(/vector<double>/g, "vector&lt;double&gt;");
+     str = str.replace(/<vector>/g, "&lt;vector&gt;");
      str = str.replace(/<Type\*>/g, "&lt;Type*&gt;");
 
      return str;
