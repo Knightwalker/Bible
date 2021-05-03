@@ -3,6 +3,7 @@ const router = express.Router();
 
 const adminController = require("../03_controllers/admin")
 const authMiddleware = require("../middlewares/authentication.js");
+const topicsController = require('../controllers/topics');
 
 router.get("/topics/:slug", adminController.getTopicWithPostsBySlug);
 
@@ -13,10 +14,17 @@ router.post("/post/edit/:id", [
   adminController.postEditPostById
 ]) // protected routes for now
 
-router.get("/topics/mode/new_topic", authMiddleware.authenticateAdmin, adminController.getNewTopic); // protected routes for now
+// protected routes for now
+router.get("/topics/mode/new_topic", [
+  authMiddleware.authenticateAdmin, 
+  topicsController.getNewTopic
+]);
+
+// protected routes for now
 router.post("/topics/mode/new_topic", [
   authMiddleware.authenticateAdmin, 
   express.urlencoded({ extended: true }),
-  adminController.postNewTopic]); // protected routes for now
+  topicsController.postNewTopic
+]);
 
 module.exports = router;

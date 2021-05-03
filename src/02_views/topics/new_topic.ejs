@@ -20,8 +20,11 @@
         <div class="flex-6 padding-tb-5">
           <div class="flex-6-item-2 padding-lr-5 text-right"><label for="section_name">Section</label></div>
           <div class="flex-6-item-4 padding-lr-5">
-            <select id="section_name" class="section_name" name="section_name" type="text">
-              <option value="-1">|--ROOT</option>
+            <select name="section_id" type="text">
+              <option value="<%= course_id %>" selected>No Section</option>
+              <% for( let i = 0; i < sectionsArr.length; i++ ) { %>
+                <option value="<%= sectionsArr[i]._id %>"><%= sectionsArr[i].title %></option>
+              <% } %>
             </select>
           </div>
         </div>

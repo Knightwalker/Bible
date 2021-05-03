@@ -1,9 +1,8 @@
 "use strict";
 
-const CourseModel = require("../01_models/course");
 const TopicModel = require("../01_models/topic");
 const PostModel = require("../01_models/post");
-const SubjectModel = require("../models/subject");
+const CourseModel = require("../models/course");
 
 const getOneBySlug_WithSectionsWithTopics = async (req, res, next) => {
   const slug = req.params.slug || "c-plus-plus";
@@ -11,8 +10,8 @@ const getOneBySlug_WithSectionsWithTopics = async (req, res, next) => {
   // Part 1 - Get Data
   var data = {};
   try {
-    const subject = await SubjectModel.getOneBySlug_WithSectionsWithTopics(slug);
-    data.subject = subject;
+    const course = await CourseModel.getOneBySlug_WithSectionsWithTopics(slug);
+    data.course = course;
   } catch (error) {
     console.log(error);
     return;
@@ -32,12 +31,12 @@ const getOneBySlug_WithSectionsWithTopics = async (req, res, next) => {
     }
   }
 
-  for (let i = 0; i < data.subject.sectionsArr.length; i++) {
-    data.subject.sectionsArr[i].topicsArr.sort(compareByPositionAsc);
+  for (let i = 0; i < data.course.sectionsArr.length; i++) {
+    data.course.sectionsArr[i].topicsArr.sort(compareByPositionAsc);
   }
 
   // Part 3 - Render View
-  res.render("subject", data);
+  res.render("course", data);
 }
 
 module.exports = {

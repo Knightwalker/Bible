@@ -6,20 +6,20 @@
     <div class="breadcrumbs">
       <a href="/">home</a>
       <span>&#8680;</span>
-      <a href="/courses/<%= subject.slug %>"><b><%= subject.slug %></b></a>
+      <a href="/courses/<%= course.slug %>"><b><%= course.slug %></b></a>
     </div>
 
     <div class="course">
-      <h1><%= subject.name %></h1>
+      <h1><%= course.name %></h1>
       <hr>
 
-      <% for (let i = 0; i < subject.sectionsArr.length; i++) { %> 
+      <% for (let i = 0; i < course.sectionsArr.length; i++) { %> 
         <div class="section">
-          <p class="section_title"><%- subject.sectionsArr[i].title %></p>
+          <p class="section_title"><%- course.sectionsArr[i].title %></p>
           
-          <% for (let j = 0; j < subject.sectionsArr[i].topicsArr.length; j++) { %> 
-          <a href="/topics/<%- subject.sectionsArr[i].topicsArr[j].slug %>">
-            <div><%- subject.sectionsArr[i].topicsArr[j].position %>. <%- subject.sectionsArr[i].topicsArr[j].name %></div>
+          <% for (let j = 0; j < course.sectionsArr[i].topicsArr.length; j++) { %> 
+          <a href="/topics/<%- course.sectionsArr[i].topicsArr[j].slug %>">
+            <div><%- course.sectionsArr[i].topicsArr[j].position %>. <%- course.sectionsArr[i].topicsArr[j].name %></div>
           </a>
           <% } %>
 
@@ -27,7 +27,7 @@
       <% } %>
 
       <form action="/topics/mode/new_topic" method="get">
-        <input type="hidden" name="course_id" value="<%= subject._id %>" />
+        <input type="hidden" name="course_id" value="<%= course._id %>" />
         <button type="submit" class="course_buttons">new topic</button>
       </form>
       

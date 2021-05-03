@@ -42,24 +42,8 @@ const readOneById = async (id, callback) => {
 
 }
 
-const updateOneById_IncrementTopicsCountByOne = async (id, callback) => {
-  const db = await getDb();
-  const _id = new mongodb.ObjectId(id);
-
-  db.collection("courses").updateOne({_id: _id}, {
-    $inc: {topics_count: 1}
-  }, (error, result) => {
-    if (error) {
-      callback(error, null);
-    } else {
-      callback(null, result);
-    }
-  });
-}
-
 module.exports = {
   readOneByIdAsync: readOneByIdAsync,
   readOneById: readOneById,
-  updateOneById_IncrementTopicsCountByOne: updateOneById_IncrementTopicsCountByOne,
   getAll: getAll
 }
