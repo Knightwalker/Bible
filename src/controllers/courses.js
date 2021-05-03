@@ -4,13 +4,13 @@ const TopicModel = require("../01_models/topic");
 const PostModel = require("../01_models/post");
 const CourseModel = require("../models/course");
 
-const getOneBySlug_WithSectionsWithTopics = async (req, res, next) => {
-  const slug = req.params.slug || "c-plus-plus";
+const getOneBySlug_WithChildrenWithTopics = async (req, res, next) => {
+  const slug = req.params.slug;
   
   // Part 1 - Get Data
   var data = {};
   try {
-    const course = await CourseModel.getOneBySlug_WithSectionsWithTopics(slug);
+    const course = await CourseModel.getOneBySlug_WithChildrenWithTopics(slug);
     data.course = course;
   } catch (error) {
     console.log(error);
@@ -31,8 +31,8 @@ const getOneBySlug_WithSectionsWithTopics = async (req, res, next) => {
     }
   }
 
-  for (let i = 0; i < data.course.sectionsArr.length; i++) {
-    data.course.sectionsArr[i].topicsArr.sort(compareByPositionAsc);
+  for (let i = 0; i < data.course.childrenArr.length; i++) {
+    data.course.childrenArr[i].topicsArr.sort(compareByPositionAsc);
   }
 
   // Part 3 - Render View
@@ -40,5 +40,5 @@ const getOneBySlug_WithSectionsWithTopics = async (req, res, next) => {
 }
 
 module.exports = {
-  getOneBySlug_WithSectionsWithTopics: getOneBySlug_WithSectionsWithTopics,
+  getOneBySlug_WithChildrenWithTopics: getOneBySlug_WithChildrenWithTopics
 };

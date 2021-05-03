@@ -1,12 +1,12 @@
 "use strict";
 
-const Course = require("../01_models/course.js");
+const Course = require("../models/course.js");
 
 const getHomePage = async (req, res) => {
 
   var courses = null;
   try {
-    courses = await Course.getAll();
+    courses = await Course.getAllPrimary();
   } catch (error) {
     console.log(error);
   }

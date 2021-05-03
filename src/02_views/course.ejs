@@ -13,13 +13,13 @@
       <h1><%= course.name %></h1>
       <hr>
 
-      <% for (let i = 0; i < course.sectionsArr.length; i++) { %> 
+      <% for (let i = 0; i < course.childrenArr.length; i++) { %> 
         <div class="section">
-          <p class="section_title"><%- course.sectionsArr[i].title %></p>
+          <p class="section_name"><%- course.childrenArr[i].name %></p>
           
-          <% for (let j = 0; j < course.sectionsArr[i].topicsArr.length; j++) { %> 
-          <a href="/topics/<%- course.sectionsArr[i].topicsArr[j].slug %>">
-            <div><%- course.sectionsArr[i].topicsArr[j].position %>. <%- course.sectionsArr[i].topicsArr[j].name %></div>
+          <% for (let j = 0; j < course.childrenArr[i].topicsArr.length; j++) { %> 
+          <a href="/topics/<%- course.childrenArr[i].topicsArr[j].slug %>">
+            <div><%- course.childrenArr[i].topicsArr[j].position %>. <%- course.childrenArr[i].topicsArr[j].name %></div>
           </a>
           <% } %>
 

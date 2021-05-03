@@ -43,7 +43,7 @@ const getOneById_WithSections = async (course_id) => {
 
 }
 
-const getOneBySlug_WithSectionsWithTopics = async (slug) => {
+const getOneBySlug_WithChildrenWithTopics = async (slug) => {
   try {
     const db = await getDb();
     const collection = await db.collection("courses");
@@ -51,22 +51,22 @@ const getOneBySlug_WithSectionsWithTopics = async (slug) => {
       { $match: { slug: slug } },
       {
         $lookup: {
-            from: "sections",
+            from: "courses",
             let: { 'lv1_id': '$_id' },
             pipeline: [
-              { $match: { $expr: { $eq: ['$course_id', '$$lv1_id'] } } },
+              { $match: { $expr: { $eq: ['$parent_id', '$$lv1_id'] } } },
               {
                 $lookup: {
                   from: 'topics',
                   let: { 'lv2_id': '$_id' },
                   pipeline: [
-                    { '$match': { '$expr': { '$eq': ['$section_id', '$$lv2_id'] } } }
+                    { '$match': { '$expr': { '$eq': ['$course_id', '$$lv2_id'] } } }
                   ],
                   as: 'topicsArr'
                 }
               },
             ],
-            as: "sectionsArr"
+            as: "childrenArr"
         },
       }
     ]);
@@ -96,9 +96,21 @@ const updateOneById_IncrementTopicsCountByOne = async (id) => {
 
 }
 
+const getAllPrimary = async () => {
+  try {
+    const db = await getDb();
+    const collection = await db.collection("courses");
+    const result = await collection.find({parent_id: "root"}).toArray();
+    return Promise.resolve(result);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 module.exports = {
   getOneById: getOneById,
   getOneById_WithSections: getOneById_WithSections,
-  getOneBySlug_WithSectionsWithTopics: getOneBySlug_WithSectionsWithTopics,
+  getOneBySlug_WithChildrenWithTopics: getOneBySlug_WithChildrenWithTopics,
   updateOneById_IncrementTopicsCountByOne: updateOneById_IncrementTopicsCountByOne,
+  getAllPrimary: getAllPrimary
 }
