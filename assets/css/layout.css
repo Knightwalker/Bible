@@ -1,0 +1,22 @@
+.flex-6 {
+  display: flex;
+}
+.flex-6-item-6 { flex-grow: 100%; }
+.flex-6-item-5 { width: 83.33333333%; }
+.flex-6-item-4 { width: 66.66666667%; }
+.flex-6-item-3 { flex-grow: 50; }
+.flex-6-item-2 { width: 33.33333333%; }
+.flex-6-item-1 { width: 16.66666667%; }
+
+.padding-tb-5 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.padding-lr-5 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.text-right {
+  text-align: right;
+}

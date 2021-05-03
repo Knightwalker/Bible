@@ -10,33 +10,36 @@
       <span>&gt;</span>
       <b>New Topic</b>
     </div>
-
-    <div class="topic_body">
-      <form action="/topics/mode/new_topic" method="POST" class="form_new_topic_grid">
-        <div class="form_new_topic_grid_c1">
-          <label for="topic_name">Title of the topic</label>
+    
+    <form action="/topics/mode/new_topic" method="POST">
+      <div class="new-topic">
+        <div class="flex-6 padding-tb-5">
+          <div class="flex-6-item-2 padding-lr-5 text-right"><label for="topic_name">Title of the topic</label></div>
+          <div class="flex-6-item-4 padding-lr-5"><input id="topic_name" class="topic_name" name="topic_name" type="text"></div>
         </div>
-        <div class="form_new_topic_grid_c2">
-          <input id="topic_name" class="topic_name" name="topic_name" type="text">
+        <div class="flex-6 padding-tb-5">
+          <div class="flex-6-item-2 padding-lr-5 text-right"><label for="section_name">Section</label></div>
+          <div class="flex-6-item-4 padding-lr-5">
+            <select id="section_name" class="section_name" name="section_name" type="text">
+              <option value="-1">|--ROOT</option>
+            </select>
+          </div>
         </div>
-        <div class="form_new_topic_grid_c3">
-          <label for="post_content">Message</label>
+        <div class="flex-6 padding-tb-5">
+          <div class="flex-6-item-2 padding-lr-5 text-right"><label for="post_content">Message</label></div>
+          <div class="flex-6-item-4 padding-lr-5"><textarea id="post_content" class="new-topic_editor" name="post_content" type="text"></textarea></div>
         </div>
-        <div class="form_new_topic_grid_c4">
-          <textarea id="post_content" name="post_content" class="new_topic_editor"></textarea>  
+        <div class="flex-6 padding-tb-5">
+          <div class="flex-6-item-2 padding-lr-5 text-right"><p>Information</p></div>
+          <div class="flex-6-item-4 padding-lr-5"><p>HTML is ON</p></div>
         </div>
         <input type="hidden" id="course_id" name="course_id" value="<%= course_id %>">
-        <div class="form_new_topic_grid_c5">
-          <p>Information</p>
+        <div class="flex-6 padding-tb-5">
+          <div class="flex-6-item-2 padding-lr-5"></div>
+          <div class="flex-6-item-4 padding-lr-5"><button class="course_buttons" type="submit">Save</button></div>
         </div>
-        <div class="form_new_topic_grid_c6">
-          <p>HTML is ON</p>
-        </div>
-        <div class="form_new_topic_grid_c8">
-          <button class="course_buttons" type="submit">Save</button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
 
   </main>
 </div>
