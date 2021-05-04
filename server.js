@@ -21,7 +21,7 @@ app.set("view engine", "ejs");
 app.set("views", "./src/views");
 
 // Middlewares
-app.use("/assets", express.static(path.join(__dirname, "assets")));
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/", session({ 
   secret: "cats", 
   cookie: {

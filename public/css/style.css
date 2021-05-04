@@ -211,7 +211,7 @@ main {
   z-index: 1;
   margin-top: -14px;
   margin-bottom: -14px;
-  background-image: url("/assets/views/slider.jpg");
+  background-image: url("/public/views/slider.jpg");
   background-size: cover;
   height: 476px;
   color: rgb(255, 255, 255);
@@ -317,8 +317,8 @@ main {
   background-color: black;
   padding-top: 50px;
 }
-#featured_item_js { background-image: url("/assets/views/js_128x128px.png"); }
-#featured_item_cpp { background-image: url("/assets/views/cpp_128x144px.png"); }
+#featured_item_js { background-image: url("/public/views/js_128x128px.png"); }
+#featured_item_cpp { background-image: url("/public/views/cpp_128x144px.png"); }
 .featured_items {
   height: 92px;
   width: 92px;
@@ -375,7 +375,7 @@ main {
 .section_delimiter_one {
   position: relative;
   z-index: 3;
-  background-image: url(/assets/views/f2-bg.png);
+  background-image: url(/public/views/f2-bg.png);
   background-color: #0bc4e2;
   width: 40%;
   height: 50px;
@@ -408,7 +408,7 @@ main {
 }
 
 .progress2 {
-  background-image: url(/assets/views/tiny-grid.png);
+  background-image: url(/public/views/tiny-grid.png);
   background-color: #000000;
   position: relative;
   height: 600px;
