@@ -1,6 +1,6 @@
 "use strict";
 
-const User = require("../01_models/user");
+const User = require("../models/user");
 
 const getLoginPage = (req, res) => {
   const data = {

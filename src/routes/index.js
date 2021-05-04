@@ -4,11 +4,9 @@ const STATUS_CODES = require("http").STATUS_CODES;
 
 const generalRoutes = require("./general.js");
 const adminRoutes = require("./admin.js");
-const userRoutes = require("./user.js");
 const authRoutes = require("./auth.js");
 
 router.use(adminRoutes);
-router.use(userRoutes);
 router.use(authRoutes);
 router.use(generalRoutes);
 

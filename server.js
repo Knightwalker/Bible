@@ -18,7 +18,7 @@ const store = new MongoStore({
   autoRemoveInterval: 10 // In minutes. Default
 });
 app.set("view engine", "ejs");
-app.set("views", "./src/02_views");
+app.set("views", "./src/views");
 
 // Middlewares
 app.use("/assets", express.static(path.join(__dirname, "assets")));

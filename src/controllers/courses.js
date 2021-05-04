@@ -1,7 +1,7 @@
 "use strict";
 
 const TopicModel = require("../models/topic");
-const PostModel = require("../01_models/post");
+const PostModel = require("../models/post");
 const CourseModel = require("../models/course");
 
 const getOneBySlug_WithChildrenWithTopics = async (req, res, next) => {
