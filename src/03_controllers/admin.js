@@ -1,8 +1,8 @@
 "use strict";
 
-const CourseModel = require("../01_models/course");
-const TopicModel = require("../01_models/topic");
-const PostModel = require("../01_models/post");
+const CourseModel = require("../models/course");
+const TopicModel = require("../models/topic");
+const PostModel = require("../models/post");
 
 const getTopicWithPostsBySlug = async (req, res, next) => {
   const slug = req.params.slug;
@@ -18,8 +18,7 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
     const topic = await TopicModel.getTopicWithPostsBySlugAsync(slug);
     topic_data = topic[0];
     prepareTopic(topic_data);
-
-    const course = await CourseModel.readOneByIdAsync(topic_data.course_id);
+    const course = await CourseModel.getOneById(topic_data.course_id);
     course_data = course;
   } catch (error) {
     console.log(error);

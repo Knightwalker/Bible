@@ -1,6 +1,6 @@
 "use strict";
 
-const TopicModel = require("../01_models/topic");
+const TopicModel = require("../models/topic");
 const PostModel = require("../01_models/post");
 const CourseModel = require("../models/course");
 

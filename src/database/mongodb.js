@@ -3,7 +3,7 @@ const MongoClient = mongodb.MongoClient;
 const config = require("../../config");
 
 const URI = config.MONGODB_URL;
-const mongoClient = new MongoClient(URI, {useUnifiedTopology: true});
+const mongoClient = new MongoClient(URI, {useUnifiedTopology: true, useNewUrlParser: true});
 
 // Private Variables
 db = null;

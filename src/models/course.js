@@ -96,6 +96,17 @@ const updateOneById_IncrementTopicsCountByOne = async (id) => {
 
 }
 
+const getAll = async () => {
+  try {
+    const db = await getDb();
+    const collection = await db.collection("courses");
+    const result = await collection.find({}).toArray();
+    return Promise.resolve(result);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
 const getAllPrimary = async () => {
   try {
     const db = await getDb();
@@ -112,5 +123,6 @@ module.exports = {
   getOneById_WithSections: getOneById_WithSections,
   getOneBySlug_WithChildrenWithTopics: getOneBySlug_WithChildrenWithTopics,
   updateOneById_IncrementTopicsCountByOne: updateOneById_IncrementTopicsCountByOne,
+  getAll: getAll,
   getAllPrimary: getAllPrimary
 }
