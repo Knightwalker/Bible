@@ -78,7 +78,7 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
   var course_data = {};
   var topic_data = null;
   var data = {
-    breadcrumbs: [],
+    breadcrumbsArr: null,
     course: {},
     topic: {}
   };
@@ -89,9 +89,10 @@ const getTopicWithPostsBySlug = async (req, res, next) => {
     prepareTopic(topic_data);
     const course = await CourseModel.getOneById(topic_data.course_id);
     course_data = course;
-    // const breadcrumbs = await BreadcrumbsService.getArrayWithBreadcrumbs(topic_data.course_id);
+    data.breadcrumbsArr = await BreadcrumbsService.getArrayWithBreadcrumbsByTopicId(topic_data.id);
   } catch (error) {
     console.log(error);
+    return;
   }
   
   data.course = course_data;

@@ -543,6 +543,9 @@ span.keyword_code {
 .breadcrumbs a:hover {
   font-weight: bold;
 }
+.breadcrumbs span {
+  text-transform: uppercase;
+}
 
 .permissions {
   background: #ece8e1;

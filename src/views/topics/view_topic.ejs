@@ -6,9 +6,17 @@
     <div class="breadcrumbs">
       <a href="/">home</a>
       <span>&#8680;</span>
-      <a href="/courses/<%= course.slug %>"><%= course.slug %></a>
-      <span>&#8680;</span>
-      <a href="/topics/<%= topic.slug %>"><b><%= topic.slug %></b></a>
+      <% for( let i = 0; i < breadcrumbsArr.length; i++ ) { %>
+        <% if (breadcrumbsArr[i].type === "course") { %>
+          <a href="/courses/<%= breadcrumbsArr[i].slug %>"><%= breadcrumbsArr[i].name %></a>
+          <span>&#8680;</span>
+        <% } else if (breadcrumbsArr[i].type === "section") { %>
+          <span><%= breadcrumbsArr[i].name %></span>
+          <span>&#8680;</span>
+        <% } else if (breadcrumbsArr[i].type === "topic") { %>
+          <a href="/topics/<%= breadcrumbsArr[i].slug %>"><b><%= breadcrumbsArr[i].name %></b></a>
+        <% } %>
+      <% } %>
     </div>
 
     <div class="topic">

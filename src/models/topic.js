@@ -4,8 +4,8 @@ const mongodb = require("mongodb");
 const getDb = require("../database/mongodb").getDb;
 
 const getOneById = async (id, callback) => {
-  const db = await getDb();
   const _id = new mongodb.ObjectId(id);
+  const db = await getDb();
 
   db.collection("topics").findOne({_id: _id}, (error, result) => {
     if (error) {
@@ -15,6 +15,19 @@ const getOneById = async (id, callback) => {
     }
   });
 
+}
+
+const getOneByIdAsync = async (id) => {
+  const _id = new mongodb.ObjectId(id);
+ 
+  try {
+    const db = await getDb();
+    const collection = await db.collection("topics");
+    const result = collection.findOne({_id: _id});
+    return Promise.resolve(result);
+  } catch (error) {
+    return Promise.reject(error);
+  }
 }
 
 const getTopicWithPostsBySlug = async (slug) => {
@@ -40,7 +53,6 @@ const getTopicWithPostsBySlug = async (slug) => {
       { $project: { "_id": 0 } }
     ]);
     const resultArr = await cursor.toArray();
-
     return Promise.resolve(resultArr[0]);
   } catch (error) {
     return Promise.reject(error);
@@ -72,6 +84,7 @@ const insertOne = async (data) => {
 
 module.exports = {
   getOneById: getOneById,
+  getOneByIdAsync: getOneByIdAsync,
   getTopicWithPostsBySlug: getTopicWithPostsBySlug,
   insertOne: insertOne,
 }
