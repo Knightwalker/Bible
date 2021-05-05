@@ -5,7 +5,7 @@ const adminController = require("../controllers/admin")
 const authMiddleware = require("../middlewares/authentication.js");
 const topicsController = require('../controllers/topics');
 
-router.get("/topics/:slug", adminController.getTopicWithPostsBySlug);
+router.get("/topics/:slug", topicsController.getTopicWithPostsBySlug);
 
 router.get("/post/edit/:id", authMiddleware.authenticateAdmin, adminController.getEditPostById) // protected routes for now
 router.post("/post/edit/:id", [

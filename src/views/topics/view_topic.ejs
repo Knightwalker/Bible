@@ -14,10 +14,10 @@
     <div class="topic">
       <h1><%= topic.name %></h1>
       <hr>
-      <% for (let i = 0; i < topic.posts.length; i++) { %> 
-        <div class="post_body"><%- topic.posts[i].content %></div>
+      <% for (let i = 0; i < topic.postsArr.length; i++) { %> 
+        <div class="post_body"><%- topic.postsArr[i].content %></div>
         <div class="post_foot">
-          <form action="/post/edit/<%= topic.posts[i]._id %>" method="GET">
+          <form action="/post/edit/<%= topic.postsArr[i].id %>" method="GET">
             <button class="course_buttons" type="submit">Edit</button>
           </form>
         </div>

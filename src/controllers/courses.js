@@ -36,7 +36,7 @@ const getOneBySlug_WithChildrenWithTopics = async (req, res, next) => {
   }
 
   // Part 3 - Render View
-  res.render("course", data);
+  res.render("course.ejs", data);
 }
 
 module.exports = {

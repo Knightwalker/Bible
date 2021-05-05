@@ -17,29 +17,31 @@ const getOneById = async (id, callback) => {
 
 }
 
-const getTopicWithPostsBySlugAsync = async (slug) => {
-  const db = await getDb();
-
+const getTopicWithPostsBySlug = async (slug) => {
   try {
+    const db = await getDb();
     const collection = await db.collection("topics");
-    const result = await collection.aggregate([
-      {
-        $match: {
-          slug: slug
-        }
-      },
+    const cursor = await collection.aggregate([
+      { $match: { slug: slug } },
       {
         $lookup:
-          {
-            from: "posts",
-            localField: "_id",
-            foreignField: "topic_id",
-            as: "posts"
-          }
-      }
+        {
+          from: "posts",
+          let: { "lv1_id": "$_id" },
+          pipeline: [
+            { $match: { $expr: { $eq: ['$topic_id', '$$lv1_id'] } } },
+            { $addFields: { id: { $toString: "$_id" }, topic_id: { $toString: "$topic_id" } } },
+            { $project: { "_id": 0 } }
+          ],
+          as: "postsArr"
+        },
+      },
+      { $addFields: { id: { $toString: "$_id" }, course_id: { $toString: "$course_id" } } },
+      { $project: { "_id": 0 } }
     ]);
-    const resultArr = await result.toArray();
-    return Promise.resolve(resultArr);
+    const resultArr = await cursor.toArray();
+
+    return Promise.resolve(resultArr[0]);
   } catch (error) {
     return Promise.reject(error);
   }
@@ -70,6 +72,6 @@ const insertOne = async (data) => {
 
 module.exports = {
   getOneById: getOneById,
-  getTopicWithPostsBySlugAsync: getTopicWithPostsBySlugAsync,
+  getTopicWithPostsBySlug: getTopicWithPostsBySlug,
   insertOne: insertOne,
 }
