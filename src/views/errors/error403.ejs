@@ -1,0 +1,72 @@
+<%- include("../header.ejs"); -%>
+
+<main>
+
+  <div class="error403_gandalf-wrapper">
+    <div class="error403_gandalf-container">
+      <div class="error403_gandalf-error-message">
+        <p>ERROR 403</p>
+        <p>FORBIDDEN</p>
+      </div>
+      <div class="error403_gandalf-img"></div>
+      <p class="error403_gandalf-quote">You Shall Not Pass!</p>
+    </div>
+  </div>
+
+</main>
+
+<style>
+.error403_gandalf-wrapper {
+  height: 100%; /* Requires "height: 100%" on the "html" and "body" elements */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.error403_gandalf-container {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+  padding-top: 72px;
+  padding-bottom: 7vh;
+}
+
+.error403_gandalf-img {
+  position: relative;
+  height: 100%;
+  background-image: url("../../../public/assets/error403v2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 1;
+}
+.error403_gandalf-error-message {
+  position: absolute;
+  top: 2px;
+  left: calc(50% - 130px);
+  z-index: 2;
+  padding: 5px;
+  text-align: center;
+}
+.error403_gandalf-error-message > p:nth-child(1){
+  font-family: "Inter-Black";
+  font-size: 46px;
+}
+.error403_gandalf-error-message > p:nth-child(2){
+  font-family: "Inter-Bold";
+  font-size: 32px;
+}
+.error403_gandalf-quote {
+  position: absolute;
+  bottom: 0px;
+  left: calc(50% - 17vh);
+  z-index: 2;
+  padding: 5px;
+  font-family: "Inter-Bold";
+  font-size: 3.8vh;
+  text-align: center;
+}
+</style>
+
+<%- include("../footer.ejs"); -%>
