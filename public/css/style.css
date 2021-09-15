@@ -727,12 +727,12 @@ span.keyword_code {
 .technology_image {
   height: 64px;
   object-fit: contain;
+  margin-right: 10px;
 }
 .technology_name {
   flex-grow: 1;
   font-family: 'Inter-Bold';
   align-self: center;
-  text-align: center;
   padding-left: 5px;
 }
 .technology_description {
