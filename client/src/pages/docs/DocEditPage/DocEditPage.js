@@ -28,7 +28,6 @@ const DocEditPage = () => {
         };
 
         try {
-            debugger;
             const result = await makeRequestDocsEditById({
                 endpoint: endpointsMap.DOCS_EDIT_BY_ID(id),
                 payload: payload
@@ -81,20 +80,20 @@ const DocEditPage = () => {
 
     return (
         <div className="DocEditPage">
-            DocEditPage
+            <h1>Edit Document Page</h1>
 
             {state.doc != null && (
                 <div className="DocEditPage__doc">
                     <form onSubmit={handleFormSubmit}>
-                        <div>
-                            <label htmlFor="name">Doc Name</label>
-                            <input id="name" type="text" value={state.form.name} onChange={handleFormInputChange} />
+                        <div class="mb-3">
+                            <label className="form-label" htmlFor="name">Name</label>
+                            <input className="form-control" id="name" type="text" value={state.form.name} onChange={handleFormInputChange} />
                         </div>
-                        <div>
-                            <label htmlFor="content">Doc Content</label>
-                            <textarea id="content" type="text" value={state.form.content} onChange={handleFormInputChange} />
+                        <div class="mb-3">
+                            <label className="form-label" htmlFor="content">Content</label>
+                            <textarea className="form-control" id="content" type="text" value={state.form.content} onChange={handleFormInputChange} />
                         </div>
-                        <input type="submit" value="edit" />
+                        <button type="submit" class="btn btn-primary">Edit</button>
                     </form>
                 </div>
             )}

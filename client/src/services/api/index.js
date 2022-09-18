@@ -37,7 +37,6 @@ const usePost = () => {
         const url = baseUrl + endpoint;
         return new Promise(async (resolve, reject) => {
             try {
-                debugger;
                 const response = await fetch(url, {
                     method: "POST",
                     headers: {
@@ -45,14 +44,12 @@ const usePost = () => {
                     },
                     body: JSON.stringify(payload)
                 });
-                debugger;
                 const data = await response.json();
                 if (isCancelled.current) {
                     return reject({ isCancelled: true });
                 }
                 resolve(data);
             } catch (error) {
-                debugger;
                 console.log(error);
                 reject(error);
             }

@@ -15,7 +15,7 @@ const HomePage = () => {
     });
 
     const handleClick = () => {
-        navigate(routesMap.ADMIN_DOCS_CREATE);
+        navigate(routesMap.ADMIN_DOCS_CREATE_PAGE);
     }
 
     useEffect(() => {

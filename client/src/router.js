@@ -17,7 +17,7 @@ const routerInstance = createBrowserRouter([
         element: <MainLayout />,
         children: [
             { path: "/", element: <HomePage /> },
-            { path: "/docs/:id", element: <DocViewPage /> },
+            { path: "/docs/view/:id", element: <DocViewPage /> },
             { path: "/docs/edit/:id", element: <DocEditPage /> }
         ]
     },
@@ -32,9 +32,9 @@ const routerInstance = createBrowserRouter([
 ]);
 
 const routesMap = {
-    DOCS_VIEW_PAGE: (id) => `/docs/${id}`,
+    DOCS_VIEW_PAGE: (id) => `/docs/view/${id}`,
     DOCS_EDIT_PAGE: (id) => `/docs/edit/${id}`,
-    ADMIN_DOCS_CREATE: "admin/docs/create"
+    ADMIN_DOCS_CREATE_PAGE: "admin/docs/create"
 };
 
 const endpointsMap = {
