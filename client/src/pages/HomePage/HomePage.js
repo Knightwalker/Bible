@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { routesMap } from "../../router";
+import { routesMap, endpointsMap } from "../../router";
 import './HomePage.css';
 
 // Services
@@ -23,7 +23,7 @@ const HomePage = () => {
             let docsArr = [];
 
             try {
-                docsArr = await makeRequest({ endpoint: "/docs/all" });
+                docsArr = await makeRequest({ endpoint: endpointsMap.DOCS_ALL });
             } catch (error) {
                 if (error.isCancelled) {
                     return;
@@ -46,7 +46,9 @@ const HomePage = () => {
         <div className="HomePage">
             {state.docsArr.map((item) => {
                 return (
-                    <div key={item._id}>{item.name}</div>
+                    <div key={item._id}>
+                        <a href={routesMap.DOCS_VIEW_PAGE(item._id)}>{item.name}</a>
+                    </div>
                 );
             })}
             <button onClick={handleClick}>Create Docs</button>

@@ -33,6 +33,42 @@ const createOne = async (req, res) => {
     res.status(200).json({ data: createdDoc });
 }
 
+const getOneById = async (req, res) => {
+    const { id } = req.params;
+    let doc = null;
+    try {
+        doc = await DocModel.findById(id);
+    } catch (error) {
+        console.log(error);
+        res.status(500);
+        return;
+    }
+    res.status(200).json(doc);
+}
+
+const editOneById = async (req, res) => {
+    const { id } = req.params;
+    const { name, content } = req.body;
+  
+    let doc = null;
+    try {
+        doc = await DocModel.findOneAndUpdate({
+            _id: id
+        }, {
+            name: name,
+            content: content
+        }, {
+            new: true
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({});
+        return;
+    }
+
+    res.status(200).json(doc);
+}
+
 const getFileByName = async (req, res, next) => {
     const fileName = req.params.fileName;
 
@@ -50,5 +86,7 @@ const getFileByName = async (req, res, next) => {
 module.exports = {
     getAll: getAll,
     createOne: createOne,
+    getOneById: getOneById,
+    editOneById: editOneById,
     getFileByName: getFileByName
 };

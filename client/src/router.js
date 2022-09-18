@@ -8,39 +8,44 @@ import CreateDocsPage from "./pages/admin/CreateDocsPage/CreateDocsPage";
 
 // Pages
 import HomePage from './pages/HomePage/HomePage';
-
-const routesMap = {
-    ADMIN_DOCS_CREATE: "admin/docs/create"
-}
+import DocViewPage from "./pages/docs/DocViewPage/DocViewPage";
+import DocEditPage from "./pages/docs/DocEditPage/DocEditPage";
 
 const routerInstance = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout />,
         children: [
-            {
-                path: "/",
-                element: <HomePage />,
-            }
+            { path: "/", element: <HomePage /> },
+            { path: "/docs/:id", element: <DocViewPage /> },
+            { path: "/docs/edit/:id", element: <DocEditPage /> }
         ]
     },
     {
         path: "/admin",
         element: <AdminLayout />,
         children: [
-            {
-                path: "docs",
-                element: <div>Some docs</div>,
-            },
-            {
-                path: "docs/create",
-                element: <CreateDocsPage />,
-            }
+            { path: "docs", element: <div>Some docs</div> },
+            { path: "docs/create", element: <CreateDocsPage /> }
         ]
     }
 ]);
 
-export { 
-    routesMap, 
-    routerInstance 
+const routesMap = {
+    DOCS_VIEW_PAGE: (id) => `/docs/${id}`,
+    DOCS_EDIT_PAGE: (id) => `/docs/edit/${id}`,
+    ADMIN_DOCS_CREATE: "admin/docs/create"
+};
+
+const endpointsMap = {
+    DOCS_ALL: "/docs/all",
+    DOCS_GET_BY_ID: (id) => `/docs/read/${id}`,
+    DOCS_EDIT_BY_ID: (id) => `/docs/edit/${id}`,
+    CREATE_DOC: "/docs/create"
+};
+
+export {
+    routerInstance,
+    routesMap,
+    endpointsMap
 };
