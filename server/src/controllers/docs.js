@@ -4,6 +4,20 @@ const fs = require('fs/promises');
 const path = require('node:path');
 const DocModel = require("../models/docs");
 
+const getAll = async (req, res) => {
+    let allDocs = [];
+    try {
+        allDocs = await DocModel.find();
+    } catch (error) {
+        console.log(error);
+        res.status(500).json([]);
+        return;
+    }
+    console.log(allDocs);
+
+    res.status(200).json(allDocs);
+}
+
 const createOne = async (req, res) => {
     const { name, content } = req.body;
 
@@ -34,6 +48,7 @@ const getFileByName = async (req, res, next) => {
 }
 
 module.exports = {
+    getAll: getAll,
     createOne: createOne,
     getFileByName: getFileByName
 };

@@ -6,13 +6,13 @@ const useGet = () => {
     const isCancelled = useRef(false);
 
     const makeRequest = async ({ endpoint }) => {
-        const url = `${baseUrl}/${endpoint}`;
+        const url = baseUrl + endpoint;
 
         return new Promise(async (resolve, reject) => {
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                if (isCancelled) {
+                if (isCancelled.current) {
                     return reject({ isCancelled: true });
                 }
                 resolve(data);
@@ -34,7 +34,7 @@ const usePost = () => {
     const isCancelled = useRef(false);
 
     const makeRequest = async ({ endpoint, payload = {} }) => {
-        const url = `${baseUrl}${endpoint}`;
+        const url = baseUrl + endpoint;
 
         return new Promise(async (resolve, reject) => {
             try {
