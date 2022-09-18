@@ -2,10 +2,21 @@
 
 const fs = require('fs/promises');
 const path = require('node:path');
+const DocModel = require("../models/docs");
 
-const create = async (req, res) => {
+const createOne = async (req, res) => {
+    const { name, content } = req.body;
 
-    res.render("docs.ejs");
+    let createdDoc = null;
+    try {
+        createdDoc = await DocModel.create({ name: name, content: content });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ data: null });
+        return;
+    }
+
+    res.status(200).json({ data: createdDoc });
 }
 
 const getFileByName = async (req, res, next) => {
@@ -23,6 +34,6 @@ const getFileByName = async (req, res, next) => {
 }
 
 module.exports = {
-    create: create,
+    createOne: createOne,
     getFileByName: getFileByName
 };
