@@ -6,3 +6,6 @@ node_modules/
 
 # Ignore config files
 env.json
+
+# Ignore uploaded files
+public/docs/

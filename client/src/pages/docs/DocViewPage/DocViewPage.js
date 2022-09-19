@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGet } from "../../../services/api";
 import { routesMap, endpointsMap } from "../../../router";
+import { replaceDomainKeywordUtil } from "../../../utils/docs";
+import "./DocViewPage.css";
 
 const DocViewPage = () => {
     const paramsMap = useParams();
@@ -26,6 +28,7 @@ const DocViewPage = () => {
             let doc = null;
             try {
                 doc = await makeRequest({ endpoint: endpointsMap.DOCS_GET_BY_ID(id) });
+                doc.content = replaceDomainKeywordUtil(doc.content);
             } catch (error) {
                 if (error.isCancelled) {
                     return;
@@ -48,9 +51,13 @@ const DocViewPage = () => {
 
             {state.doc != null && (
                 <div className="DocViewPage__doc">
-                    <div>{state.doc.name}</div>
-                    <div>{state.doc.content}</div>
-                    <button onClick={openEditPage}>edit</button>
+                    <div className="DocViewPage__doc-title">{state.doc.name}</div>
+                    <div className="DocViewPage__doc-content" 
+                        dangerouslySetInnerHTML={{__html: state.doc.content}}
+                    />
+                    <div className="DocViewPage__doc-footer">
+                        <button className="globals__btn btn btn-primary me-1" type="button" onClick={openEditPage}>Edit</button>
+                    </div>
                 </div>
             )}
 

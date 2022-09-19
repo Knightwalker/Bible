@@ -4,6 +4,27 @@
     min-height: 100vh;
 }
 
+.MainLayout__header {
+    background-color: #000000;
+    height: 60px;
+    color: #fffffb;
+}
+
 .MainLayout__main {
     flex-grow: 1;
+    background-color: #ece8e1;
+}
+
+.MainLayout__container {
+    background-color: #fffffb;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+    padding: 20px;
+    margin-top: 20px; /* TODO: Temporary solution; remove when breadcrumbs are implemented */
+}
+
+.MainLayout__footer {
+    background-color: #000000;
+    height: 60px;
+    color: #fffffb;
 }

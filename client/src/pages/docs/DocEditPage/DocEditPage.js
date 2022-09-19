@@ -40,9 +40,12 @@ const DocEditPage = () => {
             console.log(error);
         }
 
-        const link = routesMap.DOCS_VIEW_PAGE(id);
-        navigateFunc(link);
+        navigateFunc(-1); // Go Back
     };
+
+    const handleBtnCancel = () => {
+        navigateFunc(-1); // Go Back
+    }
 
     const handleFormInputChange = (e) => {
         const { id, value } = e.currentTarget;
@@ -91,9 +94,10 @@ const DocEditPage = () => {
                         </div>
                         <div class="mb-3">
                             <label className="form-label" htmlFor="content">Content</label>
-                            <textarea className="form-control" id="content" type="text" value={state.form.content} onChange={handleFormInputChange} />
+                            <textarea className="form-control" id="content" type="text" rows={18} value={state.form.content} onChange={handleFormInputChange} />
                         </div>
-                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <button type="submit" class="globals__btn btn btn-primary me-1">Save</button>
+                        <button type="button" class="globals__btn btn btn-secondary" onClick={handleBtnCancel}>Cancel</button>
                     </form>
                 </div>
             )}

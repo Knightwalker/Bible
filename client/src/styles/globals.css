@@ -1,0 +1,12 @@
+.globals__btn {
+    width: 80px;
+}
+
+.globals__container-3x-images-medium {
+    display: flex;
+}
+.globals__container-3x-images-medium img {
+    width: 400px;
+    height: 400px;
+    object-fit: contain;
+}
