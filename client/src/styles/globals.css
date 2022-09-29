@@ -10,3 +10,35 @@
     height: 400px;
     object-fit: contain;
 }
+
+/*
+* BEGIN "Text with picture"
+* @example
+* <div class="globals__container-text-x-image-small">
+*     <div>
+*         <p>Text</p>
+*     </div>
+*     <img src="Picture">
+* </div>
+*/
+.globals__container-text-x-image-small {
+    display: flex;
+    white-space: normal;
+}
+
+.globals__container-text-x-image-small div {
+    flex-grow: 1;
+}
+
+.globals__container-text-x-image-small p {
+    text-align: justify;
+    padding-right: 10px;
+    white-space: pre-wrap;
+}
+
+.globals__container-text-x-image-small img {
+    width: 250px;
+    object-fit: contain;
+    object-position: top;
+}
+/* END "Text with picture" */

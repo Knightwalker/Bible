@@ -1,16 +1,16 @@
-.DocViewPage__doc-title {
+.DocsViewPage__doc-title {
     border-top: 1px solid #cdcdcd;
     border-left: 1px solid #cdcdcd;
     border-right: 1px solid #cdcdcd;
     padding: 10px;
 }
 
-.DocViewPage__doc-content {
+.DocsViewPage__doc-content {
     border: 1px solid #cdcdcd;
     padding: 10px;
     white-space: pre-wrap;
 }
 
-.DocViewPage__doc-footer {
+.DocsViewPage__doc-footer {
     padding: 10px 0px;
 }

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGet, usePost } from "../../../services/api";
 import { endpointsMap, routesMap } from "../../../router";
 
-const DocEditPage = () => {
+const DocsEditPage = () => {
     const paramsMap = useParams();
     const navigateFunc = useNavigate();
 
@@ -28,11 +28,10 @@ const DocEditPage = () => {
         };
 
         try {
-            const result = await makeRequestDocsEditById({
+            await makeRequestDocsEditById({
                 endpoint: endpointsMap.DOCS_EDIT_BY_ID(id),
                 payload: payload
             });
-            console.log(result);
         } catch (error) {
             if (error.isCancelled) {
                 return;
@@ -82,22 +81,22 @@ const DocEditPage = () => {
     }, []);
 
     return (
-        <div className="DocEditPage">
+        <div className="DocsEditPage">
             <h1>Edit Document Page</h1>
 
             {state.doc != null && (
-                <div className="DocEditPage__doc">
+                <div className="DocsEditPage__doc">
                     <form onSubmit={handleFormSubmit}>
-                        <div class="mb-3">
+                        <div className="mb-3">
                             <label className="form-label" htmlFor="name">Name</label>
                             <input className="form-control" id="name" type="text" value={state.form.name} onChange={handleFormInputChange} />
                         </div>
-                        <div class="mb-3">
+                        <div className="mb-3">
                             <label className="form-label" htmlFor="content">Content</label>
                             <textarea className="form-control" id="content" type="text" rows={18} value={state.form.content} onChange={handleFormInputChange} />
                         </div>
-                        <button type="submit" class="globals__btn btn btn-primary me-1">Save</button>
-                        <button type="button" class="globals__btn btn btn-secondary" onClick={handleBtnCancel}>Cancel</button>
+                        <button type="submit" className="globals__btn btn btn-primary me-1">Save</button>
+                        <button type="button" className="globals__btn btn btn-secondary" onClick={handleBtnCancel}>Cancel</button>
                     </form>
                 </div>
             )}
@@ -106,4 +105,4 @@ const DocEditPage = () => {
     );
 };
 
-export default DocEditPage;
+export default DocsEditPage;

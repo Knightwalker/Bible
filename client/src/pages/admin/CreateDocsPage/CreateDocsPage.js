@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { endpointsMap } from "../../../router";
 import { usePost } from "../../../services/api";
 
 const CreateDocsPage = () => {
@@ -30,7 +31,7 @@ const CreateDocsPage = () => {
 
         try {
             const result = await makeRequest({
-                endpoint: "/docs/create",
+                endpoint: endpointsMap.DOCS_CREATE,
                 payload: payload
             });
             console.log(result);

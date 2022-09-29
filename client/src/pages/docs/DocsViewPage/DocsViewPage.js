@@ -3,9 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGet } from "../../../services/api";
 import { routesMap, endpointsMap } from "../../../router";
 import { replaceDomainKeywordUtil } from "../../../utils/docs";
-import "./DocViewPage.css";
+import "./DocsViewPage.css";
 
-const DocViewPage = () => {
+const DocsViewPage = () => {
     const paramsMap = useParams();
     const navigateFunc = useNavigate();
 
@@ -46,16 +46,16 @@ const DocViewPage = () => {
     }, []);
 
     return (
-        <div className="DocViewPage">
-            DocViewPage
+        <div className="DocsViewPage">
+            DocsViewPage
 
             {state.doc != null && (
-                <div className="DocViewPage__doc">
-                    <div className="DocViewPage__doc-title">{state.doc.name}</div>
-                    <div className="DocViewPage__doc-content" 
+                <div className="DocsViewPage__doc">
+                    <div className="DocsViewPage__doc-title">{state.doc.name}</div>
+                    <div className="DocsViewPage__doc-content" 
                         dangerouslySetInnerHTML={{__html: state.doc.content}}
                     />
-                    <div className="DocViewPage__doc-footer">
+                    <div className="DocsViewPage__doc-footer">
                         <button className="globals__btn btn btn-primary me-1" type="button" onClick={openEditPage}>Edit</button>
                     </div>
                 </div>
@@ -65,4 +65,4 @@ const DocViewPage = () => {
     );
 };
 
-export default DocViewPage;
+export default DocsViewPage;

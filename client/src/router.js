@@ -8,40 +8,63 @@ import CreateDocsPage from "./pages/admin/CreateDocsPage/CreateDocsPage";
 
 // Pages
 import HomePage from './pages/HomePage/HomePage';
-import DocViewPage from "./pages/docs/DocViewPage/DocViewPage";
-import DocEditPage from "./pages/docs/DocEditPage/DocEditPage";
+import DocsPage from "./pages/docs/DocsPage/DocsPage";
+import DocsViewPage from "./pages/docs/DocsViewPage/DocsViewPage";
+import DocsEditPage from "./pages/docs/DocsEditPage/DocsEditPage";
 
 const routerInstance = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout />,
         children: [
-            { path: "/", element: <HomePage /> },
-            { path: "/docs/view/:id", element: <DocViewPage /> },
-            { path: "/docs/edit/:id", element: <DocEditPage /> }
+            {
+                path: "/",
+                element: <HomePage />,
+                handle: {
+                    breadcrumb: { title: "home" }
+                }
+            },
+            {
+                path: "/docs",
+                element: <DocsPage />,
+                handle: {
+                    breadcrumb: { title: "docs" }
+                }
+            },
+            {
+                path: "/docs/view/:id",
+                element: <DocsViewPage />,
+                handle: {
+                    breadcrumb: { title: "doc by id" }
+                }
+            },
+            {
+                path: "/docs/edit/:id",
+                element: <DocsEditPage />
+            }
         ]
     },
     {
         path: "/admin",
         element: <AdminLayout />,
         children: [
-            { path: "docs", element: <div>Some docs</div> },
-            { path: "docs/create", element: <CreateDocsPage /> }
+            { path: "/admin/docs/create", element: <CreateDocsPage /> }
         ]
     }
 ]);
 
 const routesMap = {
+    DOCS_PAGE: "/docs",
     DOCS_VIEW_PAGE: (id) => `/docs/view/${id}`,
     DOCS_EDIT_PAGE: (id) => `/docs/edit/${id}`,
-    ADMIN_DOCS_CREATE_PAGE: "admin/docs/create"
+    ADMIN_DOCS_CREATE_PAGE: "/admin/docs/create"
 };
 
 const endpointsMap = {
     DOCS_ALL: "/docs/all",
+    DOCS_CREATE: "/docs/create",
     DOCS_GET_BY_ID: (id) => `/docs/read/${id}`,
     DOCS_EDIT_BY_ID: (id) => `/docs/edit/${id}`,
-    CREATE_DOC: "/docs/create"
 };
 
 export {
