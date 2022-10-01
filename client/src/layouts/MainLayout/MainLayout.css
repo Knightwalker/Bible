@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #ece8e1;
 }
 
 .MainLayout__header {
@@ -10,17 +11,98 @@
     color: #fffffb;
 }
 
-.MainLayout__main {
-    flex-grow: 1;
-    background-color: #ece8e1;
+.MainLayout__nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px; /* overwrite bootstrap's container gutters */
+}
+
+.MainLayout__nav-item1,
+.MainLayout__nav-item2,
+.MainLayout__nav-item3 {
+    display: flex;
+}
+
+.MainLayout__nav-logo-btn {
+    background-color: #0bc4e2;
+    color: black;
+    text-decoration: none;
+    width: 160px;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.MainLayout__nav-logo-btn:hover {
+    text-decoration: underline;
+    background-color: #0bc4e2;
+    color: black;
+    cursor: pointer;
+}
+
+.MainLayout__nav-normal-btn {
+    color: #ffffff;
+    text-decoration: none;
+    width: 160px;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.MainLayout__nav-normal-btn:hover {
+    text-decoration: underline;
+    background-color: #0bc4e2;
+    color: black;
+    cursor: pointer;
+}
+
+.MainLayout__nav-account-btn {
+    color: #ffffff;
+    text-decoration: none;
+    width: 160px;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.MainLayout__nav-account-btn:hover {
+    text-decoration: underline;
+    background-color: #0bc4e2;
+    color: black;
+    cursor: pointer;
+}
+
+.MainLayout__nav-account-btn-arrow {
+    padding-left: 5px;
 }
 
 .MainLayout__container {
+    flex-grow: 1;
     background-color: #fffffb;
     border-radius: 5px;
     box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
-    padding: 20px;
-    margin-top: 20px; /* TODO: Temporary solution; remove when breadcrumbs are implemented */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px; /* overwrite bootstrap's container gutters */
+}
+
+.MainLayout__container::before {
+    content: "";
+    background: url("../../assets/left.png");
+}
+
+.MainLayout__main {
+    border: 1px solid black;
+    padding: 3px 6px;
 }
 
 .MainLayout__footer {

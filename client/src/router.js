@@ -17,31 +17,10 @@ const routerInstance = createBrowserRouter([
         path: "/",
         element: <MainLayout />,
         children: [
-            {
-                path: "/",
-                element: <HomePage />,
-                handle: {
-                    breadcrumb: { title: "home" }
-                }
-            },
-            {
-                path: "/docs",
-                element: <DocsPage />,
-                handle: {
-                    breadcrumb: { title: "docs" }
-                }
-            },
-            {
-                path: "/docs/view/:id",
-                element: <DocsViewPage />,
-                handle: {
-                    breadcrumb: { title: "doc by id" }
-                }
-            },
-            {
-                path: "/docs/edit/:id",
-                element: <DocsEditPage />
-            }
+            { path: "/", element: <HomePage /> },
+            { path: "/docs", element: <DocsPage /> },
+            { path: "/docs/view/:id", element: <DocsViewPage /> },
+            { path: "/docs/edit/:id", element: <DocsEditPage /> }
         ]
     },
     {

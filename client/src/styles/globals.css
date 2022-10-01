@@ -2,6 +2,10 @@
     width: 80px;
 }
 
+.globals__container-images-1x {
+    width: 100%;
+}
+
 .globals__container-3x-images-medium {
     display: flex;
 }

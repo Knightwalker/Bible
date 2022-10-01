@@ -44,6 +44,7 @@ const DocsPage = () => {
 
     return (
         <div className="DocsPage">
+            <h1>Docs Page</h1>
             {state.docsArr.map((item) => {
                 return (
                     <div key={item._id}>
