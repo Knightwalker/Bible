@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useMatches } from "react-router-dom";
+import "./BreadcrumbsComponent.css";
 
 const BreadcrumbsComponent = () => {
     const matches = useMatches();

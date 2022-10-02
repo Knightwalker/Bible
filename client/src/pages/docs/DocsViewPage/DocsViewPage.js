@@ -47,11 +47,9 @@ const DocsViewPage = () => {
 
     return (
         <div className="DocsViewPage">
-            DocsViewPage
-
             {state.doc != null && (
                 <div className="DocsViewPage__doc">
-                    <div className="DocsViewPage__doc-title">{state.doc.name}</div>
+                    <h1 className="DocsViewPage__doc-title">{state.doc.name}</h1>
                     <div className="DocsViewPage__doc-content" 
                         dangerouslySetInnerHTML={{__html: state.doc.content}}
                     />
@@ -60,7 +58,6 @@ const DocsViewPage = () => {
                     </div>
                 </div>
             )}
-
         </div>
     );
 };

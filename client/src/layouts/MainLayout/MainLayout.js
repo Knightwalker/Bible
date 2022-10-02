@@ -23,9 +23,11 @@ const MainLayout = () => {
             </header>
             <div className="MainLayout__container container">
                 <BreadcrumbsComponent />
+                <div className="MainLayout__container-header"></div>
                 <main className="MainLayout__main">
                     <Outlet />
                 </main>
+                <div className="MainLayout__container-footer"></div>
             </div>
             <footer className="MainLayout__footer">Footer</footer>
         </div>

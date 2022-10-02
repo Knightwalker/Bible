@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGet, usePost } from "../../../services/api";
 import { endpointsMap, routesMap } from "../../../router";
+import "./DocsEditPage.css";
 
 const DocsEditPage = () => {
     const paramsMap = useParams();
@@ -82,7 +83,7 @@ const DocsEditPage = () => {
 
     return (
         <div className="DocsEditPage">
-            <h1>Edit Document Page</h1>
+            <h1 className="DocsEditPage__title">Edit Document Page</h1>
 
             {state.doc != null && (
                 <div className="DocsEditPage__doc">

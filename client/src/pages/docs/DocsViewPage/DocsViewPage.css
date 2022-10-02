@@ -1,13 +1,11 @@
 .DocsViewPage__doc-title {
-    border-top: 1px solid #cdcdcd;
-    border-left: 1px solid #cdcdcd;
-    border-right: 1px solid #cdcdcd;
-    padding: 10px;
+    border-bottom: 2px solid var(--cg-theme-light-brown);
+    padding: 6px 0px 6px 0px;
 }
 
 .DocsViewPage__doc-content {
-    border: 1px solid #cdcdcd;
-    padding: 10px;
+    border-bottom: 2px solid var(--cg-theme-light-brown);
+    padding: 6px 0px 6px 0px;
     white-space: pre-wrap;
 }
 

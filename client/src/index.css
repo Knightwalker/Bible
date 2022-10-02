@@ -2,6 +2,15 @@
 @import url("./styles/globals.css");
 @import url("./libs/cg-fonts/inter.css");
 
+:root {
+    --cg-theme-black: #111111;
+    --cg-theme-light-black: #0F1923;
+    --cg-theme-brown: #ECE8E1;
+    --cg-theme-light-brown: #F4F3F0;
+    --cg-theme-red: #FF4655;
+    --cg-theme-blue: #0BC4E2;
+}
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
