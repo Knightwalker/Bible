@@ -11,6 +11,7 @@ import HomePage from './pages/HomePage/HomePage';
 import DocsPage from "./pages/docs/DocsPage/DocsPage";
 import DocsViewPage from "./pages/docs/DocsViewPage/DocsViewPage";
 import DocsEditPage from "./pages/docs/DocsEditPage/DocsEditPage";
+import RegisterPage from "./pages/main/RegisterPage/RegisterPage";
 
 const routerInstance = createBrowserRouter([
     {
@@ -20,7 +21,8 @@ const routerInstance = createBrowserRouter([
             { path: "/", element: <HomePage /> },
             { path: "/docs", element: <DocsPage /> },
             { path: "/docs/view/:id", element: <DocsViewPage /> },
-            { path: "/docs/edit/:id", element: <DocsEditPage /> }
+            { path: "/docs/edit/:id", element: <DocsEditPage /> },
+            { path: "/register", element: <RegisterPage /> }
         ]
     },
     {

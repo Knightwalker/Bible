@@ -7,20 +7,24 @@
 
 .MainLayout__header {
     background-color: var(--cg-theme-black);
-    height: 60px;
     color: #fffffb;
+    height: 64px;
+    z-index: 1;
 }
 
 .MainLayout__nav {
     display: flex;
     justify-content: space-between;
     padding: 0px; /* overwrite bootstrap's container gutters */
+    height: 64px;
+    border-bottom: 2px solid rgba(51,51,51,.25);
 }
 
 .MainLayout__nav-item1,
 .MainLayout__nav-item2,
 .MainLayout__nav-item3 {
     display: flex;
+    align-items: center;
 }
 
 .MainLayout__nav-logo-btn {
@@ -43,46 +47,51 @@
     cursor: pointer;
 }
 
-.MainLayout__nav-normal-btn {
-    color: #ffffff;
-    text-decoration: none;
-    width: 160px;
-    height: 60px;
-    line-height: 60px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.MainLayout__nav-normal-btn:hover {
-    text-decoration: underline;
-    background-color: #0bc4e2;
-    color: black;
-    cursor: pointer;
+.MainLayout__dropdown-btn {
+    position: relative;
 }
 
 .MainLayout__nav-account-btn {
     color: #ffffff;
     text-decoration: none;
     width: 160px;
-    height: 60px;
-    line-height: 60px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 6px;
     text-align: center;
     text-transform: uppercase;
+    border-radius: 6px;
 }
 
 .MainLayout__nav-account-btn:hover {
-    text-decoration: underline;
-    background-color: #0bc4e2;
-    color: black;
+    background-color: var(--cg-theme-grey);
+    color: inherit;
     cursor: pointer;
 }
 
 .MainLayout__nav-account-btn-arrow {
     padding-left: 5px;
+}
+
+.MainLayout__nav-account-dropdown-menu-wrapper {
+    position: absolute;
+    right: 0;
+    bottom: -6px;
+    transform: translateY(100%);
+}
+
+.MainLayout__nav-account-dropdown-menu-underline {
+    background-color: var(--cg-theme-blue);
+    height: 6px;
+    width: 100%;
+    border-radius: 2px 2px 0px 0px;
+    border-bottom: 1px solid rgb(0 0 0 / 20%);
+}
+
+.MainLayout__nav-account-dropdown-menu {
+    background-color: var(--cg-theme-grey);
+    width: 300px;
+    border-radius: 0px 0px 2px 2px;
+    box-shadow: 0px 4px 16px 2px rgb(0 0 0 / 50%);
+    padding: 20px;
 }
 
 .MainLayout__container {
@@ -92,6 +101,7 @@
     margin-top: calc(20px + 76px); /* 20px is our wanted margin height + 76px height from .MainLayout__container-header */
     margin-bottom: calc(20px + 103px); /* 20px is our wanted margin height + 103px height from .MainLayout__container-footer */
     padding: 6px 17px 6px 17px; /* overwrite Bootstrap's container gutters; sets custom padding to 6px excluding the art walls of 11px */
+    z-index: 0;
 }
 
 .MainLayout__container::before {

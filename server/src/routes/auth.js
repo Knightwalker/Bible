@@ -11,4 +11,6 @@ router.post("/auth/register", express.urlencoded({ extended: true }), authContro
 
 router.post("/auth/logout", authController.postLogot);
 
+router.post("/api/v1/auth/register", authController.postRegisterV1);
+
 module.exports = router;

@@ -1,0 +1,36 @@
+.CgNavLink {
+    position: relative;
+    width: 160px;
+}
+
+.CgNavLink a {
+    border-radius: 6px;
+    color: #ffffff;
+    display: block;
+    padding: 6px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.CgNavLink a:hover {
+    color: inherit;
+    cursor: pointer;
+    background-color: var(--cg-theme-grey);
+}
+
+.CgNavLink::after {
+    background-color: var(--cg-theme-blue);
+    border-radius: 2px 2px 2px 2px;
+    bottom: -12px;
+    content: "";
+    height: 6px;
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+}
+
+.CgNavLink:hover::after {
+    visibility: visible;
+}

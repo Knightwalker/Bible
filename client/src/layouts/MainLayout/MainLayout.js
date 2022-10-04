@@ -1,7 +1,11 @@
+// Libs
 import React from "react";
 import "./MainLayout.css";
 import { Link, Outlet } from "react-router-dom";
+
+// Components
 import BreadcrumbsComponent from "../../components/BreadcrumbsComponent/BreadcrumbsComponent";
+import CgNavLink from "../../components/CgNavLink/CgNavLink";
 
 const MainLayout = () => {
     return (
@@ -12,12 +16,21 @@ const MainLayout = () => {
                         <Link to="/" id="home" className="MainLayout__nav-logo-btn user-select-none">codegigas</Link>
                     </div>
                     <div className="MainLayout__nav-item2">
-                        <Link to="/docs" className="MainLayout__nav-normal-btn user-select-none">Docs</Link>
-                        <Link to="/paths" className="MainLayout__nav-normal-btn user-select-none">Paths</Link>
-                        <Link to="/about-us" className="MainLayout__nav-normal-btn user-select-none">About us</Link>
+                        <CgNavLink label={"Docs"} />
+                        <CgNavLink label={"Paths"} />
+                        <CgNavLink label={"About us"} />
                     </div>
                     <div className="MainLayout__nav-item3">
-                        <Link to="/account" className="MainLayout__nav-account-btn user-select-none">My Account<span className="MainLayout__nav-account-btn-arrow">&#x25BD;</span></Link>
+                        <div className="MainLayout__dropdown-btn">
+                            <div className="MainLayout__nav-account-btn user-select-none">My Account <span className="MainLayout__nav-account-btn-arrow">&#x25BD;</span></div>
+                            <div className="MainLayout__nav-account-dropdown-menu-wrapper">
+                                <div className="MainLayout__nav-account-dropdown-menu-underline"></div>
+                                <div className="MainLayout__nav-account-dropdown-menu">
+                                    <div>d</div>
+                                    <div>d</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </nav>
             </header>

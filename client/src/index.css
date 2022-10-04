@@ -9,6 +9,8 @@
     --cg-theme-light-brown: #F4F3F0;
     --cg-theme-red: #FF4655;
     --cg-theme-blue: #0BC4E2;
+    /* Under Consideration */
+    --cg-theme-grey: #333333;
 }
 
 body {
