@@ -28,12 +28,9 @@
 }
 
 .MainLayout__nav-logo-btn {
-    background-color: #0bc4e2;
-    color: black;
+    color: white;
     text-decoration: none;
     width: 160px;
-    height: 60px;
-    line-height: 60px;
     padding-left: 10px;
     padding-right: 10px;
     text-align: center;
@@ -41,9 +38,7 @@
 }
 
 .MainLayout__nav-logo-btn:hover {
-    text-decoration: underline;
-    background-color: #0bc4e2;
-    color: black;
+    color: var(--cg-theme-blue);
     cursor: pointer;
 }
 

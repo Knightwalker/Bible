@@ -17,9 +17,9 @@ const MainLayout = () => {
                         <Link to="/" id="home" className="MainLayout__nav-logo-btn user-select-none">codegigas</Link>
                     </div>
                     <div className="MainLayout__nav-item2">
-                        <CgNavLink label={"Docs"} />
-                        <CgNavLink label={"Paths"} />
-                        <CgNavLink label={"About us"} />
+                        <CgNavLink label={"Docs"} href={"/docs"} />
+                        <CgNavLink label={"Paths"} href={"/paths"} />
+                        <CgNavLink label={"About us"} href={"about-us"}/>
                     </div>
                     <div className="MainLayout__nav-item3">
                         <CgNavDropdown label={"Account"} />
