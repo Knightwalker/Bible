@@ -47,53 +47,6 @@
     cursor: pointer;
 }
 
-.MainLayout__dropdown-btn {
-    position: relative;
-}
-
-.MainLayout__nav-account-btn {
-    color: #ffffff;
-    text-decoration: none;
-    width: 160px;
-    padding: 6px;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 6px;
-}
-
-.MainLayout__nav-account-btn:hover {
-    background-color: var(--cg-theme-grey);
-    color: inherit;
-    cursor: pointer;
-}
-
-.MainLayout__nav-account-btn-arrow {
-    padding-left: 5px;
-}
-
-.MainLayout__nav-account-dropdown-menu-wrapper {
-    position: absolute;
-    right: 0;
-    bottom: -6px;
-    transform: translateY(100%);
-}
-
-.MainLayout__nav-account-dropdown-menu-underline {
-    background-color: var(--cg-theme-blue);
-    height: 6px;
-    width: 100%;
-    border-radius: 2px 2px 0px 0px;
-    border-bottom: 1px solid rgb(0 0 0 / 20%);
-}
-
-.MainLayout__nav-account-dropdown-menu {
-    background-color: var(--cg-theme-grey);
-    width: 300px;
-    border-radius: 0px 0px 2px 2px;
-    box-shadow: 0px 4px 16px 2px rgb(0 0 0 / 50%);
-    padding: 20px;
-}
-
 .MainLayout__container {
     position: relative;
     flex-grow: 1;

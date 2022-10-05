@@ -1,6 +1,7 @@
 @import url("~bootstrap/dist/css/bootstrap.css");
-@import url("./styles/globals.css");
+@import url("~bootstrap-icons/font/bootstrap-icons.css");
 @import url("./libs/cg-fonts/inter.css");
+@import url("./styles/globals.css");
 
 :root {
     --cg-theme-black: #111111;
@@ -10,7 +11,9 @@
     --cg-theme-red: #FF4655;
     --cg-theme-blue: #0BC4E2;
     /* Under Consideration */
+    --cg-theme-dark-grey: #292929;
     --cg-theme-grey: #333333;
+    --cg-theme-light-grey: #3d3d3d;
 }
 
 body {

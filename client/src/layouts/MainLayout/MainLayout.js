@@ -6,6 +6,7 @@ import { Link, Outlet } from "react-router-dom";
 // Components
 import BreadcrumbsComponent from "../../components/BreadcrumbsComponent/BreadcrumbsComponent";
 import CgNavLink from "../../components/CgNavLink/CgNavLink";
+import CgNavDropdown from "../../components/CgNavDropdown/CgNavDropdown";
 
 const MainLayout = () => {
     return (
@@ -21,16 +22,7 @@ const MainLayout = () => {
                         <CgNavLink label={"About us"} />
                     </div>
                     <div className="MainLayout__nav-item3">
-                        <div className="MainLayout__dropdown-btn">
-                            <div className="MainLayout__nav-account-btn user-select-none">My Account <span className="MainLayout__nav-account-btn-arrow">&#x25BD;</span></div>
-                            <div className="MainLayout__nav-account-dropdown-menu-wrapper">
-                                <div className="MainLayout__nav-account-dropdown-menu-underline"></div>
-                                <div className="MainLayout__nav-account-dropdown-menu">
-                                    <div>d</div>
-                                    <div>d</div>
-                                </div>
-                            </div>
-                        </div>
+                        <CgNavDropdown label={"Account"} />
                     </div>
                 </nav>
             </header>
