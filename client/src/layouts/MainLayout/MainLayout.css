@@ -1,0 +1,105 @@
+.MainLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--cg-theme-brown);
+}
+
+.MainLayout__header {
+    background-color: var(--cg-theme-black);
+    color: #fffffb;
+    height: 64px;
+    z-index: 1;
+}
+
+.MainLayout__nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px; /* overwrite bootstrap's container gutters */
+    height: 64px;
+    border-bottom: 2px solid rgba(51,51,51,.25);
+}
+
+.MainLayout__nav-item1,
+.MainLayout__nav-item2,
+.MainLayout__nav-item3 {
+    display: flex;
+    align-items: center;
+}
+
+.MainLayout__nav-logo-btn {
+    color: white;
+    text-decoration: none;
+    width: 160px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.MainLayout__nav-logo-btn:hover {
+    color: var(--cg-theme-blue);
+    cursor: pointer;
+}
+
+.MainLayout__container {
+    position: relative;
+    flex-grow: 1;
+    background-color: #fffffb;
+    margin-top: calc(20px + 76px); /* 20px is our wanted margin height + 76px height from .MainLayout__container-header */
+    margin-bottom: calc(20px + 103px); /* 20px is our wanted margin height + 103px height from .MainLayout__container-footer */
+    padding: 6px 17px 6px 17px; /* overwrite Bootstrap's container gutters; sets custom padding to 6px excluding the art walls of 11px */
+    z-index: 0;
+}
+
+.MainLayout__container::before {
+    content: "";
+    background: url("../../assets/left.png") no-repeat repeat;
+    width: 11px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.MainLayout__container::after {
+    content: "";
+    background: url("../../assets/right.png") no-repeat repeat;
+    width: 11px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.MainLayout__container-header {
+    background: url("../../assets/bg-xxl-scroll-header-v5.png") no-repeat;
+    height: 76px;
+    width: 1376px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    margin-top: -75px;
+}
+
+.MainLayout__container-footer {
+    background: url("../../assets/bg-xxl-scroll-bottom-v2.png") no-repeat;
+    height: 103px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    margin-bottom: -100px;
+}
+
+.MainLayout__main {
+    padding: 3px 6px;
+}
+
+.MainLayout__footer {
+    background-color: var(--cg-theme-black);
+    height: 60px;
+    color: #fffffb;
+}

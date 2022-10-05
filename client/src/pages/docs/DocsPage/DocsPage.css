@@ -1,0 +1,4 @@
+.DocsPage__title {
+    border-bottom: 2px solid var(--cg-theme-light-brown);
+    padding: 6px 0px 6px 0px;
+}

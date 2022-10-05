@@ -1,8 +1,0 @@
-# Ignore the node_modules directory
-node_modules/
-
-# Ignore IDE specific directories
-.vscode/
-
-# Ignore config files
-env.json
