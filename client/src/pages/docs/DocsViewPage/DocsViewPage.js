@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGet } from "../../../services/api";
-import { routesMap, endpointsMap } from "../../../router";
+import { routesMap, endpointsMap } from "../../../routes";
 import { replaceDomainKeywordUtil } from "../../../utils/docs";
 import "./DocsViewPage.css";
 

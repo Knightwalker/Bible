@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { endpointsMap } from "../../../router";
+import { endpointsMap } from "../../../routes";
 import { usePost } from "../../../services/api";
 
 const CreateDocsPage = () => {
