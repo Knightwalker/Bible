@@ -34,18 +34,18 @@ const routerInstance = createBrowserRouter([
     }
 ]);
 
-const routesMap = {
+const routesMap: any = {
     DOCS_PAGE: "/docs",
-    DOCS_VIEW_PAGE: (id: any) => `/docs/view/${id}`,
-    DOCS_EDIT_PAGE: (id: any) => `/docs/edit/${id}`,
+    DOCS_VIEW_PAGE: (id: string) => `/docs/view/${id}`,
+    DOCS_EDIT_PAGE: (id: string) => `/docs/edit/${id}`,
     ADMIN_DOCS_CREATE_PAGE: "/admin/docs/create"
 };
 
-const endpointsMap = {
+const endpointsMap: any = {
     DOCS_ALL: "/docs/all",
     DOCS_CREATE: "/docs/create",
-    DOCS_GET_BY_ID: (id: any) => `/docs/read/${id}`,
-    DOCS_EDIT_BY_ID: (id: any) => `/docs/edit/${id}`,
+    DOCS_GET_BY_ID: (id: string) => `/docs/read/${id}`,
+    DOCS_EDIT_BY_ID: (id: string) => `/docs/edit/${id}`,
 };
 
 export {

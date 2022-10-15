@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { routesMap, endpointsMap } from "../../../routes";
 import './DocsPage.css';
+
+// Types
+import { allDocsArrType } from "../../../types/docs";
 
 // Services
 import { useGet } from "../../../services/api";
@@ -10,8 +13,8 @@ const DocsPage = () => {
     const navigate = useNavigate();
     const [makeRequest, cancelRequest] = useGet();
 
-    const [state, setState] = useState({
-        docsArr: []
+    const [state, setState] = useState<{[k: string]: allDocsArrType}>({
+        allDocsArr: []
     });
 
     const handleClick = () => {
@@ -20,11 +23,11 @@ const DocsPage = () => {
 
     useEffect(() => {
         const componentDidMount = async () => {
-            let docsArr = [];
+            let allDocsArr: allDocsArrType = [];
 
             try {
-                docsArr = await makeRequest({ endpoint: endpointsMap.DOCS_ALL });
-            } catch (error) {
+                allDocsArr = await makeRequest({ endpoint: endpointsMap.DOCS_ALL });
+            } catch (error: any) {
                 if (error.isCancelled) {
                     return;
                 }
@@ -33,7 +36,7 @@ const DocsPage = () => {
 
             setState((oldState) => {
                 const newState = { ...oldState };
-                newState.docsArr = docsArr;
+                newState.allDocsArr = allDocsArr;
                 return newState;
             });
         };
@@ -45,7 +48,7 @@ const DocsPage = () => {
     return (
         <div className="DocsPage">
             <h1 className="DocsPage__title">Docs Page</h1>
-            {state.docsArr.map((item) => {
+            {state.allDocsArr.map((item) => {
                 return (
                     <div key={item._id}>
                         <Link to={routesMap.DOCS_VIEW_PAGE(item._id)}>{item.name}</Link>
