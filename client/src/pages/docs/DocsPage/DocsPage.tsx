@@ -18,7 +18,8 @@ const DocsPage = () => {
     });
 
     const handleClick = () => {
-        navigate(routesMap.ADMIN_DOCS_CREATE_PAGE);
+        const route: string = routesMap.ADMIN_DOCS_CREATE_PAGE;
+        navigate(route);
     }
 
     useEffect(() => {

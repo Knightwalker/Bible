@@ -7,7 +7,7 @@ import MainLayout from '../layouts/MainLayout/MainLayout';
 import CreateDocsPage from "../pages/admin/CreateDocsPage/CreateDocsPage";
 
 // Pages
-import HomePage from '../pages/HomePage/HomePage';
+import HomePage from '../pages/main/HomePage/HomePage';
 import DocsPage from "../pages/docs/DocsPage/DocsPage";
 import DocsViewPage from "../pages/docs/DocsViewPage/DocsViewPage";
 import DocsEditPage from "../pages/docs/DocsEditPage/DocsEditPage";
@@ -34,14 +34,14 @@ const routerInstance = createBrowserRouter([
     }
 ]);
 
-const routesMap: any = {
+const routesMap = {
     DOCS_PAGE: "/docs",
     DOCS_VIEW_PAGE: (id: string) => `/docs/view/${id}`,
     DOCS_EDIT_PAGE: (id: string) => `/docs/edit/${id}`,
     ADMIN_DOCS_CREATE_PAGE: "/admin/docs/create"
 };
 
-const endpointsMap: any = {
+const endpointsMap = {
     DOCS_ALL: "/docs/all",
     DOCS_CREATE: "/docs/create",
     DOCS_GET_BY_ID: (id: string) => `/docs/read/${id}`,
