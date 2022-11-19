@@ -1,5 +1,5 @@
 type allDocsArrType = {
-    _id: any,
+    _id: string,
     name: string,
     content: string
 }[];
