@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGet } from "../../../services/api";
-import { routesMap, endpointsMap } from "../../../routes";
-import { replaceDomainKeywordUtil } from "../../../utils/docs";
+import { useGet } from "../../../../../services/api";
+import { routesMap, endpointsMap } from "../../../../../routes";
+import { replaceDomainKeywordUtil } from "../../../../../utils/docs";
 import "./DocsViewPage.css";
 
 const DocsViewPage = () => {
@@ -50,8 +50,8 @@ const DocsViewPage = () => {
             {state.doc != null && (
                 <div className="DocsViewPage__doc">
                     <h1 className="DocsViewPage__doc-title">{state.doc.name}</h1>
-                    <div className="DocsViewPage__doc-content" 
-                        dangerouslySetInnerHTML={{__html: state.doc.content}}
+                    <div className="DocsViewPage__doc-content"
+                        dangerouslySetInnerHTML={{ __html: state.doc.content }}
                     />
                     <div className="DocsViewPage__doc-footer">
                         <button className="globals__btn btn btn-primary me-1" type="button" onClick={openEditPage}>Edit</button>

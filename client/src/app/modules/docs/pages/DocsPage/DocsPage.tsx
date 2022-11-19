@@ -1,14 +1,14 @@
 // Libs
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { routesMap, endpointsMap } from "../../../routes";
+import { routesMap, endpointsMap } from "../../../../../routes";
 import './DocsPage.css';
 
 // Types
-import { allDocsArrType } from "../../../types/docs";
+import { allDocsArrType } from "../../../../../types/docs";
 
 // Services
-import { useGet } from "../../../services/api";
+import { useGet } from "../../../../../services/api";
 
 const DocsPage = () => {
     const navigate = useNavigate();
@@ -46,6 +46,12 @@ const DocsPage = () => {
         componentDidMount();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        return () => {
+            cancelRequest();
+        }
+    });
 
     return (
         <div className="DocsPage">

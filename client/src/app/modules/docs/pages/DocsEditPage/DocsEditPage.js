@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGet, usePost } from "../../../services/api";
-import { endpointsMap, routesMap } from "../../../routes";
+import { useGet, usePost } from "../../../../../services/api";
+import { endpointsMap, routesMap } from "../../../../../routes";
 import "./DocsEditPage.css";
 
 const DocsEditPage = () => {
