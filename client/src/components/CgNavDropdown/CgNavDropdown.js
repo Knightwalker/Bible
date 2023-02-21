@@ -41,7 +41,7 @@ const CgNavDropdown = ({ label }) => {
     }
 
     return (
-        <div className="CgNavDropdown user-select-none" 
+        <div className="CgNavDropdown user-select-none"
             onMouseLeave={() => setStateForClassNames(false)}
         >
             <div className={state.classNames["CgNavDropdown__btn"].join(" ")}
@@ -59,7 +59,7 @@ const CgNavDropdown = ({ label }) => {
                     </div>
                     <div className="CgNavDropdown__menu-btn">
                         <i className="bi bi-pencil-square"></i>
-                        <Link>Register</Link>
+                        <Link to="/register">Register</Link>
                     </div>
                 </div>
             </div>

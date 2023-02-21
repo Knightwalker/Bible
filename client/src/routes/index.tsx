@@ -9,7 +9,7 @@ import CreateDocsPage from "../pages/admin/CreateDocsPage/CreateDocsPage";
 // Pages
 import HomePage from '../pages/main/HomePage/HomePage';
 import { DocsPage, DocsViewPage, DocsEditPage } from "../app/modules/docs";
-import RegisterPage from "../pages/main/RegisterPage/RegisterPage";
+import { RegisterPage } from "../app/modules/auth";
 
 const routerInstance = createBrowserRouter([
     {

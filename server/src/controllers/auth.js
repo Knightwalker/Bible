@@ -160,8 +160,97 @@ const postLogout = (req, res) => {
     });
 }
 
-const postRegisterV1 = () => {
+const postRegisterV1 = async (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    const passwordRe = req.body.passwordRe;
+    const email = req.body.email;
+    const verify_age = req.body.verify_age;
+    const verify_tos = req.body.verify_tos;
 
+    // Step 1. Validation
+    const bUsernameFieldIsEmpty = (username === "" ? true : false);
+    const bPasswordFieldIsEmpty = (password === "" ? true : false);
+    const bEmailFieldIsEmpty = (email === "" ? true : false);
+    const bUsernameLengthIsValid = User.isUsernameLengthValid(username);
+    const bPasswordLengthIsValid = User.isPasswordLengthValid(password);
+    const bPasswordsMatch = (password === passwordRe);
+    const bEmailIsValid = User.isEmailValid(email);
+    const bUserAgreedWithAge = User.didUserAgreeWithAge(verify_age);
+    const bUserAgreedWithTOS = User.didUserAgreeWithTOS(verify_tos);
+
+    if (bUsernameLengthIsValid == false || bPasswordLengthIsValid == false) {
+        const data = {
+            username: username,
+            password: password,
+            passwordRe: passwordRe,
+            email: email,
+            verify_age: verify_age,
+            verify_tos: verify_tos,
+            objRegisterErrors: {
+                bUsernameFieldIsEmpty: bUsernameFieldIsEmpty,
+                bPasswordFieldIsEmpty: bPasswordFieldIsEmpty,
+                bEmailFieldIsEmpty: bEmailFieldIsEmpty,
+                bUsernameLengthIsValid: bUsernameLengthIsValid,
+                bPasswordLengthIsValid: bPasswordLengthIsValid,
+                bPasswordsMatch: bPasswordsMatch,
+                bEmailIsValid: bEmailIsValid,
+                bUserAgreedWithAge: bUserAgreedWithAge,
+                bUserAgreedWithTOS: bUserAgreedWithTOS
+            }
+        }
+        res.json({data: data});
+        return;
+    }
+
+    // Step 2. Database Validation
+    var results = null;
+    try {
+        results = await Promise.all([
+            User.bCheckIfUsernameIsAvaliableAsync(username),
+            User.bCheckIfEmailIsAvaliableAsync(email),
+        ]);
+    } catch (err) {
+        console.log(err);
+        res.render("index.ejs");
+        res.json({success: false});
+        return;
+    }
+
+    const bUsernameIsAvaliable = results[0];
+    const bEmailIsAvaliable = results[1];
+
+    if (bUsernameIsAvaliable == false || bEmailIsAvaliable == false) {
+        const data = {
+            username: username,
+            password: password,
+            passwordRe: passwordRe,
+            email: email,
+            verify_age: verify_age,
+            verify_tos: verify_tos,
+            objRegisterErrors: {
+                bUsernameIsAvaliable: bUsernameIsAvaliable,
+                bEmailIsAvaliable: bEmailIsAvaliable
+            }
+        }
+        res.json({data: data});
+        return;
+    }
+
+    // Step 3. User Creation
+    const salt = User.generateSalt();
+    const hash = User.generateHash(password, salt);
+
+    const user = {
+        username: username,
+        email: email,
+        salt: salt,
+        hash: hash
+    }
+
+    await User.insertOneAsync(user);
+    res.json({success: true});
+    res.render("auth/register_successfully.ejs");
 }
 
 module.exports = {
