@@ -59,7 +59,7 @@ const CgNavDropdown = ({ label }) => {
                     </div>
                     <div className="CgNavDropdown__menu-btn">
                         <i className="bi bi-pencil-square"></i>
-                        <Link to="/register">Register</Link>
+                        <Link to="/auth/register">Register</Link>
                     </div>
                 </div>
             </div>

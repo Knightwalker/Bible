@@ -9,7 +9,12 @@ import CreateDocsPage from "../pages/admin/CreateDocsPage/CreateDocsPage";
 // Pages
 import HomePage from '../pages/main/HomePage/HomePage';
 import { DocsPage, DocsViewPage, DocsEditPage } from "../app/modules/docs";
-import { RegisterPage } from "../app/modules/auth";
+
+// Auth Module
+import { 
+    AuthLayout, 
+    RegisterPage 
+} from "../app/modules/auth";
 
 const routerInstance = createBrowserRouter([
     {
@@ -20,7 +25,13 @@ const routerInstance = createBrowserRouter([
             { path: "/docs", element: <DocsPage /> },
             { path: "/docs/view/:id", element: <DocsViewPage /> },
             { path: "/docs/edit/:id", element: <DocsEditPage /> },
-            { path: "/register", element: <RegisterPage /> }
+        ]
+    },
+    {
+        path: "/auth",
+        element: <AuthLayout />,
+        children: [
+            { path: "/auth/register", element: <RegisterPage /> }
         ]
     },
     {

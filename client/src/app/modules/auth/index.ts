@@ -1,3 +1,7 @@
-import RegisterPage from "./pages/RegisterPage";
+import AuthLayout from "./layouts/AuthLayout/AuthLayout";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
-export { RegisterPage };
+export { 
+    AuthLayout, 
+    RegisterPage 
+};

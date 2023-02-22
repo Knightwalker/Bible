@@ -1,0 +1,61 @@
+.AuthLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--cg-theme-brown);
+}
+
+.AuthLayout__header {
+    background-color: var(--cg-theme-black);
+    color: #fffffb;
+    height: 64px;
+    z-index: 1;
+}
+
+.AuthLayout__nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px; /* overwrite bootstrap's container gutters */
+    height: 64px;
+    border-bottom: 2px solid rgba(51,51,51,.25);
+}
+
+.AuthLayout__nav-item1,
+.AuthLayout__nav-item2,
+.AuthLayout__nav-item3 {
+    display: flex;
+    align-items: center;
+}
+
+.AuthLayout__nav-logo-btn {
+    color: white;
+    text-decoration: none;
+    width: 160px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.AuthLayout__nav-logo-btn:hover {
+    color: var(--cg-theme-blue);
+    cursor: pointer;
+}
+
+.AuthLayout__container {
+    position: relative;
+    flex-grow: 1;
+    background-color: #fffffb;
+    padding: 6px 17px 6px 17px; /* overwrite Bootstrap's container gutters; sets custom padding to 6px excluding the art walls of 11px */
+    z-index: 0;
+}
+
+.AuthLayout__main {
+    padding: 3px 6px;
+}
+
+.AuthLayout__footer {
+    background-color: var(--cg-theme-black);
+    height: 60px;
+    color: #fffffb;
+}
